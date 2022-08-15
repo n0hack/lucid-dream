@@ -2,14 +2,22 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `lucid-dream`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Lucid Dream`,
+    description: `갇혀만 있던 상상을 현실로 만드는 멀티 크리에이터 NoHack의 블로그 ⭐️`,
+    author: `Jihun Jeon(NoHack)`,
+    siteUrl: `https://www.lucide-dream.net`,
   },
-  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
-  // If you use VSCode you can also use the GraphQL plugin
-  // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: [`gatsby-plugin-styled-components`],
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: `${__dirname}/contents/assets`,
+      },
+    },
+    `gatsby-plugin-styled-components`,
+  ],
 };
 
 export default config;
