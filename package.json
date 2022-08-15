@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "description": "lucid-dream",
+  "homepage": "https://lucid-dream.net/",
   "author": "n0hack",
   "keywords": [
     "gatsby"
   ],
+  "license": "MIT",
   "scripts": {
     "dev": "gatsby develop",
     "start": "gatsby develop",
