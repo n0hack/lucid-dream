@@ -9,6 +9,7 @@ interface Props {
 }
 
 const Meta = (props: Props) => {
+  console.log(props);
   return (
     <>
       <title>{props.title}</title>

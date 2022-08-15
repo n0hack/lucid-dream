@@ -1,5 +1,5 @@
 import Meta from "@lucid-components/Meta";
-import { graphql, HeadFC } from "gatsby";
+import { graphql } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
@@ -7,7 +7,7 @@ interface Props {
   data: {
     allFile: {
       nodes: {
-        publicUrl: string;
+        publicURL: string;
       }[];
     };
     site: {
@@ -32,7 +32,7 @@ const IndexPage = ({}: Props) => {
 export default IndexPage;
 
 export const Head = (props: Props) => {
-  return <Meta thumbnailUrl={props.data.allFile.nodes[0].publicUrl} {...props.data.site.siteMetadata} />;
+  return <Meta thumbnailUrl={props.data.allFile.nodes[0].publicURL} {...props.data.site.siteMetadata} />;
 };
 
 export const getQuery = graphql`
