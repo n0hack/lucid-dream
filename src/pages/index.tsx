@@ -45,7 +45,7 @@ export const getQuery = graphql`
         author
       }
     }
-    allFile(filter: { name: { eq: "og" } }) {
+    allFile(filter: { name: { eq: "og-thumb" } }) {
       nodes {
         publicURL
       }
