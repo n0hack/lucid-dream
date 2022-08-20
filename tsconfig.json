@@ -35,7 +35,8 @@
       "@lucid-components/*": ["./components/*"],
       "@lucid-hooks/*": ["./hooks/*"],
       "@lucid-utils/*": ["./utils/*"],
-      "@lucid-types/*": ["./types/*"]
+      "@lucid-types/*": ["./types/*"],
+      "@lucid-ui/*": ["./ui/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */
@@ -106,5 +107,12 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": ["./src/**/*", "./gatsby-node.ts", "./gatsby-config.ts", "./plugins/**/*"]
+  "include": [
+    "./src/**/*",
+    "./gatsby-browser.ts",
+    "./gatsby-config.ts",
+    "./gatsby-node.ts",
+    "./gatsby-ssr.ts",
+    "./plugins/**/*"
+  ]
 }
