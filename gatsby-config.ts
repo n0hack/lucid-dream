@@ -5,7 +5,7 @@ const config: GatsbyConfig = {
     title: `Lucid Dream`,
     description: `갇혀만 있던 상상을 현실로 만드는 멀티 크리에이터 NoHack의 블로그 ⭐️`,
     author: `Jihun Jeon(NoHack)`,
-    siteUrl: `https://www.lucide-dream.net`,
+    siteUrl: `https://www.lucid-dream.net`,
   },
   graphqlTypegen: true,
   plugins: [
