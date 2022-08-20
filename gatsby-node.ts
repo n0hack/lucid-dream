@@ -12,6 +12,7 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ get
         "@lucid-hooks": path.resolve(__dirname, "src/hooks"),
         "@lucid-utils": path.resolve(__dirname, "src/utils"),
         "@lucid-types": path.resolve(__dirname, "src/types"),
+        "@lucid-ui": path.resolve(__dirname, "src/ui"),
       },
     },
   });

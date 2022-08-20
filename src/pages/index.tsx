@@ -1,7 +1,8 @@
+import React from "react";
 import Meta from "@lucid-components/Meta";
 import { graphql } from "gatsby";
-import React from "react";
 import styled from "styled-components";
+import Layout from "@lucid-components/Layout";
 
 interface Props {
   data: {
@@ -26,7 +27,11 @@ const IndexBlock = styled.div`
 `;
 
 const IndexPage = ({}: Props) => {
-  return <IndexBlock>IndexPage</IndexBlock>;
+  return (
+    <Layout>
+      <img src="./images/bg-main.jpg" style={{ width: "100%", height: "100vh", objectFit: "cover" }} />
+    </Layout>
+  );
 };
 
 export default IndexPage;
