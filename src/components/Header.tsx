@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Header = ({ transition = false }: Props) => {
-  const [openSearch, setOpenSearch] = useState(true);
+  const [openSearch, setOpenSearch] = useState(false);
   const [value, setValue] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [trasitionPoint, setTransitionPoint] = useState(false);
@@ -205,6 +205,9 @@ const UtilMenuBlock = styled.div`
 `;
 
 const SearchBox = styled.div`
+  position: absolute;
+  right: 3.125rem;
+
   input {
     color: #333;
     font-size: 0.875rem;
