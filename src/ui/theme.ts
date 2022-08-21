@@ -1,6 +1,7 @@
 import { DefaultTheme } from "styled-components";
 
 const colors = {
+  main: "#FF6B6B",
   text: {
     black: "#333333",
     placeholder: "#797979",

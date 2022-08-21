@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 import Input from "@lucid-ui/Input";
@@ -12,6 +12,14 @@ const Header = ({ transition = false }: Props) => {
   const [value, setValue] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [trasitionPoint, setTransitionPoint] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleOpenSearch = () => {
+    setOpenSearch(true);
+    setTimeout(() => console.log(openSearch), 2000);
+  };
+  const handleCloseSearch = () => {};
+  const onChange = () => {};
 
   const onChangeHeader = useCallback(() => {
     if (window.scrollY >= 60) setTransitionPoint(true);
@@ -39,10 +47,6 @@ const Header = ({ transition = false }: Props) => {
       };
     }
   }, [transition, onChangeHeader]);
-
-  const handleOpenSearchBox = () => setOpenSearch(true);
-  const handleCloseSearchBox = () => setOpenSearch(false);
-  const handleSearch = () => {};
 
   return (
     <HeaderBlock initial={transition} trasition={trasitionPoint}>
@@ -77,18 +81,20 @@ const Header = ({ transition = false }: Props) => {
         </NavigationBlock>
       )}
       <UtilMenuBlock>
-        <button>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </button>
+        {!openSearch && (
+          <button onClick={handleOpenSearch}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+        )}
         {!showMenu && (
           <button>
             <svg
@@ -104,11 +110,17 @@ const Header = ({ transition = false }: Props) => {
           </button>
         )}
       </UtilMenuBlock>
-      {openSearch && (
-        <SearchBox>
-          <Input placeholder="프로젝트 또는 포스트 이름으로 검색하기!" />
-        </SearchBox>
-      )}
+      <SearchBox>
+        <Input
+          ref={inputRef}
+          onChange={onChange}
+          placeholder="프로젝트 또는 포스트 이름으로 검색하기!"
+          value={value}
+          open={openSearch}
+          initial={transition}
+          transition={trasitionPoint}
+        />
+      </SearchBox>
     </HeaderBlock>
   );
 };
@@ -208,4 +220,8 @@ const UtilMenuBlock = styled.div`
 const SearchBox = styled.div`
   position: absolute;
   right: 3.125rem;
+
+  @media screen and (max-width: 768px) {
+    right: 2rem;
+  }
 `;

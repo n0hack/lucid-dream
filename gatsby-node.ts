@@ -16,4 +16,6 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ get
       },
     },
   });
+
+  console.log("노드", path.resolve(__dirname, "src/ui"));
 };
