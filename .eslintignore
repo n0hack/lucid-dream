@@ -1,0 +1,5 @@
+gatsby-browser.ts
+gatsby-config.ts
+gatsby-node.ts
+gatsby-ssr.ts
+tailwind.config.js
