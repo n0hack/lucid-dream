@@ -73,11 +73,11 @@ const Nav = ({ onCloseNav }: Props) => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <ul className="flex flex-col pt-16 pl-9 bg-transparent">
+        <ul className="flex flex-col pt-12 pl-9 bg-transparent">
           <li>
             <Link
               to="/about"
-              className="inline-block py-3 text-6xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
+              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
             >
               ABOUT
             </Link>
@@ -85,7 +85,7 @@ const Nav = ({ onCloseNav }: Props) => {
           <li>
             <Link
               to="/project"
-              className="inline-block py-3 text-6xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
+              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
             >
               PROJECT
             </Link>
@@ -93,7 +93,7 @@ const Nav = ({ onCloseNav }: Props) => {
           <li>
             <Link
               to="/blog"
-              className="inline-block py-3 text-6xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
+              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
             >
               BLOG
             </Link>
@@ -101,7 +101,7 @@ const Nav = ({ onCloseNav }: Props) => {
           <li>
             <Link
               to="/contact"
-              className="inline-block py-3 text-6xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
+              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
             >
               CONTACT
             </Link>
