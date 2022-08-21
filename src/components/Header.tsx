@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
+import Input from "@lucid-ui/Input";
 
 interface Props {
   transition?: boolean;
@@ -18,11 +19,11 @@ const Header = ({ transition = false }: Props) => {
   }, []);
 
   const onChangeLayout = useCallback(() => {
-    if (window.innerWidth <= 768) setShowMenu(true);
-    else setShowMenu(false);
+    if (window.innerWidth <= 768) setShowMenu(false);
+    else setShowMenu(true);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     onChangeLayout();
     window.addEventListener("resize", onChangeLayout);
     return () => {
@@ -32,9 +33,9 @@ const Header = ({ transition = false }: Props) => {
 
   useEffect(() => {
     if (transition) {
-      window.addEventListener("wheel", onChangeHeader);
+      window.addEventListener("scroll", onChangeHeader);
       return () => {
-        window.removeEventListener("wheel", onChangeHeader);
+        window.removeEventListener("scroll", onChangeHeader);
       };
     }
   }, [transition, onChangeHeader]);
@@ -57,7 +58,7 @@ const Header = ({ transition = false }: Props) => {
           </svg>
         </Link>
       </LogoBlock>
-      {!showMenu && (
+      {showMenu && (
         <NavigationBlock>
           <ul>
             <li>
@@ -88,7 +89,7 @@ const Header = ({ transition = false }: Props) => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </button>
-        {showMenu && (
+        {!showMenu && (
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +106,7 @@ const Header = ({ transition = false }: Props) => {
       </UtilMenuBlock>
       {openSearch && (
         <SearchBox>
-          <input placeholder="프로젝트 또는 포스트 이름으로 검색하기!" />
+          <Input placeholder="프로젝트 또는 포스트 이름으로 검색하기!" />
         </SearchBox>
       )}
     </HeaderBlock>
@@ -150,7 +151,7 @@ const HeaderBlock = styled.header<{ initial: boolean; trasition: boolean }>`
   }}
 
   @media screen and (max-width: 768px) {
-    padding: 0 2rem;
+    padding: 0 1.25rem;
   }
 `;
 
@@ -187,8 +188,8 @@ const UtilMenuBlock = styled.div`
   gap: 0.875rem;
 
   button {
-    width: 1.125rem;
-    height: 1.125rem;
+    width: 1.375rem;
+    height: 1.375rem;
     background-color: transparent;
     outline: 0;
     border: 0;
@@ -207,14 +208,4 @@ const UtilMenuBlock = styled.div`
 const SearchBox = styled.div`
   position: absolute;
   right: 3.125rem;
-
-  input {
-    color: #333;
-    font-size: 0.875rem;
-    padding: 0.5rem 0;
-
-    &::placeholder {
-      color: ${({ theme }) => theme.colors.text.placeholder};
-    }
-  }
 `;
