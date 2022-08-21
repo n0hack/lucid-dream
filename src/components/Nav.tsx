@@ -77,7 +77,7 @@ const Nav = ({ onCloseNav }: Props) => {
           <li>
             <Link
               to="/about"
-              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
+              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in md:py-4 md:text-5xl"
             >
               ABOUT
             </Link>
@@ -85,7 +85,7 @@ const Nav = ({ onCloseNav }: Props) => {
           <li>
             <Link
               to="/project"
-              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
+              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in md:py-4 md:text-5xl"
             >
               PROJECT
             </Link>
@@ -93,7 +93,7 @@ const Nav = ({ onCloseNav }: Props) => {
           <li>
             <Link
               to="/blog"
-              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
+              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in md:py-4 md:text-5xl"
             >
               BLOG
             </Link>
@@ -101,7 +101,7 @@ const Nav = ({ onCloseNav }: Props) => {
           <li>
             <Link
               to="/contact"
-              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in"
+              className="inline-block py-3 text-4xl font-bold text-black hover:text-primary transition-colors duration-200 ease-in md:py-4 md:text-5xl"
             >
               CONTACT
             </Link>
