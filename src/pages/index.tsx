@@ -1,8 +1,11 @@
 import React from "react";
 import Meta from "@lucid-components/Meta";
 import { graphql } from "gatsby";
-import styled from "styled-components";
 import Layout from "@lucid-components/Layout";
+import Header from "@lucid-components/Header";
+import { useSetRecoilState } from "recoil";
+import { headerAtom } from "recoil/atoms";
+import { useEffect } from "react";
 
 interface Props {
   data: {
@@ -22,13 +25,9 @@ interface Props {
   };
 }
 
-const IndexBlock = styled.div`
-  color: red;
-`;
-
 const IndexPage = ({}: Props) => {
   return (
-    <Layout>
+    <Layout transition={true}>
       <img src="./images/bg-main.webp" style={{ width: "100%", height: "100vh", objectFit: "cover" }} />
     </Layout>
   );

@@ -1,26 +1,21 @@
 import React from "react";
 import Header from "./Header";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "@lucid-ui/theme";
+import { RecoilRoot } from "recoil";
 
 interface Props {
+  transition: boolean;
   children: React.ReactNode;
 }
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ transition, children }: Props) => {
   return (
-    <ThemeProvider theme={theme}>
-      <StyledLayout>
-        <Header transition={true} />
-        {children}
-      </StyledLayout>
-    </ThemeProvider>
+    <RecoilRoot>
+      <div className="relative h-[400vh]">
+        <Header transition={transition} />
+        <main>{children}</main>
+      </div>
+    </RecoilRoot>
   );
 };
 
 export default Layout;
-
-const StyledLayout = styled.div`
-  min-height: 400vh;
-  background-color: black;
-`;
