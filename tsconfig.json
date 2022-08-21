@@ -14,7 +14,8 @@
       "@lucid-hooks/*": ["./hooks/*"],
       "@lucid-utils/*": ["./utils/*"],
       "@lucid-types/*": ["./types/*"],
-      "@lucid-ui/*": ["./ui/*"]
+      "@lucid-ui/*": ["./components/ui/*"],
+      "@lucid-state/*": ["./recoil/*"]
     },
 
     /* JavaScript Support */

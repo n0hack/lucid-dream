@@ -16,7 +16,7 @@ const config: GatsbyConfig = {
         path: `${__dirname}/contents/assets`,
       },
     },
-    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-postcss`,
   ],
 };
 
