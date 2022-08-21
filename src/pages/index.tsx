@@ -2,10 +2,6 @@ import React from "react";
 import Meta from "@lucid-components/Meta";
 import { graphql } from "gatsby";
 import Layout from "@lucid-components/Layout";
-import Header from "@lucid-components/Header";
-import { useSetRecoilState } from "recoil";
-import { headerAtom } from "recoil/atoms";
-import { useEffect } from "react";
 
 interface Props {
   data: {

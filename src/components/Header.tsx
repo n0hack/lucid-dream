@@ -16,6 +16,11 @@ const Header = ({ transition = false }: Props) => {
   const [navValue, setNavValue] = useRecoilState(navAtom);
 
   useEffect(() => {
+    setWindowValue((prev) => ({ ...prev, size: 0 }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     if (!transition) return;
 
     const event = () => {
