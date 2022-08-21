@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilState } from "recoil";
+import React, { useEffect } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { headerAtom, navAtom, scrollAtom, windowAtom } from "@lucid-state/atoms";
 import Nav from "./Nav";
 import Logo from "./ui/Logo";
@@ -12,8 +12,11 @@ interface Props {
 const Header = ({ transition = false }: Props) => {
   const [scrollValue, setScrollValue] = useRecoilState(scrollAtom);
   const [headerValue, setHeaderValue] = useRecoilState(headerAtom);
-  const [windowValue, setWindowValue] = useRecoilState(windowAtom);
-  const [navValue, setNavValue] = useRecoilState(navAtom);
+  const setWindowValue = useSetRecoilState(windowAtom);
+  const setNavValue = useSetRecoilState(navAtom);
+
+  const handleOpenNav = () => setNavValue({ open: true });
+  const handleCloseNav = () => setNavValue({ open: false });
 
   useEffect(() => {
     setWindowValue((prev) => ({ ...prev, size: 0 }));
@@ -52,7 +55,9 @@ const Header = ({ transition = false }: Props) => {
         )}
       >
         <Logo />
-        <Nav />
+        <div className="hidden lg:block">
+          <Nav />
+        </div>
         <div
           className={clsx(
             "absolute top-1/2 right-5 -translate-y-1/2 flex items-center gap-2 transition-colors duration-300 ease-linear lg:right-10",
@@ -68,7 +73,7 @@ const Header = ({ transition = false }: Props) => {
               />
             </svg>
           </button>
-          <button className="w-6 h-6 lg:hidden">
+          <button onClick={handleOpenNav} className="w-6 h-6 lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
               <path
                 fillRule="evenodd"
@@ -80,7 +85,7 @@ const Header = ({ transition = false }: Props) => {
         </div>
       </div>
       <div className="lg:hidden">
-        <Nav />
+        <Nav onCloseNav={handleCloseNav} />
       </div>
     </>
   );

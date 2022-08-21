@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import { RecoilRoot } from "recoil";
+import Main from "./Main";
 
 interface Props {
   transition: boolean;
@@ -10,9 +11,9 @@ interface Props {
 const Layout = ({ transition, children }: Props) => {
   return (
     <RecoilRoot>
-      <div className="relative h-[400vh]">
+      <div className="relative overflow-hidden">
         <Header transition={transition} />
-        <main>{children}</main>
+        <Main>{children}</Main>
       </div>
     </RecoilRoot>
   );
