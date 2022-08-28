@@ -16,5 +16,13 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ get
         "@lucid-state": path.resolve(__dirname, "src/recoil"),
       },
     },
+    module: {
+      rules: [
+        {
+          test: /\.s[ac]ss$/i,
+          use: ["style-loader", "css-loader", "sass-loader"],
+        },
+      ],
+    },
   });
 };
