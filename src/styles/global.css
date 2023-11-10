@@ -1,0 +1,18 @@
+@import './font.css';
+
+:is(html, body) {
+  height: 100%;
+}
+
+* {
+  font-family: 'Pretendard', sans-serif;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+/* 스크롤 동작을 막을 때, 적용할 스타일 */
+.prevent-scroll {
+  height: 100vh;
+  overflow: hidden;
+  touch-action: none;
+}
