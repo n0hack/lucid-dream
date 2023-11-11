@@ -26,6 +26,7 @@ const config: Config = {
         desktop: '1044px',
       },
       spacing: generateValues(0, 1200),
+      maxWidth: generateValues(0, 1440),
       maxHeight: generateValues(0, 1200),
       borderRadius: generateValues(0, 64),
       colors: {

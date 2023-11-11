@@ -20,11 +20,11 @@ const { hasBg = false } = Astro.props;
   )}
 >
   <div
-    class="pl-24pxr pr-14pxr desktop:max-w-1044pxr desktop:pl-40pxr desktop:pr-30pxr flex h-full w-full justify-between desktop:mx-auto"
+    class="desktop:max-w-1044pxr flex h-full w-full justify-between pl-24pxr pr-14pxr desktop:mx-auto desktop:pl-40pxr desktop:pr-30pxr"
   >
-    <div class="desktop:gap-60pxr flex h-full items-center">
+    <div class="flex h-full items-center desktop:gap-60pxr">
       <Logo />
-      <Navigation />
+      <Navigation hasBg={hasBg} />
     </div>
     <ul class="relative flex h-full items-center">
       <SearchButton client:load />
