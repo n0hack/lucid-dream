@@ -19,7 +19,7 @@ const IconButton = ({ size = '44', className, children, onClick }: React.PropsWi
   return (
     <button
       className={twMerge(
-        'grid place-items-center desktop:rounded-full desktop:transition-colors desktop:hover:bg-dim-005',
+        'grid place-items-center desktop:rounded-full desktop:transition-[background] desktop:hover:bg-dim-005',
         sizeMap[size],
         className,
       )}

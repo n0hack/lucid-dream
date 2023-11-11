@@ -12,13 +12,13 @@ const { pathname } = Astro.url;
 ---
 
 <nav class="pointer-events-none opacity-0 desktop:pointer-events-auto desktop:opacity-100">
-  <ul class="gap-24pxr flex">
+  <ul class="flex gap-24pxr">
     {
       navInfo.map(({ path, name }) => (
         <li>
           <a
             class={twMerge(
-              'nav-item py-4pxr block text-sm font-medium hover:text-gray-200',
+              'nav-item block py-4pxr text-sm font-medium hover:text-gray-200',
               hasBg && 'hover:text-primary',
               pathname.includes(path) && 'text-primary',
             )}

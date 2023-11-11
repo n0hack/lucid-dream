@@ -20,16 +20,16 @@ const { hasBg = false } = Astro.props;
   )}
 >
   <div
-    class="desktop:max-w-1044pxr flex h-full w-full justify-between pl-24pxr pr-14pxr desktop:mx-auto desktop:pl-40pxr desktop:pr-30pxr"
+    class="flex h-full w-full justify-between pl-24pxr pr-14pxr desktop:mx-auto desktop:max-w-1044pxr desktop:pl-40pxr desktop:pr-30pxr"
   >
     <div class="flex h-full items-center desktop:gap-60pxr">
       <Logo />
       <Navigation hasBg={hasBg} />
     </div>
-    <ul class="relative flex h-full items-center">
+    <div class="relative flex h-full items-center">
       <SearchButton client:load />
       <MenuButton client:load />
-    </ul>
+    </div>
   </div>
 </header>
 

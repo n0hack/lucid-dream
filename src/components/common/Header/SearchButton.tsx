@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { TbSearch } from 'react-icons/tb';
-import OutsideClickHandler from 'react-outside-click-handler';
-import { twMerge } from 'tailwind-merge';
 import { BREAKPOINT, CLASS_PREVENT_SCROLL } from '@constants';
+import { IconSearch } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
+import IconButton from '../IconButton';
+import OutsideClickHandler from '../OutsideClickHandler';
 import SearchBoxDesktop from './SearchBoxDesktop';
 import SearchBoxMobile from './SearchBoxMobile';
+import { useSearch } from './hooks/useSearch';
 
 const SearchButton = () => {
   const [isSearchBoxOpen, setIsSearchBoxOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
+  const searchProps = useSearch();
 
   const handleSearchBoxOpen = () => {
     // Mobile에 대한 스크롤 동작 여부 처리
@@ -24,19 +25,6 @@ const SearchButton = () => {
 
     restoreScroll();
     setIsSearchBoxOpen(false);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
-
-  const handleInputKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== 'Enter') return;
-    window.location.assign(`/search?q=${searchValue}`);
-  };
-
-  const handleInputClear = () => {
-    setSearchValue('');
   };
 
   useEffect(() => {
@@ -63,35 +51,17 @@ const SearchButton = () => {
 
   return (
     <React.Fragment>
-      <button
-        className={twMerge(
-          'h-44pxr w-44pxr grid place-items-center rounded-full desktop:hover:bg-dim-005',
-          isSearchBoxOpen ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100',
-        )}
+      <IconButton
+        className={isSearchBoxOpen ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'}
         onClick={handleSearchBoxOpen}
       >
-        <TbSearch className="h-24pxr w-24pxr" />
-      </button>
-      <OutsideClickHandler display="contents" onOutsideClick={handleSearchBoxClose}>
-        {/* Mobile */}
+        <IconSearch className="h-24pxr w-24pxr" />
+      </IconButton>
+      <OutsideClickHandler onOutsideClick={handleSearchBoxClose}>
         {isSearchBoxOpen && (
-          <SearchBoxMobile
-            isOpen={isSearchBoxOpen}
-            value={searchValue}
-            onChange={handleInputChange}
-            onKeydown={handleInputKeydown}
-            onClear={handleInputClear}
-            onClose={handleSearchBoxClose}
-          />
+          <SearchBoxMobile isOpen={isSearchBoxOpen} onClose={handleSearchBoxClose} {...searchProps} />
         )}
-        {/* Desktop */}
-        <SearchBoxDesktop
-          isOpen={isSearchBoxOpen}
-          value={searchValue}
-          onChange={handleInputChange}
-          onKeydown={handleInputKeydown}
-          onClear={handleInputClear}
-        />
+        <SearchBoxDesktop isOpen={isSearchBoxOpen} {...searchProps} />
       </OutsideClickHandler>
     </React.Fragment>
   );

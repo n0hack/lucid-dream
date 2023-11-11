@@ -1,6 +1,6 @@
-import { TbX } from 'react-icons/tb';
 import { twMerge } from 'tailwind-merge';
 import { MAIN_IMAGE_SRC } from '@constants';
+import { IconX } from '@tabler/icons-react';
 import Dim from '../Dim';
 import IconButton from '../IconButton';
 import navInfo from './navInfo';
@@ -18,8 +18,8 @@ const MenuBoxMobile = ({ onMenuClose }: MenuBoxMobileProps) => {
       }}
     >
       <Dim />
-      <div className="left-40pxr top-40pxr absolute">
-        <ul className="gap-32pxr flex w-fit flex-col">
+      <div className="absolute left-40pxr top-40pxr">
+        <ul className="flex w-fit flex-col gap-32pxr">
           {navInfo.map((item) => (
             <li key={item.path} className={twMerge('w-full -translate-x-full opacity-0', item.animation)}>
               <a href={item.path} className="text-4xl font-bold">
@@ -29,8 +29,8 @@ const MenuBoxMobile = ({ onMenuClose }: MenuBoxMobileProps) => {
           ))}
         </ul>
       </div>
-      <IconButton className="right-34pxr top-38pxr absolute" onClick={onMenuClose}>
-        <TbX className="h-32pxr w-32pxr" />
+      <IconButton className="absolute right-34pxr top-38pxr" onClick={onMenuClose}>
+        <IconX className="h-32pxr w-32pxr" />
       </IconButton>
     </div>
   );
