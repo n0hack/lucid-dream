@@ -1,7 +1,12 @@
 # build output
 dist/
+.vercel
+
 # generated types
 .astro/
+
+# local development env
+.vscode
 
 # dependencies
 node_modules/
