@@ -19,6 +19,7 @@
     "@types/react-dom": "^18.0.6",
     "astro": "^3.5.0",
     "astro-icon": "^0.8.1",
+    "isomorphic-dompurify": "^1.9.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tailwind-merge": "^2.0.0",
