@@ -1,5 +1,9 @@
 ---
+import purify from 'isomorphic-dompurify';
+
 const { search } = Astro.url;
+const decodedSearch = decodeURIComponent(search);
+const sanitizedSearch = purify.sanitize(decodedSearch);
 
 export const prerender = false;
 ---
@@ -13,6 +17,6 @@ export const prerender = false;
     <title>Astro</title>
   </head>
   <body>
-    결과: {search}
+    결과: {sanitizedSearch}
   </body>
 </html>
