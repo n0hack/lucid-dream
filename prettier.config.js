@@ -6,7 +6,7 @@ const config = {
   useTabs: false,
   tabWidth: 2,
   trailingComma: 'all',
-  plugins: ['prettier-plugin-astro', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
+  plugins: ['prettier-plugin-astro', '@trivago/prettier-plugin-sort-imports'],
   overrides: [
     {
       files: '*.astro',

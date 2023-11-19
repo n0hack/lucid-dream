@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+import { css } from '@styled-system/css';
 
-type OutsideClickHandlerProps = {
+type OutsideClickProps = {
   onOutsideClick: () => void;
 };
 
-const OutsideClickHandler = ({ children, onOutsideClick }: React.PropsWithChildren<OutsideClickHandlerProps>) => {
+const OutsideClick = ({ children, onOutsideClick }: React.PropsWithChildren<OutsideClickProps>) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -13,17 +14,16 @@ const OutsideClickHandler = ({ children, onOutsideClick }: React.PropsWithChildr
     };
 
     document.addEventListener('mousedown', handleMouseDown);
-
     return () => {
       document.removeEventListener('mousedown', handleMouseDown);
     };
   }, [onOutsideClick]);
 
   return (
-    <div ref={ref} className="contents">
+    <div ref={ref} className={css({ display: 'contents' })}>
       {children}
     </div>
   );
 };
 
-export default OutsideClickHandler;
+export default OutsideClick;

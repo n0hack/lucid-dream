@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BREAKPOINT, CLASS_PREVENT_SCROLL } from '@constants';
+import { css } from '@styled-system/css';
 import { IconSearch } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
 import IconButton from '../IconButton';
-import OutsideClickHandler from '../OutsideClickHandler';
+import OutsideClick from '../OutsideClick';
 import SearchBoxDesktop from './SearchBoxDesktop';
 import SearchBoxMobile from './SearchBoxMobile';
 import { useSearch } from './hooks/useSearch';
@@ -52,17 +53,21 @@ const SearchButton = () => {
   return (
     <React.Fragment>
       <IconButton
-        className={isSearchBoxOpen ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'}
+        custom={
+          isSearchBoxOpen
+            ? css.raw({ pointerEvents: 'none', opacity: 0 })
+            : css.raw({ pointerEvents: 'auto', opacity: 1 })
+        }
         onClick={handleSearchBoxOpen}
       >
-        <IconSearch className="h-24pxr w-24pxr" />
+        <IconSearch width={24} height={24} />
       </IconButton>
-      <OutsideClickHandler onOutsideClick={handleSearchBoxClose}>
+      <OutsideClick onOutsideClick={handleSearchBoxClose}>
         {isSearchBoxOpen && (
           <SearchBoxMobile isOpen={isSearchBoxOpen} onClose={handleSearchBoxClose} {...searchProps} />
         )}
         <SearchBoxDesktop isOpen={isSearchBoxOpen} {...searchProps} />
-      </OutsideClickHandler>
+      </OutsideClick>
     </React.Fragment>
   );
 };

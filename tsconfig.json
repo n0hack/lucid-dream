@@ -1,15 +1,17 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@components": ["components"],
-      "@components/*": ["components/*"],
-      "@constants": ["constants"],
-      "@styles/*": ["styles/*"],
-      "@utils/*": ["utils/*"]
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@constants": ["src/constants"],
+      "@styles/*": ["src/styles/*"],
+      "@styled-system/*": ["styled-system/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
-  }
+  },
+  "include": ["src", "styled-system"]
 }

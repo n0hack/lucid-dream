@@ -4,7 +4,6 @@ dist/
 
 # generated types
 .astro/
-*.module.scss.d.ts
 
 # local development env
 .vscode
@@ -25,3 +24,6 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Panda
+styled-system

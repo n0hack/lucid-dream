@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BREAKPOINT } from '@constants';
+import { css } from '@styled-system/css';
 import { IconMenu2 } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
 import IconButton from '../IconButton';
@@ -37,8 +38,8 @@ const MenuButton = () => {
 
   return (
     <React.Fragment>
-      <IconButton className="desktop:hidden" onClick={handleMenuOpen}>
-        <IconMenu2 className="h-24pxr w-24pxr" />
+      <IconButton custom={css.raw({ desktop: { display: 'none' } })} onClick={handleMenuOpen}>
+        <IconMenu2 width={24} height={24} />
       </IconButton>
       {isMenuOpen && <MenuBoxMobile onMenuClose={handleMenuClose} />}
     </React.Fragment>

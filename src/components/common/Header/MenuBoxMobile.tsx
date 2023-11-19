@@ -1,5 +1,5 @@
-import { twMerge } from 'tailwind-merge';
 import { MAIN_IMAGE_SRC } from '@constants';
+import { css, cva } from '@styled-system/css';
 import { IconX } from '@tabler/icons-react';
 import Dim from '../Dim';
 import IconButton from '../IconButton';
@@ -11,29 +11,72 @@ type MenuBoxMobileProps = {
 
 const MenuBoxMobile = ({ onMenuClose }: MenuBoxMobileProps) => {
   return (
-    <div
-      className="fixed inset-0 h-screen bg-cover bg-center text-white desktop:hidden"
-      style={{
-        backgroundImage: `url(${MAIN_IMAGE_SRC})`,
-      }}
-    >
+    <div className={wrapper} style={{ backgroundImage: `url(${MAIN_IMAGE_SRC})` }}>
       <Dim />
-      <div className="absolute left-40pxr top-40pxr">
-        <ul className="flex w-fit flex-col gap-32pxr">
-          {navInfo.map((item) => (
-            <li key={item.path} className={twMerge('w-full -translate-x-full opacity-0', item.animation)}>
-              <a href={item.path} className="text-4xl font-bold">
-                {item.name}
+      <nav className={nav}>
+        <ul className={list}>
+          {navInfo.map(({ path, name }, index) => (
+            <li key={path} className={item({ animation: index as 0 | 1 | 2 })}>
+              <a className={link} href={path}>
+                {name}
               </a>
             </li>
           ))}
         </ul>
-      </div>
-      <IconButton className="absolute right-34pxr top-38pxr" onClick={onMenuClose}>
-        <IconX className="h-32pxr w-32pxr" />
+      </nav>
+      <IconButton custom={css.raw({ position: 'absolute', top: '28pxr', right: '14pxr' })} onClick={onMenuClose}>
+        <IconX width={32} height={32} />
       </IconButton>
     </div>
   );
 };
+
+const wrapper = css({
+  position: 'fixed',
+  inset: 0,
+  h: 'screen',
+  color: 'white',
+  bgSize: 'cover',
+  bgPosition: 'center',
+  desktop: {
+    display: 'none',
+  },
+});
+
+const nav = css({
+  position: 'absolute',
+  top: '24pxr',
+  left: '24pxr',
+});
+
+const list = css({
+  w: 'fit',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '24pxr',
+});
+
+const item = cva({
+  base: {
+    w: 'full',
+    opacity: 0,
+    transform: 'translatex(-100%)',
+  },
+  variants: {
+    animation: {
+      0: { animation: 'showMenuItem 0.75s forwards' },
+      1: { animation: 'showMenuItem 0.75s forwards 0.2s' },
+      2: { animation: 'showMenuItem 0.75s forwards 0.4s' },
+    },
+  },
+  defaultVariants: {
+    animation: 0,
+  },
+});
+
+const link = css({
+  fontSize: '4xl',
+  fontWeight: 'bold',
+});
 
 export default MenuBoxMobile;

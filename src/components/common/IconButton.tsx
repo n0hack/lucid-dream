@@ -1,33 +1,42 @@
 import React from 'react';
-import { twMerge } from 'tailwind-merge';
-import type { StyleByProps } from 'utils/style';
-
-type IconButtonSize = '24' | '44';
+import { css, cva, type RecipeVariantProps } from '@styled-system/css';
+import type { SystemStyleObject } from '@styled-system/types';
 
 type IconButtonProps = {
-  size?: IconButtonSize;
-  className?: string;
+  custom?: SystemStyleObject;
   onClick?: () => void;
-};
+} & RecipeVariantProps<typeof iconButton>;
 
-const IconButton = ({ size = '44', className, children, onClick }: React.PropsWithChildren<IconButtonProps>) => {
-  const sizeMap: StyleByProps<typeof size> = {
-    '24': 'h-24pxr w-24pxr',
-    '44': 'h-44pxr w-44pxr',
-  };
-
+const IconButton = ({ size, custom, children, onClick }: React.PropsWithChildren<IconButtonProps>) => {
   return (
-    <button
-      className={twMerge(
-        'grid place-items-center desktop:rounded-full desktop:transition-[background] desktop:hover:bg-dim-005',
-        sizeMap[size],
-        className,
-      )}
-      onClick={onClick}
-    >
+    <button className={css(iconButton.raw({ size }), custom)} onClick={onClick}>
       {children}
     </button>
   );
 };
+
+const iconButton = cva({
+  base: {
+    display: 'grid',
+    placeItems: 'center',
+    cursor: 'pointer',
+    desktop: {
+      rounded: 'full',
+      transition: 'background 0.2s ease-in-out',
+      _hover: {
+        bg: 'dim.005',
+      },
+    },
+  },
+  variants: {
+    size: {
+      24: { w: '24pxr', h: '24pxr' },
+      44: { w: '44pxr', h: '44pxr' },
+    },
+  },
+  defaultVariants: {
+    size: 44,
+  },
+});
 
 export default IconButton;

@@ -42,3 +42,8 @@
     local('FiraCode Regular'),
     url('/fonts/firacode/FiraCode-Regular.ttf') format('truetype');
 }
+
+:root {
+  --font-pretendard: 'Pretendard', sans-serif;
+  --font-fira-code: 'Fira Code', monospace;
+}

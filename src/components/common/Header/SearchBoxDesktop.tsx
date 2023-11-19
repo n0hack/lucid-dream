@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
 import { BREAKPOINT } from '@constants';
+import { cva } from '@styled-system/css';
 import Search from './Search';
 
 type SearchBoxDesktopProps = {
@@ -14,7 +14,7 @@ type SearchBoxDesktopProps = {
 const SearchBoxDesktop = ({ isOpen, value, onChange, onKeyDown, onClear }: SearchBoxDesktopProps) => {
   const [hasBorder, setHasBorder] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const timer = useRef<number | null>(null);
+  const timer = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // 검색창을 닫았을 때, Border가 남아있는 문제를 해결하기 위한 처리
@@ -34,13 +34,7 @@ const SearchBoxDesktop = ({ isOpen, value, onChange, onKeyDown, onClear }: Searc
   }, [isOpen]);
 
   return (
-    <div
-      className={twMerge(
-        'absolute right-0 top-1/2 hidden h-44pxr -translate-y-1/2 overflow-hidden rounded-4pxr bg-white text-black transition-[width] duration-300 desktop:block',
-        isOpen ? 'pointer-events-auto w-288pxr' : 'pointer-events-none w-0',
-        hasBorder && 'border border-b-gray-200',
-      )}
-    >
+    <div className={wrapper({ isOpen, hasBorder })}>
       <Search
         ref={inputRef}
         isOpen={isOpen}
@@ -52,5 +46,33 @@ const SearchBoxDesktop = ({ isOpen, value, onChange, onKeyDown, onClear }: Searc
     </div>
   );
 };
+
+const wrapper = cva({
+  base: {
+    position: 'absolute',
+    top: '50%',
+    right: 0,
+    transform: 'translateY(-50%)',
+    h: '44pxr',
+    display: 'none',
+    color: 'black',
+    bg: 'white',
+    rounded: '4pxr',
+    overflow: 'hidden',
+    transition: 'width 0.3s ease-in-out',
+    desktop: {
+      display: 'block',
+    },
+  },
+  variants: {
+    isOpen: {
+      true: { w: '288pxr', pointerEvents: 'auto' },
+      false: { w: 0, pointerEvents: 'none' },
+    },
+    hasBorder: {
+      true: { border: '1px solid token(colors.gray.200)' },
+    },
+  },
+});
 
 export default SearchBoxDesktop;

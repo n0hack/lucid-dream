@@ -3,16 +3,16 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "codegen:panda": "panda codegen",
     "dev": "astro dev --host",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "pnpm codegen:panda && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
     "@astrojs/react": "^3.0.4",
-    "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vercel": "^5.2.0",
     "@tabler/icons-react": "^2.40.0",
     "@types/react": "^18.0.21",
@@ -22,11 +22,11 @@
     "isomorphic-dompurify": "^1.9.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "tailwind-merge": "^2.0.0",
-    "tailwindcss": "^3.0.24",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "@pandacss/astro": "^0.18.3",
+    "@pandacss/dev": "^0.18.3",
     "@trivago/prettier-plugin-sort-imports": "^4.2.1",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
@@ -35,6 +35,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.1",
-    "prettier-plugin-tailwindcss": "^0.5.7"
+    "vite-plugin-style-import": "^2.0.0"
   }
 }

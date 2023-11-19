@@ -1,43 +1,83 @@
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
-import { twMerge } from 'tailwind-merge';
+import { css } from '@styled-system/css';
+import type { SystemStyleObject } from '@styled-system/types';
 import { IconCircleX, IconSearch } from '@tabler/icons-react';
 import IconButton from '../IconButton';
 
 type SearchProps = ComponentPropsWithoutRef<'input'> & {
-  wrapperClassName?: string;
+  wrapperCustom?: SystemStyleObject;
   isOpen: boolean;
   onClear: () => void;
 };
 
 const Search = forwardRef<HTMLInputElement, SearchProps>(function (
-  { wrapperClassName, isOpen, value, onChange, onKeyDown, onClear, ...rest },
+  { wrapperCustom, isOpen, value, onChange, onKeyDown, onClear, ...rest },
   ref,
 ) {
   return (
-    <div className={twMerge('relative h-full rounded-4pxr', wrapperClassName)}>
-      <IconSearch className="pointer-events-none absolute left-12pxr top-1/2 h-24pxr w-24pxr -translate-y-1/2" />
+    <div className={css(wrapper, wrapperCustom)}>
+      <IconSearch className={searchIcon} />
       <input
         ref={ref}
-        className="h-full w-full rounded-4pxr bg-transparent px-48pxr text-sm outline-primary placeholder:text-gray-400"
+        className={input}
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}
         maxLength={48}
-        placeholder="제목이나 내용으로 검색하기 >_<"
+        placeholder="제목이나 내용으로 검색하기"
         {...rest}
       />
-      <IconButton
-        size="24"
-        className={twMerge(
-          'pointer-events-none absolute right-12pxr top-1/2 -translate-y-1/2 opacity-0',
-          isOpen && value && 'pointer-events-auto opacity-100',
-        )}
-        onClick={onClear}
-      >
-        <IconCircleX className="h-18pxr w-18pxr" />
+      <IconButton custom={css.raw(clearButton, isOpen && value ? showClearButton : {})} size={24} onClick={onClear}>
+        <IconCircleX width={18} height={18} />
       </IconButton>
     </div>
   );
+});
+
+const wrapper = css.raw({
+  position: 'relative',
+  h: 'full',
+  rounded: '4pxr',
+});
+
+const searchIcon = css({
+  position: 'absolute',
+  top: '50%',
+  left: '12pxr',
+  transform: 'translateY(-50%)',
+  w: '24pxr',
+  h: '24pxr',
+  pointerEvents: 'none',
+});
+
+const input = css({
+  w: 'full',
+  h: 'full',
+  px: '48pxr',
+  fontSize: 'sm',
+  bg: 'transparent',
+  rounded: '4pxr',
+  outline: '2px solid token(colors.primary)',
+  _placeholder: {
+    color: 'gray.400',
+  },
+  desktop: {
+    outline: '0',
+  },
+});
+
+const clearButton = css.raw({
+  position: 'absolute',
+  top: '50%',
+  right: '12pxr',
+  transform: 'translateY(-50%)',
+  opacity: 0,
+  pointerEvents: 'none',
+});
+
+const showClearButton = css.raw({
+  opacity: 1,
+  pointerEvents: 'auto',
 });
 
 export default Search;

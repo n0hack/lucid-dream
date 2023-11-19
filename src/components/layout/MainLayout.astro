@@ -1,5 +1,6 @@
 ---
-import { Footer, Header } from '@components/common';
+import { Header, Footer } from '@components/common';
+import { css } from '@styled-system/css';
 import '@styles/global.css';
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
 };
 
 const { pageTitle, headerHasBg = false } = Astro.props;
+const { pathname } = Astro.url;
 ---
 
 <!doctype html>
@@ -20,8 +22,15 @@ const { pageTitle, headerHasBg = false } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Header hasBg={headerHasBg} />
-    <main class="min-h-[calc(100%-164px)] desktop:min-h-[calc(100%-208px)]">
+    <Header hasBg={headerHasBg} pathname={pathname} client:load />
+    <main
+      class={css({
+        minHeight: 'calc(200% - 164px)',
+        desktop: {
+          minHeight: 'calc(200% - 208px)',
+        },
+      })}
+    >
       <slot />
     </main>
     <Footer />

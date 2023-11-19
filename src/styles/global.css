@@ -1,21 +1,21 @@
 @import './fonts.css';
 
-:is(html, body) {
-  height: 100%;
-}
+@layer base {
+  :is(html, body) {
+    height: 100%;
+  }
 
-* {
-  font-family: 'Pretendard', sans-serif;
-  color: inherit;
-  box-sizing: border-box;
+  * {
+    font-family: 'Pretendard', sans-serif;
 
-  /* iOS 탭 하이라이트 제거 */
-  -webkit-tap-highlight-color: transparent;
-}
+    /* iOS 탭 하이라이트 제거 */
+    -webkit-tap-highlight-color: transparent;
+  }
 
-/* 스크롤 동작을 막을 때, 적용할 스타일 */
-.prevent-scroll {
-  height: 100vh;
-  overflow: hidden;
-  touch-action: none;
+  /* 스크롤 동작을 막을 때, 적용할 스타일 */
+  .prevent-scroll {
+    height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+  }
 }

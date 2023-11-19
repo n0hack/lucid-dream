@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { BREAKPOINT, MAIN_IMAGE_SRC } from '@constants';
+import { css } from '@styled-system/css';
 import { IconChevronLeft } from '@tabler/icons-react';
 import Dim from '../Dim';
 import IconButton from '../IconButton';
@@ -23,18 +24,15 @@ const SearchBoxMobile = ({ isOpen, value, onChange, onKeyDown, onClear, onClose 
   }, [isOpen]);
 
   return (
-    <div
-      className="fixed inset-0 h-screen bg-cover bg-center text-black desktop:hidden"
-      style={{ backgroundImage: `url(${MAIN_IMAGE_SRC})` }}
-    >
+    <div className={outerWrapper} style={{ backgroundImage: `url(${MAIN_IMAGE_SRC})` }}>
       <Dim />
-      <div className="absolute inset-0 flex h-64pxr w-full bg-white py-8pxr pr-16pxr">
-        <IconButton className="mx-8pxr" onClick={onClose}>
-          <IconChevronLeft className="h-32pxr w-32pxr" />
+      <div className={innerWrapper}>
+        <IconButton custom={css.raw({ mx: '8pxr' })} onClick={onClose}>
+          <IconChevronLeft width={32} height={32} />
         </IconButton>
         <Search
           ref={inputRef}
-          wrapperClassName="flex-1 bg-gray-200"
+          wrapperCustom={css.raw({ flex: '1', bg: 'gray.200' })}
           isOpen={isOpen}
           value={value}
           onChange={onChange}
@@ -45,5 +43,28 @@ const SearchBoxMobile = ({ isOpen, value, onChange, onKeyDown, onClear, onClose 
     </div>
   );
 };
+
+const outerWrapper = css({
+  position: 'fixed',
+  inset: 0,
+  h: 'screen',
+  color: 'black',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  desktop: {
+    display: 'none',
+  },
+});
+
+const innerWrapper = css({
+  position: 'absolute',
+  inset: 0,
+  w: 'full',
+  h: '64pxr',
+  display: 'flex',
+  py: '8pxr',
+  pr: '16pxr',
+  bg: 'white',
+});
 
 export default SearchBoxMobile;
