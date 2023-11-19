@@ -17,11 +17,13 @@ const styled = {
     w: 'full',
     h: '60vh',
     minH: '400pxr',
+    // h: 'full',
   }),
   image: css({
     w: 'full',
     h: 'full',
     objectFit: 'cover',
+    // display: 'block',
   }),
 };
 

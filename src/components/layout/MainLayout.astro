@@ -25,9 +25,13 @@ const { pathname } = Astro.url;
     <Header hasBg={headerHasBg} pathname={pathname} client:load />
     <main
       class={css({
-        minHeight: 'calc(200% - 164px)',
+        // w: 'full',
+        // h: 'full',
+        minHeight: 'calc(100% - 164px)',
+        // h: 'calc(100% - 164px)',
         desktop: {
-          minHeight: 'calc(200% - 208px)',
+          minHeight: 'calc(100% - 208px)',
+          // h: 'calc(100% - 208px)',
         },
       })}
     >

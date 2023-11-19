@@ -13,5 +13,5 @@ const projects = await getCollection('project');
 
 <MainLayout pageTitle="루시드 드림">
   <HomeMainImage />
-  <HomeProjectSection projects={projects} client:load />
+  <HomeProjectSection projects={projects} client:only />
 </MainLayout>
