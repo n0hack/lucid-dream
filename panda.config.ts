@@ -40,8 +40,8 @@ export default defineConfig({
       },
       tokens: {
         sizes: generateValues(1, 1440),
-        spacing: generateValues(1, 64),
-        radii: generateValues(1, 64),
+        spacing: generateValues(1, 128),
+        radii: generateValues(1, 128),
         fonts: {
           pretendard: { value: 'var(--font-pretendard)' },
           fira: { value: 'var(--font-fira-code)' },

@@ -6,50 +6,12 @@ import Icon from 'astro-icon';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import HomeMainImage from '@components/home/HomeMainImage';
+import HomeProjectSection from '@components/home/HomeProjectSection';
 
 const projects = await getCollection('project');
 ---
 
 <MainLayout pageTitle="루시드 드림">
   <HomeMainImage />
-  <!-- 
-  <div class="my-40pxr w-full">
-    <div class="">
-      <div class="flex items-center justify-between pl-24pxr pr-14pxr">
-        <h2 class="text-3xl font-bold text-black">프로젝트</h2>
-        <div class="flex">
-          <IconButton>
-            <Icon name="tabler:chevron-left" class="h-24pxr w-24pxr text-gray-200" />
-          </IconButton>
-          <IconButton>
-            <Icon name="tabler:chevron-right" class="h-24pxr w-24pxr" />
-          </IconButton>
-        </div>
-      </div>
-      <div class="mt-24pxr grid w-full px-24pxr">
-        <div class="flex w-full gap-24pxr overflow-x-auto" style={{}}>
-          {
-            projects.map(({ data }) => (
-              <article class="w-full shrink-0 overflow-hidden rounded-12pxr pb-24pxr shadow-2xl">
-                <div class="h-180pxr w-full rounded-t-12pxr border-b border-gray-200">
-                  <Image src={data.thumbnail} alt={data.title} class="h-full w-full object-cover" />
-                </div>
-                <ul class="mt-24pxr flex gap-8pxr px-24pxr">
-                  {data.tags.map((tag) => (
-                    <li class="rounded-4pxr bg-black px-8pxr py-4pxr text-sm text-white">#{tag}</li>
-                  ))}
-                </ul>
-                <div class="mt-24pxr flex h-112pxr w-full flex-col gap-8pxr px-24pxr">
-                  <p class="w- max-h-56pxr overflow-hidden break-words text-xl font-bold">
-                    {data.title}daskldjsakldjaskldjlaksdjsakldjklsajdlksajdlksajdklajdlksjaldkj
-                  </p>
-                  <p class="">{data.description}</p>
-                </div>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-  </div> -->
+  <HomeProjectSection projects={projects} client:load />
 </MainLayout>
