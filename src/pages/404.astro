@@ -1,0 +1,31 @@
+---
+import MainLayout from '@components/layout/MainLayout.astro';
+import { Responsive } from '@components/common';
+---
+
+<MainLayout
+  className="h-[calc(100%-160px)] lg:h-[calc(100%-192px)]"
+  pageTitle="페이지를 잘못 찾아오셨어요 (｡•́︿•̀｡)"
+  headerHasBg
+>
+  <Responsive className="grid h-full place-items-center">
+    <div class="flex w-full flex-col gap-4 lg:flex-row lg:justify-center lg:gap-8">
+      <div class="flex justify-center">
+        <img class="h-36 w-36 lg:h-48 lg:w-48" src="/images/sad-kitten-emote.webp" alt="우울한 고양이" />
+      </div>
+      <div class="flex flex-col">
+        <p class="text-center text-2xl font-semibold text-black lg:text-left">
+          앗! 이곳은 <span class="text-primary">없는 페이지</span>입니다.
+        </p>
+        <div class="mt-4 flex flex-col items-center gap-1 lg:items-start">
+          <p class="text-gray-400">방문하신 링크는 삭제되었거나 잘못된 주소입니다.</p>
+          <p class="text-gray-400">루시드 드림 메인으로 이동해 주세요.</p>
+        </div>
+        <a
+          class="mt-6 block rounded-md bg-primary px-6 py-4 text-center font-medium text-white lg:self-start lg:transition-colors lg:hover:bg-primary/90"
+          href="/">메인으로 이동하기</a
+        >
+      </div>
+    </div>
+  </Responsive>
+</MainLayout>
