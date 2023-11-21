@@ -1,17 +1,27 @@
 ---
-import MainLayout from '@components/layout/MainLayout.astro';
-// import '@styles/global.css';
-import IconButton from '@components/common/IconButton';
-import Icon from 'astro-icon';
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
-import HomeMainImage from '@components/home/HomeMainImage';
-import HomeProjectSection from '@components/home/HomeProjectSection';
+import MainLayout from '@components/layout/MainLayout.astro';
+import { HomeMainImage, HomeProjectSlide, HomeStorySlide } from '@components/home';
+import { Section } from '@components/common';
+import { PROJECT_SLIDE_MAX_COUNT, STORY_SLIDE_MAX_COUNT } from '@constants';
 
-const projects = await getCollection('project');
+const projectCollection = await getCollection('project');
+const projects = projectCollection
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, PROJECT_SLIDE_MAX_COUNT);
+
+const storyCollection = await getCollection('story');
+const stories = storyCollection
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, STORY_SLIDE_MAX_COUNT);
 ---
 
-<MainLayout pageTitle="루시드 드림">
+<MainLayout pageTitle="루시드 드림 𖤐">
   <HomeMainImage />
-  <HomeProjectSection projects={projects} client:only />
+  <Section className="mt-12 h-[496px] lg:mt-20" loading="lazy" client:load>
+    <HomeProjectSlide projects={projects} client:only />
+  </Section>
+  <Section className="mb-12 mt-8 h-[496px] lg:mb-24 lg:mt-12" loading="lazy" client:load>
+    <HomeStorySlide stories={stories} client:only />
+  </Section>
 </MainLayout>

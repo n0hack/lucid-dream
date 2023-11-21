@@ -1,14 +1,15 @@
 ---
 import { Header, Footer } from '@components/common';
-import { css } from '@styled-system/css';
 import '@styles/global.css';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   pageTitle: string;
   headerHasBg?: boolean;
+  className?: string;
 };
 
-const { pageTitle, headerHasBg = false } = Astro.props;
+const { pageTitle, headerHasBg = false, className } = Astro.props;
 const { pathname } = Astro.url;
 ---
 
@@ -23,18 +24,7 @@ const { pathname } = Astro.url;
   </head>
   <body>
     <Header hasBg={headerHasBg} pathname={pathname} client:load />
-    <main
-      class={css({
-        // w: 'full',
-        // h: 'full',
-        minHeight: 'calc(100% - 164px)',
-        // h: 'calc(100% - 164px)',
-        desktop: {
-          minHeight: 'calc(100% - 208px)',
-          // h: 'calc(100% - 208px)',
-        },
-      })}
-    >
+    <main class={twMerge('min-h-[calc(100%-160px)] lg:min-h-[calc(100%-192px)]', headerHasBg && 'pt-16', className)}>
       <slot />
     </main>
     <Footer />

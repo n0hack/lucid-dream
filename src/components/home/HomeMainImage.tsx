@@ -1,30 +1,12 @@
-import Dim from '@components/common/Dim';
-import { MAIN_IMAGE_SRC } from '@constants';
-import { css } from '@styled-system/css';
+import { BackgroundImage, Dim } from '@components/common';
 
 const HomeMainImage = () => {
   return (
-    <div className={styled.wrapper}>
-      <img className={styled.image} src={MAIN_IMAGE_SRC} alt="대표" />
-      <Dim deep={20} />
+    <div className="relative h-[70vh] min-h-[400px] w-full">
+      <BackgroundImage alt="대표" />
+      <Dim className="bg-dim-020" />
     </div>
   );
-};
-
-const styled = {
-  wrapper: css({
-    position: 'relative',
-    w: 'full',
-    h: '60vh',
-    minH: '400pxr',
-    // h: 'full',
-  }),
-  image: css({
-    w: 'full',
-    h: 'full',
-    objectFit: 'cover',
-    // display: 'block',
-  }),
 };
 
 export default HomeMainImage;
