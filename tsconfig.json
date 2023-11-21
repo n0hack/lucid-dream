@@ -6,12 +6,14 @@
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
       "@constants": ["src/constants"],
+      "@custom-types/*": ["src/types/*"],
       "@styles/*": ["src/styles/*"],
-      "@styled-system/*": ["styled-system/*"],
       "@utils/*": ["src/utils/*"]
     },
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "strictNullChecks": true,
+    "allowJs": true
   },
-  "include": ["src", "styled-system"]
+  "include": ["src"]
 }
