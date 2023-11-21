@@ -1,0 +1,16 @@
+---
+import MainLayout from '@components/layout/MainLayout.astro';
+import { AboutMarkdownRenderer } from '@components/about';
+import { Section } from '@components/common';
+
+const mdx = await Astro.glob('../content/about/about.mdx');
+const { Content } = mdx[0];
+---
+
+<MainLayout pageTitle="루시드를 소개합니다! (⩌⩊⩌)" headerHasBg>
+  <Section className="mb-20 mt-6 lg:mb-32 lg:mt-12" loading="lazy" client:load>
+    <AboutMarkdownRenderer>
+      <Content />
+    </AboutMarkdownRenderer>
+  </Section>
+</MainLayout>
