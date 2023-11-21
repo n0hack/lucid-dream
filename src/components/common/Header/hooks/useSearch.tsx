@@ -16,12 +16,7 @@ const useSearch = () => {
     setValue('');
   };
 
-  return {
-    value,
-    onChange,
-    onKeyDown,
-    onClear,
-  };
+  return { value, onChange, onKeyDown, onClear };
 };
 
 export { useSearch };

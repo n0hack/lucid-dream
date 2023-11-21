@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { TRANSITION_POINT } from '@constants';
-import { css, cva } from '@styled-system/css';
-import Responsive from '../Responsive';
+import { twMerge } from 'tailwind-merge';
+import { Responsive } from '@components/common';
+import { HEADER_TRANSITION_POINT } from '@constants';
 import Logo from './Logo';
 import MenuButton from './MenuButton';
 import Navigation from './Navigation';
@@ -19,7 +19,7 @@ const Header = ({ pathname, hasBg = false }: HeaderProps) => {
     if (hasBg) return;
 
     const handleScroll = () => {
-      if (window.scrollY > TRANSITION_POINT) {
+      if (window.scrollY > HEADER_TRANSITION_POINT) {
         setFillBg(true);
       } else {
         setFillBg(false);
@@ -34,77 +34,24 @@ const Header = ({ pathname, hasBg = false }: HeaderProps) => {
   }, [hasBg]);
 
   return (
-    <header className={header({ hasBg, fillBg })}>
-      <Responsive custom={css.raw({ pr: '14pxr', desktop: { pr: '30pxr' } })}>
-        <div className={innerHeader}>
-          <div className={left}>
-            <Logo />
-            <Navigation hasBg={hasBg} fillBg={fillBg} pathname={pathname} />
-          </div>
-          <div className={right}>
-            <SearchButton />
-            <MenuButton />
-          </div>
+    <header
+      className={twMerge(
+        'fixed inset-0 z-header h-16 transition duration-300',
+        hasBg || fillBg ? 'border-b border-b-gray-200 bg-white text-black' : 'bg-transparent text-white',
+      )}
+    >
+      <Responsive className="flex justify-between pr-[14px] lg:pr-[30px]">
+        <div className="flex h-full w-full items-center lg:gap-16">
+          <Logo />
+          <Navigation hasBg={hasBg} fillBg={fillBg} pathname={pathname} />
+        </div>
+        <div className="relative flex h-full items-center">
+          <SearchButton />
+          <MenuButton />
         </div>
       </Responsive>
     </header>
   );
 };
-
-const fill = css.raw({
-  color: 'black',
-  bg: 'white',
-  borderBottom: '1px solid token(colors.gray.200)',
-});
-
-const transparent = css.raw({
-  color: 'white',
-  bg: 'transparent',
-  borderBottom: '1px solid transparent',
-});
-
-const header = cva({
-  base: {
-    position: 'fixed',
-    inset: 0,
-    h: '64pxr',
-    transition: 'all 0.3s ease-in-out',
-    zIndex: 'header',
-  },
-  variants: {
-    hasBg: {
-      true: fill,
-      false: transparent,
-    },
-    fillBg: {
-      true: fill,
-      false: transparent,
-    },
-  },
-});
-
-const innerHeader = css({
-  w: 'full',
-  h: 'full',
-  display: 'flex',
-  justifyContent: 'space-between',
-});
-
-const left = css({
-  w: 'full',
-  h: 'full',
-  display: 'flex',
-  alignItems: 'center',
-  desktop: {
-    gap: '60pxr',
-  },
-});
-
-const right = css({
-  position: 'relative',
-  h: 'full',
-  display: 'flex',
-  alignItems: 'center',
-});
 
 export default Header;

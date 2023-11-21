@@ -1,0 +1,11 @@
+.slick-slider {
+  position: initial !important;
+}
+
+.slick-list {
+  overflow: visible !important;
+}
+
+.slick-slide > div {
+  margin: 0 16px;
+}

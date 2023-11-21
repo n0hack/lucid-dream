@@ -1,4 +1,4 @@
-import { css, cva } from '@styled-system/css';
+import { twMerge } from 'tailwind-merge';
 import navInfo from './navInfo';
 
 type NavigationProps = {
@@ -9,15 +9,16 @@ type NavigationProps = {
 
 const Navigation = ({ hasBg, fillBg, pathname }: NavigationProps) => {
   return (
-    <nav className={nav}>
-      <ul className={list}>
+    <nav className="pointer-events-none opacity-0 lg:pointer-events-auto lg:opacity-100">
+      <ul className="flex gap-6">
         {navInfo.map(({ path, name }) => (
           <li key={path}>
             <a
-              className={link({
-                hoverColor: hasBg ? 'primary' : fillBg ? 'primary' : 'gray',
-                active: pathname.includes(path),
-              })}
+              className={twMerge(
+                'block py-1 text-sm font-semibold',
+                hasBg || fillBg ? 'hover:text-primary' : 'hover:text-gray-200',
+                pathname.includes(path) && 'text-primary',
+              )}
               href={path}
             >
               {name}
@@ -28,37 +29,5 @@ const Navigation = ({ hasBg, fillBg, pathname }: NavigationProps) => {
     </nav>
   );
 };
-
-const nav = css({
-  pointerEvents: 'none',
-  opacity: 0,
-  desktop: {
-    pointerEvents: 'auto',
-    opacity: 1,
-  },
-});
-
-const list = css({
-  display: 'flex',
-  gap: '24pxr',
-});
-
-const link = cva({
-  base: {
-    display: 'block',
-    py: '4pxr',
-    fontSize: 'sm',
-    fontWeight: 'semibold',
-  },
-  variants: {
-    hoverColor: {
-      gray: { _hover: { color: 'gray.200' } },
-      primary: { _hover: { color: 'primary' } },
-    },
-    active: {
-      true: { color: 'primary' },
-    },
-  },
-});
 
 export default Navigation;

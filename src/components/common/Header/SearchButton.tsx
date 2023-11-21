@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { BREAKPOINT, CLASS_PREVENT_SCROLL } from '@constants';
-import { css } from '@styled-system/css';
+import { OutsideClick, IconButton } from '@components/common';
+import { BREAKPOINT, CLASSNAME_PREVENT_SCROLL } from '@constants';
 import { IconSearch } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
-import IconButton from '../IconButton';
-import OutsideClick from '../OutsideClick';
 import SearchBoxDesktop from './SearchBoxDesktop';
 import SearchBoxMobile from './SearchBoxMobile';
 import { useSearch } from './hooks/useSearch';
@@ -32,14 +30,14 @@ const SearchButton = () => {
     const observer = new ResizeObserver((entries) => {
       if (!isSearchBoxOpen) return;
 
-      // Mobile에서의 검색창은 스크롤 동작을 막기 때문에, Resize Event에 대한 처리 진행
+      // Mobile에서의 검색창은 스크롤 동작을 막기 때문에, Resize Event에 대해 처리
       const { width } = entries[0].contentRect;
 
       if (width < BREAKPOINT) {
-        if (document.body.classList.contains(CLASS_PREVENT_SCROLL)) return;
+        if (document.body.classList.contains(CLASSNAME_PREVENT_SCROLL)) return;
         preventScroll();
       } else {
-        if (!document.body.classList.contains(CLASS_PREVENT_SCROLL)) return;
+        if (!document.body.classList.contains(CLASSNAME_PREVENT_SCROLL)) return;
         restoreScroll();
       }
     });
@@ -53,14 +51,10 @@ const SearchButton = () => {
   return (
     <React.Fragment>
       <IconButton
-        custom={
-          isSearchBoxOpen
-            ? css.raw({ pointerEvents: 'none', opacity: 0 })
-            : css.raw({ pointerEvents: 'auto', opacity: 1 })
-        }
+        className={isSearchBoxOpen ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'}
         onClick={handleSearchBoxOpen}
       >
-        <IconSearch width={24} height={24} />
+        <IconSearch className="h-6 w-6" />
       </IconButton>
       <OutsideClick onOutsideClick={handleSearchBoxClose}>
         {isSearchBoxOpen && (

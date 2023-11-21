@@ -1,56 +1,20 @@
-import { css } from '@styled-system/css';
-import Responsive from './Responsive';
+import { Responsive } from '@components/common';
 
 const Footer = () => {
   return (
-    <footer className={footer}>
+    <footer className="h-40 bg-black lg:h-48">
       <Responsive>
-        <div className={textBox}>
-          <p className={text}>
-            <span className={star}>✧</span>
-            Lucid Dream. 화려히 반짝일 나의 스토리 안에서
-            <span className={star}>✧</span>
+        <div className="flex h-full flex-col items-center justify-center gap-1 lg:gap-2">
+          <p className="flex gap-1 text-sm text-white lg:text-base">
+            <span className="text-yellow-300">✧</span>
+            <span>Lucid Dream. 화려히 반짝일 나의 스토리 안에서</span>
+            <span className="text-yellow-300">✧</span>
           </p>
-          <p className={text}>ⓒ 2023. Lucid. All rights reserverd.</p>
+          <p className="flex gap-1 text-sm text-white lg:text-base">ⓒ 2023. Lucid. All rights reserverd.</p>
         </div>
       </Responsive>
     </footer>
   );
 };
-
-const footer = css({
-  height: '164pxr',
-  display: 'grid',
-  background: 'gray',
-  desktop: {
-    height: '208pxr',
-  },
-});
-
-const textBox = css({
-  height: 'full',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  gap: '4pxr',
-  desktop: {
-    gap: '8pxr',
-  },
-});
-
-const text = css({
-  display: 'flex',
-  gap: '4pxr',
-  color: 'white',
-  fontSize: 'sm',
-  desktop: {
-    fontSize: 'initial',
-  },
-});
-
-const star = css({
-  color: 'yellow.300',
-});
 
 export default Footer;

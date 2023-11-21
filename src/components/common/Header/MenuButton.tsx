@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { IconButton } from '@components/common';
 import { BREAKPOINT } from '@constants';
-import { css } from '@styled-system/css';
 import { IconMenu2 } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
-import IconButton from '../IconButton';
 import MenuBoxMobile from './MenuBoxMobile';
 
 const MenuButton = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuOpen = () => {
+    // Desktop 화면에서는 메뉴를 열지 않음
     if (window.innerWidth >= BREAKPOINT) return;
 
     preventScroll();
@@ -38,8 +38,8 @@ const MenuButton = () => {
 
   return (
     <React.Fragment>
-      <IconButton custom={css.raw({ desktop: { display: 'none' } })} onClick={handleMenuOpen}>
-        <IconMenu2 width={24} height={24} />
+      <IconButton className="lg:hidden" onClick={handleMenuOpen}>
+        <IconMenu2 className="h-6 w-6" />
       </IconButton>
       {isMenuOpen && <MenuBoxMobile onMenuClose={handleMenuClose} />}
     </React.Fragment>

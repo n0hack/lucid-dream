@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { css } from '@styled-system/css';
 
 type OutsideClickProps = {
   onOutsideClick: () => void;
@@ -9,8 +8,10 @@ const OutsideClick = ({ children, onOutsideClick }: React.PropsWithChildren<Outs
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // 클릭 영역에 대한 판단
     const handleMouseDown = (e: MouseEvent) => {
-      if (!ref.current?.contains(e.target as Node)) onOutsideClick();
+      if (!ref.current || ref.current.contains(e.target as Node)) return;
+      onOutsideClick();
     };
 
     document.addEventListener('mousedown', handleMouseDown);
@@ -20,7 +21,7 @@ const OutsideClick = ({ children, onOutsideClick }: React.PropsWithChildren<Outs
   }, [onOutsideClick]);
 
   return (
-    <div ref={ref} className={css({ display: 'contents' })}>
+    <div ref={ref} className="contents">
       {children}
     </div>
   );
