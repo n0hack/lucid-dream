@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import tailwindcss from '@astrojs/tailwind';
@@ -9,4 +9,7 @@ export default defineConfig({
   integrations: [react(), tailwindcss(), mdx()],
   output: 'hybrid',
   adapter: vercel(),
+  image: {
+    service: passthroughImageService(),
+  },
 });
