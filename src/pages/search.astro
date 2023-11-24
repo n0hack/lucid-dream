@@ -34,6 +34,8 @@ const fuse = new Fuse(mappedList, {
 });
 
 const result = fuse.search(sanitizedQuery);
+
+export const prerender = false;
 ---
 
 <MainLayout pageTitle={`'${sanitizedQuery}' 검색 결과 ๑'ٮ'๑`} headerBg>
