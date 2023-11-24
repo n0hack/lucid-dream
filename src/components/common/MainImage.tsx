@@ -1,8 +1,8 @@
-import type { ComponentPropsWithoutRef } from 'react';
+import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import { MAIN_IMAGE_SRC } from '@constants';
 
-type BackgroundImageProps = ComponentPropsWithoutRef<'img'>;
+type BackgroundImageProps = React.ComponentPropsWithoutRef<'img'>;
 
 const BackgroundImage = ({ className, ...rest }: BackgroundImageProps) => {
   return (

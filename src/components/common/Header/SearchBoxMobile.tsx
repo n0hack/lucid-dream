@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { BackgroundImage, Dim, IconButton } from '@components/common';
+import { MainImage, Dim, IconButton } from '@components/common';
 import { BREAKPOINT } from '@constants';
 import { IconChevronLeft } from '@tabler/icons-react';
 import Search from './Search';
@@ -23,7 +23,7 @@ const SearchBoxMobile = ({ isOpen, value, onChange, onKeyDown, onClear, onClose 
 
   return (
     <div className="fixed inset-0 h-screen text-black lg:hidden">
-      <BackgroundImage className="absolute inset-0" />
+      <MainImage className="absolute inset-0" />
       <Dim />
       <div className="absolute inset-0 flex h-16 w-full bg-white py-2 pr-4">
         <IconButton className="mx-2" onClick={onClose}>

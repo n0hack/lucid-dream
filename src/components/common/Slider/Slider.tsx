@@ -1,19 +1,19 @@
 import type { PropsWithChildren } from 'react';
 import type { Settings } from 'react-slick';
-import Slider from 'react-slick';
+import ReactSlick from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { twMerge } from 'tailwind-merge';
 import { BREAKPOINT } from '@constants';
 import NextSlideButton from './NextSlideButton';
 import PrevSlideButton from './PrevSlideButton';
-import './SlickSlider.css';
+import './Slider.css';
 
-type SlickSliderProps = {
+type SliderProps = {
   className?: string;
 };
 
-const SlickSlider = ({ className, children }: PropsWithChildren<SlickSliderProps>) => {
+const Slider = ({ className, children }: PropsWithChildren<SliderProps>) => {
   const settings: Settings = {
     slidesToShow: 3,
     responsive: [
@@ -29,10 +29,10 @@ const SlickSlider = ({ className, children }: PropsWithChildren<SlickSliderProps
   };
 
   return (
-    <div className={twMerge('mt-6 overflow-hidden pb-8', className)}>
-      <Slider {...settings}>{children}</Slider>
+    <div className={twMerge('mt-6 overflow-hidden pb-10 lg:mt-8', className)}>
+      <ReactSlick {...settings}>{children}</ReactSlick>
     </div>
   );
 };
 
-export default SlickSlider;
+export default Slider;
