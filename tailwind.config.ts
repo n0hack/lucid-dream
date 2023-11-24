@@ -56,6 +56,7 @@ const config: Config = {
       },
       zIndex: {
         header: '1000',
+        categoryBox: '2000',
       },
       keyframes: {
         showMenuItem: {

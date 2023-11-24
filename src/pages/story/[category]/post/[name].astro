@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import { MainLayout } from '@components/layout';
+
+export const getStaticPaths = (async () => {
+  const storyCollection = await getCollection('story');
+
+  return storyCollection.flatMap((story) => {
+    const [category, name] = story.slug.split('/');
+
+    return {
+      params: { category, name },
+      props: { story },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { story } = Astro.props;
+const { render } = story;
+
+const { Content } = await render();
+---
+
+<MainLayout pageTitle="ㅇㅇ" headerBg>
+  <Content />
+</MainLayout>
