@@ -1,22 +1,52 @@
 ---
+import { getCollection } from 'astro:content';
 import purify from 'isomorphic-dompurify';
+import Fuse from 'fuse.js';
+import { SearchEmptySection, SearchHeaderSection, SearchResultSection, SearchResult } from '@components/search';
+import { MainLayout } from '@components/layout';
+import { CATEGORY } from '@constants';
 
-const { search } = Astro.url;
-const decodedSearch = decodeURIComponent(search);
-const sanitizedSearch = purify.sanitize(decodedSearch);
+const query = Astro.url.searchParams.get('q') ?? '';
+
+const decodedQuery = decodeURIComponent(query);
+const sanitizedQuery = purify.sanitize(decodedQuery);
+
+const storyCollection = await getCollection('story');
+
+const mappedList = storyCollection.map((story) => ({
+  link: `/story/${story.slug.replace('/', '/post/')}`,
+  body: story.body,
+  ...story.data,
+  category: {
+    key: story.slug.split('/')[0],
+    value: CATEGORY[story.slug.split('/')[0] as keyof typeof CATEGORY],
+  },
+}));
+
+const fuse = new Fuse(mappedList, {
+  keys: [
+    { name: 'title', weight: 1 },
+    { name: 'body', weight: 1 },
+    { name: 'tags', weight: 1 },
+    { name: 'category.key', weight: 1 },
+    { name: 'category.value', weight: 1 },
+  ],
+});
+
+const result = fuse.search(sanitizedQuery);
 
 export const prerender = false;
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    결과: {sanitizedSearch}
-  </body>
-</html>
+<MainLayout pageTitle={`'${sanitizedQuery}' 검색 결과 ๑'ٮ'๑`} headerBg>
+  <SearchHeaderSection query={sanitizedQuery} />
+  {
+    result.length === 0 ? (
+      <SearchEmptySection />
+    ) : (
+      <SearchResultSection>
+        <SearchResult datas={result} client:load />
+      </SearchResultSection>
+    )
+  }
+</MainLayout>
