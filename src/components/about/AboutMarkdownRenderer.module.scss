@@ -54,6 +54,10 @@
   & + h3 {
     @apply mt-6 lg:mt-8;
   }
+
+  & + p img {
+    @apply mt-4 lg:mt-6;
+  }
 }
 
 // Table
@@ -85,11 +89,14 @@
   }
 }
 
-// Image
-.renderer > p img {
-  @apply mt-4 lg:mt-6;
+// Paragraph
+.renderer > p {
+  & + ul {
+    @apply mt-2 lg:mt-4;
+  }
 }
 
+// Link
 .renderer a {
   @apply text-primary underline lg:hover:text-primary/90;
 }
