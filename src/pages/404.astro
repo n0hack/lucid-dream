@@ -1,17 +1,15 @@
 ---
-import MainLayout from '@components/layout/MainLayout.astro';
+import { Image } from 'astro:assets';
+import blitz from '@assets/blitz.webp';
 import { Responsive } from '@components/common';
+import { MainLayout } from '@components/layout';
 ---
 
-<MainLayout
-  className="h-[calc(100%-160px)] lg:h-[calc(100%-192px)]"
-  pageTitle="페이지를 잘못 찾아오셨어요 (｡•́︿•̀｡)"
-  headerHasBg
->
-  <Responsive className="grid h-full place-items-center">
-    <div class="flex w-full flex-col gap-4 lg:flex-row lg:justify-center lg:gap-8">
+<MainLayout pageTitle="페이지를 잘못 찾아오셨어요 (｡•́︿•̀｡)" headerBg>
+  <Responsive className="flex h-full flex-1 items-center justify-center py-12 lg:py-20">
+    <div class="flex w-full flex-col gap-4 lg:flex-row lg:justify-center lg:gap-12">
       <div class="flex justify-center">
-        <img class="h-36 w-36 lg:h-48 lg:w-48" src="/images/sad-kitten-emote.webp" alt="우울한 고양이" />
+        <Image class="h-36 w-36 opacity-100 lg:h-48 lg:w-48" src={blitz} alt="블리츠크랭크" />
       </div>
       <div class="flex flex-col">
         <p class="text-center text-2xl font-semibold text-black lg:text-left">
@@ -23,8 +21,10 @@ import { Responsive } from '@components/common';
         </div>
         <a
           class="mt-6 block rounded-md bg-primary px-6 py-4 text-center font-medium text-white lg:self-start lg:transition-colors lg:hover:bg-primary/90"
-          href="/">메인으로 이동하기</a
+          href="/"
         >
+          메인으로 이동하기
+        </a>
       </div>
     </div>
   </Responsive>
