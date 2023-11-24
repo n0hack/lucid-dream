@@ -6,10 +6,14 @@ const projectSchema = defineCollection({
     z.object({
       thumbnail: image(),
       title: z.string(),
-      description: z.string(),
-      category: z.string(),
+      descriptions: z.array(z.string()),
       tags: z.array(z.string()),
       date: z.date(),
+      links: z.object({
+        site: z.string().optional(),
+        github: z.string().optional(),
+        story: z.string(),
+      }),
     }),
 });
 
@@ -17,11 +21,10 @@ const storySchema = defineCollection({
   type: 'content',
   schema: ({ image }) =>
     z.object({
-      title: z.string(),
-      summary: z.string(),
-      category: z.string(),
-      tags: z.array(z.string()),
       thumbnail: image(),
+      title: z.string(),
+      description: z.string(),
+      tags: z.array(z.string()),
       date: z.date(),
     }),
 });

@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import { Pagination } from '@components/common';
+import { ProjectHeaderSection, ProjectCardSection, ProjectCard, ProjectPaginationSection } from '@components/project';
+import { MainLayout } from '@components/layout';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const projectCollection = await getCollection('project');
+  const projects = projectCollection.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  return paginate(projects, { pageSize: 4 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<MainLayout pageTitle="열심히 만들어 온 프로젝트 ヘ(°￢°)ノ" headerBg>
+  <ProjectHeaderSection />
+  <ProjectCardSection>
+    {
+      page.data.map(({ data }) => (
+        <ProjectCard
+          thumbnail={data.thumbnail.src}
+          title={data.title}
+          descriptions={data.descriptions}
+          tags={data.tags}
+          links={Object.entries(data.links).map(([name, href]) => ({ name, href }))}
+        />
+      ))
+    }
+  </ProjectCardSection>
+  <ProjectPaginationSection>
+    <Pagination
+      page={page.currentPage}
+      lastPage={page.lastPage}
+      buttonUrlPrefix="/project/page"
+      prevUrl={page.url.prev}
+      nextUrl={page.url.next}
+      client:load
+    />
+  </ProjectPaginationSection>
+</MainLayout>
