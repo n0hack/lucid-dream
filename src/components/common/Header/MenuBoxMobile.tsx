@@ -23,7 +23,7 @@ const MenuBoxMobile = ({ onMenuClose }: MenuBoxMobileProps) => {
           ))}
         </ul>
       </nav>
-      <IconButton className="absolute right-[26px] top-8" onClick={onMenuClose}>
+      <IconButton className="absolute right-[26px] top-7" onClick={onMenuClose}>
         <IconX className="h-8 w-8" />
       </IconButton>
     </div>
