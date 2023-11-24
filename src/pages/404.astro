@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import blitz from '@assets/blitz.webp';
 import { Responsive } from '@components/common';
 import { MainLayout } from '@components/layout';
 ---
@@ -9,7 +7,7 @@ import { MainLayout } from '@components/layout';
   <Responsive className="flex h-full flex-1 items-center justify-center py-12 lg:py-20">
     <div class="flex w-full flex-col gap-4 lg:flex-row lg:justify-center lg:gap-12">
       <div class="flex justify-center">
-        <Image class="h-36 w-36 opacity-100 lg:h-48 lg:w-48" src={blitz} alt="블리츠크랭크" />
+        <img class="h-36 w-36 opacity-100 lg:h-48 lg:w-48" src="/images/blitz.webp" alt="블리츠크랭크" />
       </div>
       <div class="flex flex-col">
         <p class="text-center text-2xl font-semibold text-black lg:text-left">

@@ -1,13 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-import teemo from '@assets/teemo.webp';
 import { Responsive } from '@components/common';
 ---
 
 <Responsive className="flex flex-1 items-center py-12 lg:py-20">
   <div class="flex w-full flex-col gap-3 lg:gap-4">
     <div class="flex justify-center">
-      <Image class="h-36 w-36 opacity-50 grayscale lg:h-48 lg:w-48" src={teemo} alt="티모" />
+      <img class="h-36 w-36 opacity-50 grayscale lg:h-48 lg:w-48" src="/images/teemo.webp" alt="티모" />
     </div>
     <div class="flex flex-col items-center gap-1 lg:gap-2">
       <p class="text-gray-400">키워드와 연관된 스토리를 열심히 찾아봤지만,</p>
