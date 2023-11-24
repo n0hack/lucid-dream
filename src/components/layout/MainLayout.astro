@@ -28,6 +28,11 @@ const { pathname } = Astro.url;
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Medium.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Regular.woff2" />
     <link rel="preload" as="font" type="font/ttf" crossorigin="" href="/fonts/firacode/FiraCode-Regular.ttf" />
+
+    <!-- Preload Images -->
+    <link rel="preload" as="image" href="/images/main@1280.webp" />
+    <link rel="preload" as="image" href="/images/main@1920.webp" />
+    <link rel="preload" as="image" href="/images/main@3140.webp" />
   </head>
   <body>
     <Header hasBg={headerBg} pathname={pathname} client:load />
