@@ -1,15 +1,14 @@
 ---
-import { Header, Footer } from '@components/common';
-import '@styles/global.css';
 import { twMerge } from 'tailwind-merge';
+import { Header, Footer } from '@components/common';
+import '@styles/main.css';
 
 type Props = {
   pageTitle: string;
-  headerHasBg?: boolean;
-  className?: string;
+  headerBg?: boolean;
 };
 
-const { pageTitle, headerHasBg = false, className } = Astro.props;
+const { pageTitle, headerBg = false } = Astro.props;
 const { pathname } = Astro.url;
 ---
 
@@ -19,12 +18,20 @@ const { pathname } = Astro.url;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta name="generator" content={Astro.generator} />
+    <slot name="metadata" />
 
     <title>{pageTitle}</title>
+
+    <!-- Preload Fonts -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Bold.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-SemiBold.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Medium.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Regular.woff2" />
+    <link rel="preload" as="font" type="font/ttf" crossorigin="" href="/fonts/firacode/FiraCode-Regular.ttf" />
   </head>
   <body>
-    <Header hasBg={headerHasBg} pathname={pathname} client:load />
-    <main class={twMerge('min-h-[calc(100%-160px)] lg:min-h-[calc(100%-192px)]', headerHasBg && 'pt-16', className)}>
+    <Header hasBg={headerBg} pathname={pathname} client:load />
+    <main class={twMerge('min-h-[calc(100%-160px)] lg:min-h-[calc(100%-200px)] flex flex-col', headerBg && 'pt-16')}>
       <slot />
     </main>
     <Footer />

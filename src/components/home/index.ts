@@ -1,3 +1,3 @@
-export { default as HomeMainImage } from './HomeMainImage';
-export { default as HomeProjectSlide } from './HomeProjectSlide';
-export { default as HomeStorySlide } from './HomeStorySlide';
+export { default as HomeMainImage } from './HomeMainImage.astro';
+export { default as HomeProjectSection } from './HomeProjectSection';
+export { default as HomeStorySection } from './HomeStorySection';

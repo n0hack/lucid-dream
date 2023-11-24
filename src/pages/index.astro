@@ -1,8 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import MainLayout from '@components/layout/MainLayout.astro';
-import { HomeMainImage, HomeProjectSlide, HomeStorySlide } from '@components/home';
-import { Section } from '@components/common';
+import { HomeMainImage, HomeProjectSection, HomeStorySection } from '@components/home';
+import { MainLayout } from '@components/layout';
 import { PROJECT_SLIDE_MAX_COUNT, STORY_SLIDE_MAX_COUNT } from '@constants';
 
 const projectCollection = await getCollection('project');
@@ -18,10 +17,6 @@ const stories = storyCollection
 
 <MainLayout pageTitle="루시드 드림 𖤐">
   <HomeMainImage />
-  <Section className="mt-12 h-[496px] lg:mt-20" loading="lazy" client:load>
-    <HomeProjectSlide projects={projects} client:only />
-  </Section>
-  <Section className="mb-12 mt-8 h-[496px] lg:mb-24 lg:mt-12" loading="lazy" client:load>
-    <HomeStorySlide stories={stories} client:only />
-  </Section>
+  <HomeProjectSection projects={projects} client:load />
+  <HomeStorySection stories={stories} client:load />
 </MainLayout>
