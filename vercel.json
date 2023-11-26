@@ -1,0 +1,8 @@
+{
+  "headers": [
+    {
+      "source": "/styles/(.*)",
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+    }
+  ]
+}
