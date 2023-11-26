@@ -29,3 +29,10 @@ export const CATEGORY = {
 
 /** 스토리 카테고리 이름 */
 export const CATEGORY_NAME = (category: string) => CATEGORY[category as keyof typeof CATEGORY];
+
+/** SEO */
+export const SEO = {
+  SITE_NAME: '루시드 드림 𖤐',
+  IMAGE: MAIN_IMAGE_SRC('1280'),
+  KEYWORDS: ['루시드 드림', 'lucid dream', '화려히 반짝일 나의 스토리'],
+};

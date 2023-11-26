@@ -20,7 +20,7 @@ const Card = ({ thumbnail, title, description, date, category }: CardProps) => {
         />
       </div>
       <div className="mt-6 flex h-[110px] w-full flex-col gap-2 px-6">
-        <h3 className="line-clamp-2 max-h-[54px] text-lg font-bold text-black">{title}</h3>
+        <h3 className="line-clamp-2 max-h-[54px] text-lg font-semibold text-black">{title}</h3>
         <p className="line-clamp-2 max-h-[48px] overflow-hidden text-gray-600">{description}</p>
       </div>
       <div className="mt-6 px-6">
