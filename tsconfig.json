@@ -6,6 +6,8 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@constants": ["src/constants"],
+      "@constants/*": ["src/constants/*"],
+      "@custom-types/*": ["src/types/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"]
     },
