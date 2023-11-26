@@ -1,0 +1,67 @@
+.renderer {
+  @apply text-black;
+
+  & > :is(h1, h2, h3, p, ul, code):first-child {
+    @apply mt-0;
+  }
+}
+
+.renderer :is(h1, h2, h3) {
+  @apply break-all text-justify font-semibold;
+}
+
+.renderer h1 {
+  @apply mt-16 text-3xl lg:text-4xl;
+
+  & + h2 {
+    @apply mt-8;
+  }
+}
+
+.renderer h2 {
+  @apply mt-12 text-xl lg:text-2xl;
+}
+
+.renderer h3 {
+  @apply my-6 text-lg;
+}
+
+.renderer p {
+  @apply my-6 break-all text-justify text-base leading-8;
+
+  & > code {
+    @apply rounded-md bg-gray-100 p-1 text-primary;
+  }
+}
+
+.renderer ul {
+  @apply my-6 flex flex-col pl-8;
+
+  li {
+    @apply list-disc break-all text-justify leading-8;
+
+    & > ul {
+      @apply my-1 pl-6;
+    }
+  }
+}
+
+.renderer a {
+  @apply text-primary hover:text-primary/90;
+}
+
+.renderer img {
+  @apply mx-auto my-6 rounded-2xl;
+}
+
+.renderer blockquote {
+  @apply my-6 border-l-4 border-primary bg-slate-50 p-4 pl-5 lg:pl-8 lg:pr-7;
+
+  p {
+    @apply my-0;
+  }
+}
+
+.renderer div[class='expressive-code'] {
+  @apply my-6;
+}

@@ -1,27 +1,53 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
+import { Responsive, Section } from '@components/common';
+import {
+  PostMarkdownRenderer,
+  PostToC,
+  PostComment,
+  PostOtherStories,
+  PostAuthor,
+  PostThumbnail,
+  PostTags,
+} from '@components/post';
 import { MainLayout } from '@components/layout';
 
 export const getStaticPaths = (async () => {
-  const storyCollection = await getCollection('story');
+  const storyCollection = (await getCollection('story')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return storyCollection.flatMap((story) => {
     const [category, name] = story.slug.split('/');
 
+    const sameCategoryStories = storyCollection.filter((story) => story.slug.startsWith(category));
+    const storyIndex = sameCategoryStories.findIndex((otherStory) => otherStory.slug === story.slug);
+    const otherStories = sameCategoryStories.slice(storyIndex - 2 < 0 ? 0 : storyIndex - 2).slice(0, 5);
+
     return {
       params: { category, name },
-      props: { story },
+      props: { story, category, otherStories },
     };
   });
 }) satisfies GetStaticPaths;
 
-const { story } = Astro.props;
+const { story, category, otherStories } = Astro.props;
 const { render } = story;
 
-const { Content } = await render();
+const { Content, headings } = await render();
 ---
 
-<MainLayout pageTitle="ㅇㅇ" headerBg>
-  <Content />
+<MainLayout pageTitle={story.data.title}>
+  <PostThumbnail category={category} {...story.data} />
+  <Section className="mb-20 mt-12 lg:mb-28 lg:mt-20">
+    <Responsive className="relative">
+      <PostMarkdownRenderer>
+        <Content />
+      </PostMarkdownRenderer>
+      <PostToC headings={headings} />
+      <PostTags tags={story.data.tags} />
+      <PostAuthor />
+      <PostOtherStories category={category} currentStory={story} otherStories={otherStories} />
+      <PostComment />
+    </Responsive>
+  </Section>
 </MainLayout>

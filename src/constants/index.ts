@@ -26,3 +26,6 @@ export const CATEGORY = {
   javascript: '자바스크립트',
   'problem-solving': '문제풀이',
 };
+
+/** 스토리 카테고리 이름 */
+export const CATEGORY_NAME = (category: string) => CATEGORY[category as keyof typeof CATEGORY];

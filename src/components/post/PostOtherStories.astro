@@ -1,0 +1,46 @@
+---
+import { twMerge } from 'tailwind-merge';
+import { CATEGORY_NAME } from '@constants';
+import { IconArrowRight } from '@tabler/icons-react';
+
+type Story = {
+  slug: string;
+  data: { title: string };
+};
+
+type Props = {
+  category: string;
+  currentStory: Story;
+  otherStories: Story[];
+};
+
+const { category, currentStory, otherStories } = Astro.props;
+---
+
+<div class="mt-12 rounded-md bg-gray-100 p-6 lg:mt-20">
+  <p class="flex gap-1 text-gray-600">
+    <a class="truncate font-semibold text-black" href={`/story/${category}/page/1`}>
+      '스토리 - {CATEGORY_NAME(category)}'
+    </a>의 다른 글
+  </p>
+  <hr class="my-6 border-gray-200" />
+  <ul class="flex flex-col gap-2">
+    {
+      otherStories.map((otherStory) => (
+        <li>
+          <a class="flex items-center justify-between gap-4" href={`/story/${otherStory.slug.replace('/', '/post/')}`}>
+            <span
+              class={twMerge(
+                'flex-1 truncate text-gray-600 lg:hover:font-semibold lg:hover:text-black',
+                otherStory.slug === currentStory.slug && 'font-semibold text-black',
+              )}
+            >
+              {otherStory.data.title}
+            </span>
+            <IconArrowRight className="text-gray-600" />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

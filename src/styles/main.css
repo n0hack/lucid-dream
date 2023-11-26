@@ -27,3 +27,7 @@ a[x-apple-data-detectors] {
   font-weight: inherit !important;
   line-height: inherit !important;
 }
+
+.giscus iframe {
+  --giscus-btn-background: #3498db;
+}

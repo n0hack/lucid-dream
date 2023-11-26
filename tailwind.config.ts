@@ -8,6 +8,9 @@ const config: Config = {
       fira: ['Fira Code', 'monospace'],
     },
     extend: {
+      screens: {
+        '2xl': '1648px',
+      },
       fontSize: {
         xl: ['1.25rem', '1.5rem'],
       },
