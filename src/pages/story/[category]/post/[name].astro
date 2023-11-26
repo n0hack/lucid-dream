@@ -11,33 +11,51 @@ import {
   PostThumbnail,
   PostTags,
 } from '@components/post';
-import { MainLayout } from '@components/layout';
+import { Layout } from '@components/layout';
+import { Seo } from '@components/helper';
 
 export const getStaticPaths = (async () => {
+  // 스토리 컬렉션을 불러온 후, 날짜 내림차순으로 정렬
   const storyCollection = (await getCollection('story')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return storyCollection.flatMap((story) => {
+    // slug는 "javascript/1"과 같은 형태이며, 각각 [category, name]으로 분리하여 알맞게 사용
     const [category, name] = story.slug.split('/');
 
+    // 동일한 카테고리의 게시물을 필터링 후, 현재 게시물의 앞뒤 2개씩 추출 (최대 5개)
     const sameCategoryStories = storyCollection.filter((story) => story.slug.startsWith(category));
     const storyIndex = sameCategoryStories.findIndex((otherStory) => otherStory.slug === story.slug);
     const otherStories = sameCategoryStories.slice(storyIndex - 2 < 0 ? 0 : storyIndex - 2).slice(0, 5);
 
+    // 스토리 객체 가공 (data 필드에 카테고리 추가)
+    const newStory = {
+      ...story,
+      data: {
+        ...story.data,
+        category,
+      },
+    };
+
     return {
       params: { category, name },
-      props: { story, category, otherStories },
+      props: { story: newStory, otherStories },
     };
   });
 }) satisfies GetStaticPaths;
 
-const { story, category, otherStories } = Astro.props;
-const { render } = story;
-
-const { Content, headings } = await render();
+const { story, otherStories } = Astro.props;
+const { Content, headings } = await story.render();
 ---
 
-<MainLayout pageTitle={story.data.title}>
-  <PostThumbnail category={category} {...story.data} />
+<Layout pageTitle={story.data.title}>
+  <Seo
+    slot="metadata"
+    title={story.data.title}
+    description={story.data.description}
+    image={story.data.thumbnail.src}
+    tags={story.data.tags}
+  />
+  <PostThumbnail {...story.data} />
   <Section className="mb-20 mt-12 lg:mb-28 lg:mt-20">
     <Responsive className="relative">
       <PostMarkdownRenderer>
@@ -46,8 +64,8 @@ const { Content, headings } = await render();
       <PostToC headings={headings} />
       <PostTags tags={story.data.tags} />
       <PostAuthor />
-      <PostOtherStories category={category} currentStory={story} otherStories={otherStories} />
+      <PostOtherStories currentStory={story} otherStories={otherStories} />
       <PostComment />
     </Responsive>
   </Section>
-</MainLayout>
+</Layout>

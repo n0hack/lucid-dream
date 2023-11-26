@@ -1,67 +1,77 @@
 .renderer {
-  @apply text-black;
+  @apply break-all text-justify text-black;
 
   & > :is(h1, h2, h3, p, ul, code):first-child {
     @apply mt-0;
   }
 }
 
+// Headings
 .renderer :is(h1, h2, h3) {
-  @apply break-all text-justify font-semibold;
+  @apply font-semibold;
 }
 
 .renderer h1 {
-  @apply mt-16 text-3xl lg:text-4xl;
+  @apply mt-20 text-3xl lg:mt-28 lg:text-4xl;
 
   & + h2 {
-    @apply mt-8;
+    @apply mt-6 lg:mt-8;
   }
 }
 
 .renderer h2 {
-  @apply mt-12 text-xl lg:text-2xl;
+  @apply mt-12 text-xl lg:mt-16 lg:text-2xl;
 }
 
 .renderer h3 {
   @apply my-6 text-lg;
 }
 
+// Paragraph
 .renderer p {
-  @apply my-6 break-all text-justify text-base leading-8;
+  @apply my-4 text-base lg:my-6;
 
   & > code {
-    @apply rounded-md bg-gray-100 p-1 text-primary;
+    @apply rounded-md bg-primary-50 px-[6px] py-1 text-sm text-primary;
   }
 }
 
+// List
 .renderer ul {
-  @apply my-6 flex flex-col pl-8;
+  @apply my-4 pl-6 lg:my-6;
 
   li {
-    @apply list-disc break-all text-justify leading-8;
+    @apply list-disc text-base;
 
     & > ul {
       @apply my-1 pl-6;
     }
+
+    & > code {
+      @apply rounded-md bg-primary-50 px-[6px] py-1 text-sm text-primary;
+    }
   }
 }
 
+// Link
 .renderer a {
   @apply text-primary hover:text-primary/90;
 }
 
+// Image
 .renderer img {
-  @apply mx-auto my-6 rounded-2xl;
+  @apply mx-auto my-4 rounded-md lg:my-6;
 }
 
 .renderer blockquote {
-  @apply my-6 border-l-4 border-primary bg-slate-50 p-4 pl-5 lg:pl-8 lg:pr-7;
+  @apply my-4 border-l-4 border-primary bg-slate-50 px-6 py-4 lg:my-6 lg:px-8;
 
   p {
     @apply my-0;
   }
 }
 
+// Code Block
 .renderer div[class='expressive-code'] {
-  @apply my-6;
+  @apply my-4 lg:my-6;
 }

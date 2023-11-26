@@ -5,22 +5,29 @@ import { IconArrowRight } from '@tabler/icons-react';
 
 type Story = {
   slug: string;
+  data: { title: string; category: string };
+};
+
+type OtherStory = {
+  slug: string;
   data: { title: string };
 };
 
 type Props = {
-  category: string;
   currentStory: Story;
-  otherStories: Story[];
+  otherStories: OtherStory[];
 };
 
-const { category, currentStory, otherStories } = Astro.props;
+const { currentStory, otherStories } = Astro.props;
 ---
 
 <div class="mt-12 rounded-md bg-gray-100 p-6 lg:mt-20">
   <p class="flex gap-1 text-gray-600">
-    <a class="truncate font-semibold text-black" href={`/story/${category}/page/1`}>
-      '스토리 - {CATEGORY_NAME(category)}'
+    <a
+      class="truncate font-semibold text-black lg:hover:text-black/90"
+      href={`/story/${currentStory.data.category}/page/1`}
+    >
+      '스토리 - {CATEGORY_NAME(currentStory.data.category)}'
     </a>의 다른 글
   </p>
   <hr class="my-6 border-gray-200" />
@@ -28,10 +35,13 @@ const { category, currentStory, otherStories } = Astro.props;
     {
       otherStories.map((otherStory) => (
         <li>
-          <a class="flex items-center justify-between gap-4" href={`/story/${otherStory.slug.replace('/', '/post/')}`}>
+          <a
+            class="group flex items-center justify-between gap-4"
+            href={`/story/${otherStory.slug.replace('/', '/post/')}`}
+          >
             <span
               class={twMerge(
-                'flex-1 truncate text-gray-600 lg:hover:font-semibold lg:hover:text-black',
+                'flex-1 truncate text-gray-400 lg:group-hover:font-semibold lg:group-hover:text-black',
                 otherStory.slug === currentStory.slug && 'font-semibold text-black',
               )}
             >
