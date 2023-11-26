@@ -3,14 +3,10 @@ import { Image } from 'astro:assets';
 import dayjs from 'dayjs';
 import { Dim, Responsive } from '@components/common';
 import { CATEGORY_NAME } from '@constants';
+import type { AstroImage } from '@custom-types/post';
 
 type Props = {
-  thumbnail: {
-    format: 'avif' | 'png' | 'webp' | 'jpeg' | 'jpg' | 'svg' | 'tiff' | 'gif';
-    src: string;
-    width: number;
-    height: number;
-  };
+  thumbnail: AstroImage;
   title: string;
   date: Date;
   category: string;
@@ -27,7 +23,7 @@ const { thumbnail, title, date, category } = Astro.props;
   <div class="absolute inset-0 flex h-full w-full pb-16 lg:pb-24">
     <Responsive className="flex flex-col justify-end">
       <div class="flex flex-col gap-6 lg:gap-8">
-        <h1 class="text-3xl font-bold text-white lg:text-4xl">{title}</h1>
+        <h1 class="text-3xl font-semibold text-white lg:text-4xl">{title}</h1>
         <p class="text-sm font-medium text-white lg:text-base">
           <span>{dayjs(date).format('YYYY. MM. DD')}</span>
           <span>﹒</span>
