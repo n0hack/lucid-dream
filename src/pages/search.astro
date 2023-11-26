@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import purify from 'isomorphic-dompurify';
+import Fuse from 'fuse.js';
+import { SearchEmptySection, SearchHeaderSection, SearchResultSection, SearchResult } from '@components/search';
+import { MainLayout } from '@components/layout';
+import { CATEGORY } from '@constants';
+
+const query = Astro.url.searchParams.get('q') ?? '';
+
+const decodedQuery = decodeURIComponent(query);
+const sanitizedQuery = purify.sanitize(decodedQuery);
+
+const storyCollection = await getCollection('story');
+
+const mappedList = storyCollection.map((story) => ({
+  link: `/story/${story.slug.replace('/', '/post/')}`,
+  body: story.body,
+  ...story.data,
+  category: {
+    key: story.slug.split('/')[0],
+    value: CATEGORY[story.slug.split('/')[0] as keyof typeof CATEGORY],
+  },
+}));
+
+const fuse = new Fuse(mappedList, {
+  keys: [
+    { name: 'title', weight: 1 },
+    { name: 'body', weight: 1 },
+    { name: 'tags', weight: 1 },
+    { name: 'category.key', weight: 1 },
+    { name: 'category.value', weight: 1 },
+  ],
+});
+
+const result = fuse.search(sanitizedQuery);
+
+export const prerender = false;
+---
+
+<MainLayout pageTitle={`'${sanitizedQuery}' 검색 결과 ๑'ٮ'๑`} headerBg>
+  <SearchHeaderSection query={sanitizedQuery} />
+  {
+    result.length === 0 ? (
+      <SearchEmptySection />
+    ) : (
+      <SearchResultSection>
+        <SearchResult datas={result} client:load />
+      </SearchResultSection>
+    )
+  }
+</MainLayout>

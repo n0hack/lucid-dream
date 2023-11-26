@@ -1,7 +1,12 @@
 # build output
 dist/
+.vercel
+
 # generated types
 .astro/
+
+# local development env
+.vscode
 
 # dependencies
 node_modules/
@@ -19,3 +24,6 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Panda
+styled-system

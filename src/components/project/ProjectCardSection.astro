@@ -1,0 +1,11 @@
+---
+import { Responsive, Section } from '@components/common';
+---
+
+<Section className="mt-12 lg:mt-20" loading="lazy" client:load>
+  <Responsive>
+    <div class="flex flex-col gap-12">
+      <slot />
+    </div>
+  </Responsive>
+</Section>

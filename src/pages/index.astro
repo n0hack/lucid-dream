@@ -1,16 +1,32 @@
 ---
+import { getCollection } from 'astro:content';
+import {
+  HomeMainImage,
+  HomeProjectSection,
+  HomeProjectSlider,
+  HomeStorySection,
+  HomeStorySlider,
+} from '@components/home';
+import { MainLayout } from '@components/layout';
+import { PROJECT_SLIDE_MAX_COUNT, STORY_SLIDE_MAX_COUNT } from '@constants';
 
+const projectCollection = await getCollection('project');
+const projects = projectCollection
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, PROJECT_SLIDE_MAX_COUNT);
+
+const storyCollection = await getCollection('story');
+const stories = storyCollection
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, STORY_SLIDE_MAX_COUNT);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout pageTitle="루시드 드림 𖤐">
+  <HomeMainImage />
+  <HomeProjectSection>
+    <HomeProjectSlider projects={projects} client:only />
+  </HomeProjectSection>
+  <HomeStorySection>
+    <HomeStorySlider stories={stories} client:only />
+  </HomeStorySection>
+</MainLayout>

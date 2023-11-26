@@ -1,0 +1,102 @@
+.renderer {
+  @apply text-black;
+}
+
+// Heading
+.renderer > :is(h1, h2, h3) {
+  @apply font-bold;
+}
+
+.renderer > h1 {
+  @apply relative mt-8 pl-8 text-3xl font-bold lg:mt-12 lg:text-4xl;
+
+  &::before {
+    @apply absolute left-0 top-1/2 h-12 w-3 -translate-y-1/2 rounded-sm bg-primary content-[''];
+  }
+
+  &:not(:first-of-type) {
+    @apply mt-24 lg:mt-32;
+  }
+
+  & + :is(h2, h3) {
+    @apply mt-8 lg:mt-12;
+  }
+
+  & + p img {
+    @apply mt-8 lg:mt-12;
+  }
+}
+
+.renderer > h2 {
+  @apply text-2xl lg:text-3xl;
+
+  & + table {
+    @apply mt-6 lg:mt-8;
+  }
+}
+
+.renderer > h3 {
+  @apply text-lg lg:text-xl;
+
+  & + ul {
+    @apply mt-2 lg:mt-4;
+  }
+}
+
+// List
+.renderer > ul {
+  @apply flex list-disc flex-col gap-1 pl-6 tabular-nums;
+
+  & + h2 {
+    @apply mt-12 lg:mt-16;
+  }
+
+  & + h3 {
+    @apply mt-6 lg:mt-8;
+  }
+
+  & + p img {
+    @apply mt-4 lg:mt-6;
+  }
+}
+
+// Table
+.renderer > table {
+  @apply w-full;
+
+  thead {
+    @apply hidden;
+  }
+
+  tr {
+    @apply border-y border-gray-200;
+  }
+
+  td {
+    @apply py-3;
+  }
+
+  td:first-of-type {
+    @apply w-[128px] min-w-[128px] pr-8 text-right font-medium italic lg:w-[160px] lg:min-w-[160px] lg:pr-12;
+  }
+
+  & + h2 {
+    @apply mt-12 lg:mt-16;
+  }
+
+  & + h3 {
+    @apply mt-6 lg:mt-8;
+  }
+}
+
+// Paragraph
+.renderer > p {
+  & + ul {
+    @apply mt-2 lg:mt-4;
+  }
+}
+
+// Link
+.renderer a {
+  @apply text-primary underline lg:hover:text-primary/90;
+}

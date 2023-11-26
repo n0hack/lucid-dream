@@ -1,0 +1,107 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+type Heading = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
+type Props = {
+  headings: Heading[];
+};
+
+const { headings } = Astro.props;
+---
+
+<div class="absolute left-full top-0 ml-8 hidden h-full 2xl:block">
+  <div class="sticky top-24">
+    <ul class="flex h-fit max-h-[480px] w-[280px] flex-col gap-2 overflow-y-auto border-l-4 border-primary py-6 pl-6">
+      {
+        headings.map((heading) => {
+          if (heading.depth !== 1 && heading.depth !== 2) return null;
+          return (
+            <li class={twMerge(heading.depth === 2 && 'pl-4')}>
+              <a
+                class={twMerge('anchor text-gray-400 transition-colors lg:hover:font-semibold lg:hover:text-black')}
+                href={`#${heading.slug}`}
+              >
+                {heading.text}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</div>
+
+<script>
+  const anchors = document.querySelectorAll('.anchor');
+  const headings = document.querySelectorAll(':is(#markdown) h1, h2');
+  const contents = [...headings].map((heading) => ({ id: heading.getAttribute('id'), active: false }));
+
+  const activeClass = ['text-black', 'font-semibold'];
+  const inactiveClass = ['text-gray-400'];
+
+  // 스크롤 부드럽게 이동
+  anchors.forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector((e.target as HTMLAnchorElement).getAttribute('href')!)!;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 84, behavior: 'smooth' });
+    });
+  });
+
+  let lastScrollY = 0;
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute('id');
+        const index = contents.findIndex((content) => content.id === id);
+
+        if (entry.isIntersecting) {
+          contents[index].active = true;
+        } else {
+          contents[index].active = false;
+        }
+
+        anchors.forEach((anchor) => {
+          anchor.classList.remove(...activeClass);
+          anchor.classList.add(...inactiveClass);
+        });
+
+        const firstActiveIndex = contents.findIndex((content) => content.active);
+
+        if (firstActiveIndex !== -1) {
+          anchors[firstActiveIndex].classList.remove(...inactiveClass);
+          anchors[firstActiveIndex].classList.add(...activeClass);
+        } else {
+          // 스크롤 방향에 따라 하이라이트 처리할 인덱스 결정
+          const scrollDirection = window.scrollY > lastScrollY ? 'down' : 'up';
+          if (scrollDirection === 'down') {
+            // 스크롤 방향이 아래인 경우, 직전 인덱스 하이라이트 처리
+            anchors[index].classList.remove(...inactiveClass);
+            anchors[index].classList.add(...activeClass);
+          } else {
+            if (index === 0) return;
+
+            anchors[index - 1].classList.remove(...inactiveClass);
+            anchors[index - 1].classList.add(...activeClass);
+          }
+        }
+
+        lastScrollY = window.scrollY;
+      });
+    },
+    {
+      rootMargin: '-64px 0px 0px 0px',
+      threshold: 0.5,
+    },
+  );
+
+  headings.forEach((heading) => {
+    io.observe(heading);
+  });
+</script>

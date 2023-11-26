@@ -1,0 +1,12 @@
+---
+type Props = {
+  name: string;
+};
+
+const { name } = Astro.props;
+---
+
+<li class="flex items-baseline gap-6">
+  <div class="w-[80px] min-w-[80px] rounded-md bg-black py-2 text-center text-sm text-white">{name}</div>
+  <div class="flex flex-col gap-2"><slot /></div>
+</li>
