@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Card } from '@components/common';
 import { SEARCH_RESULT_MAX_COUNT } from '@constants';
+import type { AstroImage } from '@custom-types/post';
 
 type FuseItem = {
-  link: string;
-  thumbnail: { src: string };
+  href: string;
+  thumbnail: AstroImage;
   title: string;
   description: string;
   category: { key: string; value: string };
@@ -47,9 +48,9 @@ const SearchResult = ({ datas }: SearchResultProps) => {
   return (
     <div ref={ref} className="grid gap-8 lg:grid-cols-3">
       {sliced.map(({ item: data }) => (
-        <a key={data.link} href={data.link}>
+        <a key={data.href} href={data.href}>
           <Card
-            thumbnail={data.thumbnail.src}
+            thumbnail={data.thumbnail}
             title={data.title}
             description={data.description}
             date={data.date}

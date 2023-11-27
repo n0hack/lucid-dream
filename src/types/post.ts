@@ -10,3 +10,29 @@ export type AstroHeading = {
   slug: string;
   text: string;
 };
+
+export type Story = {
+  id: string;
+  slug: string;
+  data: {
+    thumbnail: AstroImage;
+    title: string;
+    description: string;
+    tags: string[];
+    date: Date;
+  };
+};
+
+export type ProjectLink = {
+  name: string;
+  href: string;
+};
+
+export type Project = {
+  thumbnail: AstroImage;
+  title: string;
+  descriptions: string[];
+  tags: string[];
+  date: Date;
+  links: ProjectLink[];
+};

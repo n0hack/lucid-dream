@@ -1,0 +1,13 @@
+---
+type Props = {
+  query: string;
+  suffixText?: string;
+};
+
+const { query, suffixText = '검색 결과' } = Astro.props;
+---
+
+<h1 class="flex flex-wrap gap-2 text-3xl font-semibold text-gray-400 lg:gap-3 lg:text-4xl">
+  <span class="text-black">'{query}'</span>
+  <span>{suffixText}</span>
+</h1>

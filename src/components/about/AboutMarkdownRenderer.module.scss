@@ -2,13 +2,13 @@
   @apply text-black;
 }
 
-// Heading
+// Headings
 .renderer > :is(h1, h2, h3) {
-  @apply font-bold;
+  @apply font-semibold;
 }
 
 .renderer > h1 {
-  @apply relative mt-8 pl-8 text-3xl font-bold lg:mt-12 lg:text-4xl;
+  @apply relative mt-8 pl-8 text-3xl lg:mt-12 lg:text-4xl;
 
   &::before {
     @apply absolute left-0 top-1/2 h-12 w-3 -translate-y-1/2 rounded-sm bg-primary content-[''];
@@ -45,7 +45,7 @@
 
 // List
 .renderer > ul {
-  @apply flex list-disc flex-col gap-1 pl-6 tabular-nums;
+  @apply list-disc pl-6 text-base tabular-nums;
 
   & + h2 {
     @apply mt-12 lg:mt-16;
@@ -73,7 +73,7 @@
   }
 
   td {
-    @apply py-3;
+    @apply py-3 text-base;
   }
 
   td:first-of-type {

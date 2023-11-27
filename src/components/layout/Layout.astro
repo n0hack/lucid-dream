@@ -19,10 +19,8 @@ const { pathname } = Astro.url;
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Metadatas -->
     <slot name="metadata" />
 
-    <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/icons//apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/icons//apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/icons//apple-icon-72x72.png" />
@@ -43,14 +41,12 @@ const { pathname } = Astro.url;
 
     <title>{pageTitle}</title>
 
-    <!-- Preload Fonts -->
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Bold.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-SemiBold.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Medium.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Regular.woff2" />
     <link rel="preload" as="font" type="font/ttf" crossorigin="" href="/fonts/firacode/FiraCode-Regular.ttf" />
 
-    <!-- Preload Images -->
     <link rel="preload" as="image" href="/images/main@1280.webp" />
     <link rel="preload" as="image" href="/images/main@1920.webp" />
     <link rel="preload" as="image" href="/images/main@3140.webp" />

@@ -1,0 +1,31 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+type Props = {
+  id?: string;
+  className?: string;
+};
+
+const { id, className } = Astro.props;
+---
+
+<div id={id} class={twMerge('lazy transition-[transform,opacity] duration-700 translate-y-6 opacity-0', className)}>
+  <slot />
+</div>
+
+<script define:vars={{ id }}>
+  const lazyDiv = document.querySelector(id ? `#${id}` : '.lazy');
+
+  const activeClass = ['translate-y-0', 'opacity-100'];
+  const inactiveClass = ['translate-y-6', 'opacity-0'];
+
+  const io = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      lazyDiv.classList.add(...activeClass);
+      lazyDiv.classList.remove(...inactiveClass);
+      io.disconnect();
+    }
+  });
+
+  io.observe(lazyDiv);
+</script>

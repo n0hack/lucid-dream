@@ -1,4 +1,2 @@
-export { default as ProjectHeaderSection } from './ProjectHeaderSection.astro';
-export { default as ProjectCardSection } from './ProjectCardSection.astro';
-export { default as ProjectCard } from './ProjectCard';
-export { default as ProjectPaginationSection } from './ProjectPaginationSection.astro';
+export { default as ProjectCard } from './ProjectCard.astro';
+export { default as ProjectPageHeader } from './ProjectPageHeader.astro';

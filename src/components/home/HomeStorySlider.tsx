@@ -1,17 +1,6 @@
 import { Card, Slider } from '@components/common';
-import { CATEGORY } from '@constants';
-
-type Story = {
-  id: string;
-  slug: string;
-  data: {
-    thumbnail: { src: string };
-    title: string;
-    description: string;
-    tags: string[];
-    date: Date;
-  };
-};
+import type { Story } from '@custom-types/post';
+import { getCategoryNameFromSlug } from '@utils/post';
 
 type HomeStorySliderProps = {
   stories: Story[];
@@ -23,11 +12,11 @@ const HomeStorySlider = ({ stories }: HomeStorySliderProps) => {
       {stories.map(({ id, slug, data }) => (
         <a key={id} href={`/story/${slug.replace('/', '/post/')}`}>
           <Card
-            thumbnail={data.thumbnail.src}
+            thumbnail={data.thumbnail}
             title={data.title}
             description={data.description}
             date={data.date}
-            category={CATEGORY[slug.split('/')[0] as keyof typeof CATEGORY]}
+            category={getCategoryNameFromSlug(slug)}
           />
         </a>
       ))}

@@ -1,28 +1,24 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { Card, Pagination } from '@components/common';
-import {
-  StoryCardSection,
-  StoryCategoryExpansionButton,
-  StoryCategoryItem,
-  StoryCategoryList,
-  StoryCategorySection,
-  StoryHeaderSection,
-  StoryPaginationSection,
-} from '@components/story';
-import { MainLayout } from '@components/layout';
-import { CATEGORY } from '@constants';
+import { Card, Lazy, Pagination, Responsive, Section } from '@components/common';
+import { StoryCategories, StoryCategoryExpansionButton, StoryCategory, StoryPageHeader } from '@components/story';
+import { Layout } from '@components/layout';
+import { CATEGORY } from '@constants/post';
+import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const storyCollection = await getCollection('story');
 
   return Object.entries(CATEGORY).flatMap(([key]) => {
-    // 카테고리별 필터링 후 날짜 내림차순으로 정렬
+    // 카테고리별 필터링 후, 날짜 내림차순으로 정렬
     const stories = (
-      key === 'all' ? storyCollection : storyCollection.filter((story) => story.slug.split('/')[0] === key)
+      (key as keyof typeof CATEGORY) === 'all'
+        ? storyCollection
+        : storyCollection.filter((story) => story.slug.split('/')[0] === key)
     ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
+    // 카테고리별 페이지네이션
     return paginate(stories, {
       pageSize: 9,
       params: { category: key },
@@ -30,10 +26,10 @@ export const getStaticPaths = (async ({ paginate }) => {
         categories: Object.entries(CATEGORY).map(([key, value]) => ({
           name: value,
           count:
-            key === 'all'
+            (key as keyof typeof CATEGORY) === 'all'
               ? storyCollection.length
               : storyCollection.filter((story) => story.slug.split('/')[0] === key).length,
-          link: `/story/${key}/page/1`,
+          href: `/story/${key}/page/1`,
         })),
       },
     });
@@ -44,51 +40,43 @@ const { page, categories } = Astro.props;
 const { pathname } = Astro.url;
 ---
 
-<MainLayout pageTitle="화려히 반짝일 나의 스토리 (｡•̀ᴗ-)✧" headerBg>
-  <StoryHeaderSection />
-  <StoryCategorySection>
-    <StoryCategoryList slot="list">
-      {
-        categories.map((category) => (
-          <StoryCategoryItem
-            pathname={pathname}
-            name={category.name}
-            count={category.count}
-            href={category.link}
-            client:load
-          />
-        ))
-      }
-    </StoryCategoryList>
-    <StoryCategoryExpansionButton categories={categories} pathname={pathname} client:load slot="button" />
-  </StoryCategorySection>
-  <StoryCardSection>
-    {
-      page.data.map(({ slug, data }) => (
-        <a href={`/story/${slug.replace('/', '/post/')}`}>
-          <Card
-            thumbnail={data.thumbnail.src}
-            title={data.title}
-            description={data.description}
-            date={data.date}
-            category={CATEGORY[slug.split('/')[0] as keyof typeof CATEGORY]}
-          />
-        </a>
-      ))
-    }
-  </StoryCardSection>
-  <StoryPaginationSection>
-    <Pagination
-      page={page.currentPage}
-      lastPage={page.lastPage}
-      buttonUrlPrefix={page.url.current.replace(/\/\d+$/, '')}
-      prevUrl={page.url.prev}
-      nextUrl={page.url.next}
-      client:load
-    />
-  </StoryPaginationSection>
-</MainLayout>
+<Layout pageTitle="화려히 반짝일 나의 스토리 (｡•̀ᴗ-)✧" headerBg>
+  <Section>
+    <Responsive>
+      <StoryPageHeader />
+      <StoryCategories>
+        {categories.map((category) => <StoryCategory slot="item" pathname={pathname} {...category} client:load />)}
+        <StoryCategoryExpansionButton slot="button" categories={categories} pathname={pathname} client:load />
+      </StoryCategories>
+      <Lazy className="mt-8 grid gap-8 lg:mt-16 lg:grid-cols-3">
+        {
+          page.data.map(({ slug, data }) => (
+            <a href={getStoryLinkFromSlug(slug)}>
+              <Card
+                thumbnail={data.thumbnail}
+                title={data.title}
+                description={data.description}
+                date={data.date}
+                category={getCategoryNameFromSlug(slug)}
+              />
+            </a>
+          ))
+        }
+      </Lazy>
+      <Pagination
+        className="mt-12 lg:mt-20"
+        page={page.currentPage}
+        lastPage={page.lastPage}
+        buttonUrlPrefix={page.url.current.replace(/\/\d+$/, '')}
+        prevUrl={page.url.prev}
+        nextUrl={page.url.next}
+        client:load
+      />
+    </Responsive>
+  </Section>
+</Layout>
 
 <script>
+  // 현재 카테고리로 스크롤 이동
   document.querySelector('.current-category')?.scrollIntoView({ block: 'center' });
 </script>

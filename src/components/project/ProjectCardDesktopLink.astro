@@ -1,0 +1,33 @@
+---
+import type { ProjectLink } from '@custom-types/post';
+import { IconChevronRight } from '@tabler/icons-react';
+
+type Props = ProjectLink;
+
+const { name, href } = Astro.props;
+
+const getLinkName = (name: string) => {
+  switch (name as 'site' | 'github' | 'story') {
+    case 'site':
+      return '웹사이트 접속하기';
+    case 'github':
+      return '깃허브 보기';
+    case 'story':
+      return '스토리 보기';
+  }
+};
+---
+
+{
+  href === '#' || href === '' ? null : (
+    <a
+      class="flex items-center justify-between gap-2 rounded-md bg-white py-4 pl-5 pr-4 font-medium"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span>{getLinkName(name)}</span>
+      <IconChevronRight className="h-4 w-4" />
+    </a>
+  )
+}

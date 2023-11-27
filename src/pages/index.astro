@@ -1,15 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import {
-  HomeMainImage,
-  HomeProjectSection,
-  HomeProjectSlider,
-  HomeStorySection,
-  HomeStorySlider,
-} from '@components/home';
-import { MainLayout } from '@components/layout';
+import { HomeMainImage, HomeProjectSlider, HomeSectionTitle, HomeStorySlider } from '@components/home';
+import { Layout } from '@components/layout';
 import { PROJECT_SLIDE_MAX_COUNT, STORY_SLIDE_MAX_COUNT } from '@constants';
-import { Seo } from '@components/helper';
+import { Lazy, Responsive, Section } from '@components/common';
 
 const projectCollection = await getCollection('project');
 const projects = projectCollection
@@ -22,12 +16,18 @@ const stories = storyCollection
   .slice(0, STORY_SLIDE_MAX_COUNT);
 ---
 
-<MainLayout pageTitle="루시드 드림 𖤐">
+<Layout pageTitle="루시드 드림 𖤐">
   <HomeMainImage />
-  <HomeProjectSection>
-    <HomeProjectSlider projects={projects} client:only />
-  </HomeProjectSection>
-  <HomeStorySection>
-    <HomeStorySlider stories={stories} client:only />
-  </HomeStorySection>
-</MainLayout>
+  <Section className="mb-12 mt-16 lg:mb-20 lg:mt-24">
+    <Responsive className="px-0 lg:px-0">
+      <Lazy id="lazy-project" className="relative h-[520px] px-2 lg:px-6">
+        <HomeSectionTitle title="프로젝트" />
+        <HomeProjectSlider projects={projects} client:only />
+      </Lazy>
+      <Lazy id="lazy-story" className="relative mt-6 h-[520px] px-2 lg:mt-14 lg:px-6">
+        <HomeSectionTitle title="스토리" />
+        <HomeStorySlider stories={stories} client:only />
+      </Lazy>
+    </Responsive>
+  </Section>
+</Layout>

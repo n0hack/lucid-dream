@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import dayjs from 'dayjs';
 import { Dim, Responsive } from '@components/common';
-import { CATEGORY_NAME } from '@constants';
 import type { AstroImage } from '@custom-types/post';
 
 type Props = {
@@ -27,7 +26,7 @@ const { thumbnail, title, date, category } = Astro.props;
         <p class="text-sm font-medium text-white lg:text-base">
           <span>{dayjs(date).format('YYYY. MM. DD')}</span>
           <span>﹒</span>
-          <span>{CATEGORY_NAME(category)}</span>
+          <span>{category}</span>
         </p>
       </div>
     </Responsive>

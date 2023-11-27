@@ -2,27 +2,32 @@
 import { getCollection } from 'astro:content';
 import purify from 'isomorphic-dompurify';
 import Fuse from 'fuse.js';
-import { SearchEmptySection, SearchHeaderSection, SearchResultSection, SearchResult } from '@components/search';
-import { MainLayout } from '@components/layout';
-import { CATEGORY } from '@constants';
+import { twMerge } from 'tailwind-merge';
+import { Lazy, Responsive, Section } from '@components/common';
+import { SearchResult, SearchResultEmpty, SearchResultHeader } from '@components/search';
+import { Layout } from '@components/layout';
+import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
 
 const query = Astro.url.searchParams.get('q') ?? '';
 
+// 한글 검색어를 위한 디코딩과 DOMPurify를 이용한 XSS 방어
 const decodedQuery = decodeURIComponent(query);
 const sanitizedQuery = purify.sanitize(decodedQuery);
 
 const storyCollection = await getCollection('story');
 
+// Fuse.js 검색을 위해 데이터 가공
 const mappedList = storyCollection.map((story) => ({
-  link: `/story/${story.slug.replace('/', '/post/')}`,
-  body: story.body,
   ...story.data,
+  href: getStoryLinkFromSlug(story.slug),
+  body: story.body,
   category: {
     key: story.slug.split('/')[0],
-    value: CATEGORY[story.slug.split('/')[0] as keyof typeof CATEGORY],
+    value: getCategoryNameFromSlug(story.slug),
   },
 }));
 
+// TODO 가중치를 더욱 세밀하게 조정해야 함
 const fuse = new Fuse(mappedList, {
   keys: [
     { name: 'title', weight: 1 },
@@ -35,18 +40,24 @@ const fuse = new Fuse(mappedList, {
 
 const result = fuse.search(sanitizedQuery);
 
+const pageTitle = sanitizedQuery === '' ? '검색 키워드를 입력해 주세요 💦' : `'${sanitizedQuery}' 검색 결과 (｡•̀ᴗ-)✧`;
+
 export const prerender = false;
 ---
 
-<MainLayout pageTitle={`'${sanitizedQuery}' 검색 결과 (｡•̀ᴗ-)✧`} headerBg>
-  <SearchHeaderSection query={sanitizedQuery} />
-  {
-    result.length === 0 ? (
-      <SearchEmptySection />
-    ) : (
-      <SearchResultSection>
-        <SearchResult datas={result} client:load />
-      </SearchResultSection>
-    )
-  }
-</MainLayout>
+<Layout pageTitle={pageTitle} headerBg>
+  <Section className={twMerge(result.length === 0 && 'flex flex-1 flex-col')}>
+    <Responsive className={twMerge(result.length === 0 && 'flex flex-1 flex-col')}>
+      <SearchResultHeader query={sanitizedQuery} />
+      {
+        result.length === 0 ? (
+          <SearchResultEmpty />
+        ) : (
+          <Lazy className="mt-12 lg:mt-20">
+            <SearchResult datas={result} client:load />
+          </Lazy>
+        )
+      }
+    </Responsive>
+  </Section>
+</Layout>

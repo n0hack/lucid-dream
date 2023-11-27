@@ -1,9 +1,9 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { Pagination } from '@components/common';
-import { ProjectHeaderSection, ProjectCardSection, ProjectCard, ProjectPaginationSection } from '@components/project';
-import { MainLayout } from '@components/layout';
+import { Lazy, Pagination, Responsive, Section } from '@components/common';
+import { ProjectCard, ProjectPageHeader } from '@components/project';
+import { Layout } from '@components/layout';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const projectCollection = await getCollection('project');
@@ -15,29 +15,32 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props;
 ---
 
-<MainLayout pageTitle="열심히 만들어 온 프로젝트 (｡•̀ᴗ-)✧" headerBg>
-  <ProjectHeaderSection />
-  <ProjectCardSection>
-    {
-      page.data.map(({ data }) => (
-        <ProjectCard
-          thumbnail={data.thumbnail.src}
-          title={data.title}
-          descriptions={data.descriptions}
-          tags={data.tags}
-          links={Object.entries(data.links).map(([name, href]) => ({ name, href }))}
-        />
-      ))
-    }
-  </ProjectCardSection>
-  <ProjectPaginationSection>
-    <Pagination
-      page={page.currentPage}
-      lastPage={page.lastPage}
-      buttonUrlPrefix="/project/page"
-      prevUrl={page.url.prev}
-      nextUrl={page.url.next}
-      client:load
-    />
-  </ProjectPaginationSection>
-</MainLayout>
+<Layout pageTitle="열심히 만들어 온 프로젝트 (｡•̀ᴗ-)✧" headerBg>
+  <Section>
+    <Responsive>
+      <ProjectPageHeader />
+      <Lazy className="mt-12 flex flex-col gap-12 lg:mt-20">
+        {
+          page.data.map(({ data }) => (
+            <ProjectCard
+              thumbnail={data.thumbnail}
+              title={data.title}
+              descriptions={data.descriptions}
+              tags={data.tags}
+              links={Object.entries(data.links).map(([name, href]) => ({ name, href }))}
+            />
+          ))
+        }
+      </Lazy>
+      <Pagination
+        className="mt-12 lg:mt-20"
+        page={page.currentPage}
+        lastPage={page.lastPage}
+        buttonUrlPrefix="/project/page"
+        prevUrl={page.url.prev}
+        nextUrl={page.url.next}
+        client:load
+      />
+    </Responsive>
+  </Section>
+</Layout>
