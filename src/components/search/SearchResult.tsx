@@ -48,7 +48,7 @@ const SearchResult = ({ datas }: SearchResultProps) => {
   return (
     <div ref={ref} className="grid gap-8 lg:grid-cols-3">
       {sliced.map(({ item: data }) => (
-        <a key={data.href} href={data.href} aria-label={`${data.title} 스토리로 이동`}>
+        <a key={data.href} href={data.href}>
           <Card
             thumbnail={data.thumbnail}
             title={data.title}

@@ -51,7 +51,7 @@ const { pathname } = Astro.url;
       <Lazy className="mt-8 grid gap-8 lg:mt-16 lg:grid-cols-3">
         {
           page.data.map(({ slug, data }) => (
-            <a href={getStoryLinkFromSlug(slug)} aria-label={`${data.title} 스토리로 이동`}>
+            <a href={getStoryLinkFromSlug(slug)}>
               <Card
                 thumbnail={data.thumbnail}
                 title={data.title}
