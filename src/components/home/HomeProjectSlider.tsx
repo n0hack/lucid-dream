@@ -1,18 +1,17 @@
 import { Card, Slider } from '@components/common';
-
-type Project = {
-  id: string;
-  data: {
-    thumbnail: { src: string };
-    title: string;
-    descriptions: string[];
-    tags: string[];
-    date: Date;
-  };
-};
+import type { AstroImage } from '@custom-types/post';
 
 type HomeProjectSliderProps = {
-  projects: Project[];
+  projects: {
+    id: string;
+    data: {
+      thumbnail: AstroImage;
+      title: string;
+      descriptions: string[];
+      tags: string[];
+      date: Date;
+    };
+  }[];
 };
 
 const HomeProjectSlider = ({ projects }: HomeProjectSliderProps) => {
@@ -21,7 +20,7 @@ const HomeProjectSlider = ({ projects }: HomeProjectSliderProps) => {
       {projects.map(({ id, data }) => (
         <a key={id} href="#">
           <Card
-            thumbnail={data.thumbnail.src}
+            thumbnail={data.thumbnail}
             title={data.title}
             description={data.descriptions[0]}
             date={data.date}

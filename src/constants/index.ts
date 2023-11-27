@@ -19,17 +19,6 @@ export const STORY_SLIDE_MAX_COUNT = 6;
 /** 검색 결과에 노출할 스토리 최대 개수 (무한 스크롤) */
 export const SEARCH_RESULT_MAX_COUNT = 9;
 
-/** 스토리 카테고리 */
-export const CATEGORY = {
-  all: '전체',
-  'web-basic': 'Web Basic',
-  javascript: '자바스크립트',
-  'problem-solving': '문제풀이',
-};
-
-/** 스토리 카테고리 이름 */
-export const CATEGORY_NAME = (category: string) => CATEGORY[category as keyof typeof CATEGORY];
-
 /** SEO */
 export const SEO = {
   SITE_NAME: '루시드 드림 𖤐',
