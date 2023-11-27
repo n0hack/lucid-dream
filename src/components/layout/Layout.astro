@@ -19,7 +19,7 @@ const { pathname } = Astro.url;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
-    <slot name="metadata" />
+    <slot name="meta-data" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/icons//apple-icon-57x57.png" />
@@ -41,6 +41,8 @@ const { pathname } = Astro.url;
     <meta name="theme-color" content="#ffffff" />
 
     <title>{pageTitle}</title>
+
+    <slot name="preload-data" />
 
     <!-- Preload Datas -->
     <!-- <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Bold.woff2" />
