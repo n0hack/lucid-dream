@@ -21,6 +21,7 @@ const { pathname } = Astro.url;
 
     <slot name="metadata" />
 
+    <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/icons//apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/icons//apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/icons//apple-icon-72x72.png" />
@@ -41,15 +42,12 @@ const { pathname } = Astro.url;
 
     <title>{pageTitle}</title>
 
+    <!-- Preload Datas -->
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Bold.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-SemiBold.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Medium.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Regular.woff2" />
     <link rel="preload" as="font" type="font/ttf" crossorigin="" href="/fonts/firacode/FiraCode-Regular.ttf" />
-
-    <!-- <link rel="preload" as="image" href="/images/main@1280.webp" />
-    <link rel="preload" as="image" href="/images/main@1920.webp" />
-    <link rel="preload" as="image" href="/images/main@3140.webp" /> -->
   </head>
   <body>
     <Header hasBg={headerBg} pathname={pathname} client:load />
