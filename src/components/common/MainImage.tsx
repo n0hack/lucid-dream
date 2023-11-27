@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { twMerge } from 'tailwind-merge';
 import { MAIN_IMAGE_SRC } from '@constants';
 
@@ -11,6 +12,8 @@ const BackgroundImage = ({ className, ...rest }: BackgroundImageProps) => {
       src={MAIN_IMAGE_SRC('3140')}
       srcSet={`${MAIN_IMAGE_SRC('1280')} 1280w, ${MAIN_IMAGE_SRC('1920')} 1920w, ${MAIN_IMAGE_SRC('3140')} 3140w`}
       alt="배경"
+      decoding="async"
+      loading="lazy"
       {...rest}
     />
   );
