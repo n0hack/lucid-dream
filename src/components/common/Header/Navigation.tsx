@@ -20,6 +20,7 @@ const Navigation = ({ hasBg, fillBg, pathname }: NavigationProps) => {
                 pathname.includes(path) && 'text-primary',
               )}
               href={path}
+              data-astro-prefetch="viewport"
             >
               {name}
             </a>

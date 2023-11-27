@@ -16,7 +16,7 @@ const MenuBoxMobile = ({ onMenuClose }: MenuBoxMobileProps) => {
         <ul className="flex w-fit flex-col gap-8">
           {navInfo.map(({ path, name, animation }) => (
             <li key={path} className={twMerge('-translate-x-full opacity-0', animation)}>
-              <a className="text-4xl font-bold" href={path}>
+              <a className="text-4xl font-bold" href={path} data-astro-prefetch="viewport">
                 {name}
               </a>
             </li>
