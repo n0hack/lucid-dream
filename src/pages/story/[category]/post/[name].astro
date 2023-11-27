@@ -53,11 +53,7 @@ const { Content, headings } = await story.render();
       <PostToC headings={headings} />
       <PostTags tags={story.data.tags} />
       <PostAuthor />
-      <PostOtherStories
-        category={getCategoryNameFromSlug(story.slug)}
-        currentStory={story}
-        otherStories={otherStories}
-      />
+      <PostOtherStories currentStory={story} otherStories={otherStories} />
       <PostComment />
     </Responsive>
   </Section>
