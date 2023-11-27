@@ -1,7 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import type { AstroImage } from '@custom-types/post';
-import Image from './Image';
 
 type CardProps = {
   thumbnail: AstroImage;
@@ -15,10 +14,12 @@ const Card = ({ thumbnail, title, description, date, category }: CardProps) => {
   return (
     <div className="group w-full overflow-hidden rounded-2xl pb-6 shadow-xl">
       <div className="relative h-[200px] w-full overflow-hidden border-b border-b-gray-200">
-        <Image
-          className="lg:transition-transform lg:duration-300 lg:group-hover:scale-105"
-          thumbnail={thumbnail}
+        <img
+          className="h-full w-full object-cover lg:transition-transform lg:duration-300 lg:group-hover:scale-105"
+          src={thumbnail.src}
           alt={`${title} 썸네일`}
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <div className="mt-6 flex h-[110px] w-full flex-col gap-2 px-6">

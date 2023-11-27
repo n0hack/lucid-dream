@@ -1,5 +1,4 @@
 import React from 'react';
-import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { twMerge } from 'tailwind-merge';
 import { MAIN_IMAGE_SRC } from '@constants';
 

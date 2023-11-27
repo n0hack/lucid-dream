@@ -1,9 +1,8 @@
 ---
-// import { Image } from 'astro:assets';
+import { Image } from 'astro:assets';
 import type { Project } from '@custom-types/post';
 import ProjectCardDesktopLink from './ProjectCardDesktopLink.astro';
 import ProjectCardMobileLink from './ProjectCardMobileLink.astro';
-import { Image } from '@components/common';
 
 type Props = Omit<Project, 'date'>;
 
@@ -15,16 +14,10 @@ const { thumbnail, title, descriptions, tags, links } = Astro.props;
     class="group relative h-[260px] shrink-0 overflow-hidden rounded-2xl lg:h-[240px] lg:w-[320px] lg:cursor-pointer"
   >
     <Image
-      className="transition-[filter] lg:group-hover:blur-sm"
-      thumbnail={thumbnail}
-      alt={`${title} 썸네일`}
-      client:load
-    />
-    <!-- <Image
       class="h-full w-full object-cover transition-[filter] lg:group-hover:blur-sm"
       src={thumbnail}
       alt={`${title} 썸네일`}
-    /> -->
+    />
     <div
       class="absolute inset-0 hidden lg:block lg:duration-300 lg:group-hover:bg-dim-050 lg:group-hover:transition-colors"
     >

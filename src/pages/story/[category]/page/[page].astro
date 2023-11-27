@@ -58,7 +58,6 @@ const { pathname } = Astro.url;
                 description={data.description}
                 date={data.date}
                 category={getCategoryNameFromSlug(slug)}
-                client:load
               />
             </a>
           ))
