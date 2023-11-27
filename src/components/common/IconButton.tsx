@@ -3,14 +3,11 @@ import { twMerge } from 'tailwind-merge';
 
 type IconButtonSize = '24' | '44';
 
-type IconButtonProps = {
-  className?: string;
-  style?: React.CSSProperties;
+type IconButtonProps = React.ComponentPropsWithoutRef<'button'> & {
   size?: IconButtonSize;
-  onClick?: () => void;
 };
 
-const IconButton = ({ size = '44', className, style, children, onClick }: React.PropsWithChildren<IconButtonProps>) => {
+const IconButton = ({ size = '44', className, children, ...rest }: React.PropsWithChildren<IconButtonProps>) => {
   return (
     <button
       className={twMerge(
@@ -18,8 +15,7 @@ const IconButton = ({ size = '44', className, style, children, onClick }: React.
         size === '24' ? 'h-6 w-6' : 'h-11 w-11',
         className,
       )}
-      style={style}
-      onClick={onClick}
+      {...rest}
     >
       {children}
     </button>

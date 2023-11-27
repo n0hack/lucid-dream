@@ -16,14 +16,19 @@ const MenuBoxMobile = ({ onMenuClose }: MenuBoxMobileProps) => {
         <ul className="flex w-fit flex-col gap-8">
           {navInfo.map(({ path, name, animation }) => (
             <li key={path} className={twMerge('-translate-x-full opacity-0', animation)}>
-              <a className="text-4xl font-bold" href={path} data-astro-prefetch="viewport">
+              <a
+                className="text-4xl font-bold"
+                href={path}
+                data-astro-prefetch="viewport"
+                aria-label={`${name} 페이지로 이동`}
+              >
                 {name}
               </a>
             </li>
           ))}
         </ul>
       </nav>
-      <IconButton className="absolute right-[26px] top-7" onClick={onMenuClose}>
+      <IconButton className="absolute right-[26px] top-7" onClick={onMenuClose} aria-albel="네비게이션 메뉴창 닫기">
         <IconX className="h-8 w-8" />
       </IconButton>
     </div>

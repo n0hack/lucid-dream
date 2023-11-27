@@ -38,7 +38,7 @@ const MenuButton = () => {
 
   return (
     <React.Fragment>
-      <IconButton className="lg:hidden" onClick={handleMenuOpen}>
+      <IconButton className="lg:hidden" onClick={handleMenuOpen} aria-label="네비게이션 메뉴창 열기">
         <IconMenu2 className="h-6 w-6" />
       </IconButton>
       {isMenuOpen && <MenuBoxMobile onMenuClose={handleMenuClose} />}

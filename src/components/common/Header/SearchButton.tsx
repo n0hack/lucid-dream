@@ -53,6 +53,7 @@ const SearchButton = () => {
       <IconButton
         className={isSearchBoxOpen ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'}
         onClick={handleSearchBoxOpen}
+        aria-label="검색창 열기"
       >
         <IconSearch className="h-6 w-6" />
       </IconButton>

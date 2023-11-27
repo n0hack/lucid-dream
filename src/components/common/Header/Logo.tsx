@@ -1,6 +1,6 @@
 const Logo = () => {
   return (
-    <a href="/" className="py-2">
+    <a href="/" className="py-2" aria-label="메인 페이지로 이동">
       <svg
         width="100%"
         height="100%"

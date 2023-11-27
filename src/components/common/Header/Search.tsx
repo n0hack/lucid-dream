@@ -36,6 +36,7 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(function (
         )}
         size="24"
         onClick={onClear}
+        aria-label="검색어 지우기"
       >
         <IconCircleX className="h-4 w-4" />
       </IconButton>

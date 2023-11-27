@@ -26,7 +26,7 @@ const SearchBoxMobile = ({ isOpen, value, onChange, onKeyDown, onClear, onClose 
       <MainImage className="absolute inset-0" />
       <Dim />
       <div className="absolute inset-0 flex h-16 w-full bg-white py-2 pr-4">
-        <IconButton className="mx-2" onClick={onClose}>
+        <IconButton className="mx-2" onClick={onClose} aria-label="검색창 닫기">
           <IconChevronLeft width={32} height={32} />
         </IconButton>
         <Search
