@@ -1,11 +1,13 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import { MainLayout } from '@components/layout';
-import { SearchHeaderSection, SearchResult, SearchResultSection } from '@components/search';
 import { getCollection } from 'astro:content';
-import { CATEGORY } from '@constants';
+import { Lazy, Responsive, Section } from '@components/common';
+import { SearchResult, SearchResultHeader } from '@components/search';
+import { Layout } from '@components/layout';
+import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
 
 export const getStaticPaths = (async () => {
+  // 스토리 컬렉션에서 태그 목록 추출
   const storyCollection = await getCollection('story');
   const tags = [...new Set(storyCollection.map((story) => story.data.tags).flat())];
 
@@ -17,11 +19,11 @@ export const getStaticPaths = (async () => {
           .filter((story) => story.data.tags.includes(tag))
           .map((story) => ({
             item: {
-              link: `/story/${story.slug.replace('/', '/post/')}`,
               ...story.data,
+              href: getStoryLinkFromSlug(story.slug),
               category: {
                 key: story.slug.split('/')[0],
-                value: CATEGORY[story.slug.split('/')[0] as keyof typeof CATEGORY],
+                value: getCategoryNameFromSlug(story.slug),
               },
             },
           })),
@@ -34,9 +36,13 @@ const { stories } = Astro.props;
 const { tag } = Astro.params;
 ---
 
-<MainLayout pageTitle={`'${tag}' 태그 스토리 (｡•̀ᴗ-)✧`} headerBg>
-  <SearchHeaderSection query={tag} text="태그 스토리" />
-  <SearchResultSection>
-    <SearchResult datas={stories} client:load />
-  </SearchResultSection>
-</MainLayout>
+<Layout pageTitle={`'${tag}' 태그 검색 결과 (｡•̀ᴗ-)✧`} headerBg>
+  <Section>
+    <Responsive>
+      <SearchResultHeader query={tag} suffixText="태그 스토리" />
+      <Lazy className="mt-12 lg:mt-20">
+        <SearchResult datas={stories} client:load />
+      </Lazy>
+    </Responsive>
+  </Section>
+</Layout>

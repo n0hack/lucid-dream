@@ -45,7 +45,7 @@ const { Content, headings } = await story.render();
     date={story.data.date}
     category={getCategoryNameFromSlug(story.slug)}
   />
-  <Section className="mb-20 mt-12 lg:mb-28 lg:mt-20">
+  <Section>
     <Responsive className="relative">
       <PostMarkdownRenderer>
         <Content />
