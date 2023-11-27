@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge';
 import { IconChevronLeft, IconChevronRight, IconDots } from '@tabler/icons-react';
 import PaginationButton from './PaginationButton';
 import PaginationIconButton from './PaginationIconButton';
@@ -8,6 +9,7 @@ type Page = {
 };
 
 type PaginationProps = {
+  className?: string;
   page: number;
   lastPage: number;
   buttonUrlPrefix: string;
@@ -18,7 +20,7 @@ type PaginationProps = {
 /**
  * @param buttonUrlPrefix `/project/page`, `/story/all/page` 형태로 작성
  */
-const Pagination = ({ page = 1, lastPage, buttonUrlPrefix, prevUrl, nextUrl }: PaginationProps) => {
+const Pagination = ({ className, page = 1, lastPage, buttonUrlPrefix, prevUrl, nextUrl }: PaginationProps) => {
   const getDotPageNumber = (dotIndex: number, pages: Page[]) => {
     const leftPage = pages[dotIndex - 1].page as number;
     const rightPage = pages[dotIndex + 1].page as number;
@@ -112,7 +114,7 @@ const Pagination = ({ page = 1, lastPage, buttonUrlPrefix, prevUrl, nextUrl }: P
   };
 
   return (
-    <div className="flex w-full flex-wrap items-center justify-center gap-2">
+    <div className={twMerge('flex w-full flex-wrap items-center justify-center gap-2', className)}>
       <PaginationIconButton disabled={page <= 1 || page > lastPage} href={prevUrl}>
         <IconChevronLeft />
       </PaginationIconButton>

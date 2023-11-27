@@ -3,7 +3,7 @@ import { Card } from '@components/common';
 import { SEARCH_RESULT_MAX_COUNT } from '@constants';
 
 type FuseItem = {
-  link: string;
+  href: string;
   thumbnail: { src: string };
   title: string;
   description: string;
@@ -47,7 +47,7 @@ const SearchResult = ({ datas }: SearchResultProps) => {
   return (
     <div ref={ref} className="grid gap-8 lg:grid-cols-3">
       {sliced.map(({ item: data }) => (
-        <a key={data.link} href={data.link}>
+        <a key={data.href} href={data.href}>
           <Card
             thumbnail={data.thumbnail.src}
             title={data.title}

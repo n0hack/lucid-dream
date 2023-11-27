@@ -1,29 +1,24 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { Card, Pagination, Responsive, Section } from '@components/common';
-import {
-  StoryCardBlock,
-  StoryCategoryBlock,
-  StoryCategoryExpansionButton,
-  StoryCategoryItem,
-  StoryCategoryList,
-  StoryPageHeader,
-} from '@components/story';
+import { Card, Lazy, Pagination, Responsive, Section } from '@components/common';
+import { StoryCategories, StoryCategoryExpansionButton, StoryCategory, StoryPageHeader } from '@components/story';
 import { Layout } from '@components/layout';
-import { Seo } from '@components/helper';
-import { CATEGORY, CATEGORY_NAME, SEO } from '@constants';
+import { CATEGORY } from '@constants/post';
+import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const storyCollection = await getCollection('story');
 
-  // constants/index.ts에서 카테고리 직접 관리
   return Object.entries(CATEGORY).flatMap(([key]) => {
-    // 카테고리별 필터링 후 날짜 내림차순으로 정렬
+    // 카테고리별 필터링 후, 날짜 내림차순으로 정렬
     const stories = (
-      key === 'all' ? storyCollection : storyCollection.filter((story) => story.slug.split('/')[0] === key)
+      (key as keyof typeof CATEGORY) === 'all'
+        ? storyCollection
+        : storyCollection.filter((story) => story.slug.split('/')[0] === key)
     ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
+    // 카테고리별 페이지네이션
     return paginate(stories, {
       pageSize: 9,
       params: { category: key },
@@ -31,7 +26,7 @@ export const getStaticPaths = (async ({ paginate }) => {
         categories: Object.entries(CATEGORY).map(([key, value]) => ({
           name: value,
           count:
-            key === 'all'
+            (key as keyof typeof CATEGORY) === 'all'
               ? storyCollection.length
               : storyCollection.filter((story) => story.slug.split('/')[0] === key).length,
           href: `/story/${key}/page/1`,
@@ -46,46 +41,30 @@ const { pathname } = Astro.url;
 ---
 
 <Layout pageTitle="화려히 반짝일 나의 스토리 (｡•̀ᴗ-)✧" headerBg>
-  <Seo
-    slot="metadata"
-    title="스토리"
-    description="학습하고, 경험한 것 외에 일상 속의 작은 이벤트도 기록합니다."
-    image={SEO.IMAGE}
-    tags={SEO.KEYWORDS}
-  />
-  <Section className="mt-12 lg:mt-20">
+  <Section className="mb-20 mt-12 lg:mb-28 lg:mt-20">
     <Responsive>
       <StoryPageHeader />
-      <StoryCategoryBlock>
-        <StoryCategoryList slot="list">
-          {categories.map((category) => <StoryCategoryItem pathname={pathname} {...category} client:load />)}
-        </StoryCategoryList>
+      <StoryCategories>
+        {categories.map((category) => <StoryCategory slot="item" pathname={pathname} {...category} client:load />)}
         <StoryCategoryExpansionButton slot="button" categories={categories} pathname={pathname} client:load />
-      </StoryCategoryBlock>
-    </Responsive>
-  </Section>
-  <Section className="mt-8 lg:mt-16" loading="lazy" client:load>
-    <Responsive>
-      <StoryCardBlock>
+      </StoryCategories>
+      <Lazy className="mt-8 grid gap-8 lg:mt-16 lg:grid-cols-3">
         {
           page.data.map(({ slug, data }) => (
-            <a href={`/story/${slug.replace('/', '/post/')}`}>
+            <a href={getStoryLinkFromSlug(slug)}>
               <Card
-                thumbnail={data.thumbnail.src}
+                thumbnail={data.thumbnail}
                 title={data.title}
                 description={data.description}
                 date={data.date}
-                category={CATEGORY_NAME(slug.split('/')[0])}
+                category={getCategoryNameFromSlug(slug)}
               />
             </a>
           ))
         }
-      </StoryCardBlock>
-    </Responsive>
-  </Section>
-  <Section className="mb-20 mt-12 lg:mb-28 lg:mt-20">
-    <Responsive>
+      </Lazy>
       <Pagination
+        className="mt-12 lg:mt-20"
         page={page.currentPage}
         lastPage={page.lastPage}
         buttonUrlPrefix={page.url.current.replace(/\/\d+$/, '')}

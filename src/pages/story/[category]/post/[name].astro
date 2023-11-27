@@ -12,7 +12,7 @@ import {
   PostTags,
 } from '@components/post';
 import { Layout } from '@components/layout';
-import { Seo } from '@components/helper';
+import { getCategoryNameFromSlug } from '@utils/post';
 
 export const getStaticPaths = (async () => {
   // 스토리 컬렉션을 불러온 후, 날짜 내림차순으로 정렬
@@ -29,24 +29,22 @@ export const getStaticPaths = (async () => {
 
     return {
       params: { category, name },
-      props: { category, story, otherStories },
+      props: { story, otherStories },
     };
   });
 }) satisfies GetStaticPaths;
 
-const { category, story, otherStories } = Astro.props;
+const { story, otherStories } = Astro.props;
 const { Content, headings } = await story.render();
 ---
 
 <Layout pageTitle={story.data.title}>
-  <Seo
-    slot="metadata"
+  <PostThumbnail
+    thumbnail={story.data.thumbnail}
     title={story.data.title}
-    description={story.data.description}
-    image={story.data.thumbnail.src}
-    tags={story.data.tags}
+    date={story.data.date}
+    category={getCategoryNameFromSlug(story.slug)}
   />
-  <PostThumbnail {...story.data} category={category} />
   <Section className="mb-20 mt-12 lg:mb-28 lg:mt-20">
     <Responsive className="relative">
       <PostMarkdownRenderer>
@@ -55,7 +53,11 @@ const { Content, headings } = await story.render();
       <PostToC headings={headings} />
       <PostTags tags={story.data.tags} />
       <PostAuthor />
-      <PostOtherStories category={category} currentStory={story} otherStories={otherStories} />
+      <PostOtherStories
+        category={getCategoryNameFromSlug(story.slug)}
+        currentStory={story}
+        otherStories={otherStories}
+      />
       <PostComment />
     </Responsive>
   </Section>

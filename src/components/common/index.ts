@@ -6,6 +6,7 @@ export { default as Card } from './Card';
 export { default as IconButton } from './IconButton';
 export { default as OutsideClick } from './OutsideClick';
 export { default as Section } from './Section';
+export { default as Lazy } from './Lazy.astro';
 
 export { default as Dim } from './Dim';
 export { default as Footer } from './Footer.astro';

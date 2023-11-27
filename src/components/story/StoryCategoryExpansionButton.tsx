@@ -3,7 +3,7 @@ import { IconButton } from '@components/common';
 import { BREAKPOINT } from '@constants';
 import { IconAdjustmentsHorizontal, IconX } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
-import StoryCategoryItem from './StoryCategoryItem';
+import StoryCategory from './StoryCategory';
 
 type StoryCategoryExpansionButtonProps = {
   categories: {
@@ -59,7 +59,7 @@ const StoryCategoryExpansionButton = ({ pathname, categories }: StoryCategoryExp
           <div className="relative mt-6 flex flex-1 flex-col overflow-y-auto px-6">
             <ul className="flex flex-1 flex-wrap content-start items-start justify-start gap-3 overflow-y-auto pb-12">
               {categories.map((category) => (
-                <StoryCategoryItem
+                <StoryCategory
                   key={category.href}
                   pathname={pathname}
                   name={category.name}
