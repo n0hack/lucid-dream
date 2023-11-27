@@ -9,7 +9,6 @@ type HomeProjectSliderProps = {
 };
 
 const HomeProjectSlider = ({ projects }: HomeProjectSliderProps) => {
-  console.log(projects);
   return (
     <Slider>
       {projects.map(({ id, data }) => (
