@@ -19,7 +19,7 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(function (
       <input
         ref={ref}
         className={twMerge(
-          'h-full w-full rounded-md bg-transparent px-12 text-sm outline-primary placeholder:text-gray-400 lg:outline-0',
+          'h-full w-full rounded-md bg-transparent px-12 outline-primary placeholder:text-gray-400 lg:text-sm lg:outline-0',
           className,
         )}
         value={value}
