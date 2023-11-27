@@ -1,15 +1,20 @@
 ---
-import { AboutMarkdownRenderer, AboutMarkdownSection } from '@components/about';
-import { MainLayout } from '@components/layout';
+import { AboutMarkdownRenderer } from '@components/about';
+import { Lazy, Responsive, Section } from '@components/common';
+import { Layout } from '@components/layout';
 
 const mdx = await Astro.glob('../content/about/about.mdx');
 const { Content } = mdx[0];
 ---
 
-<MainLayout pageTitle="루시드를 소개합니다! (｡•̀ᴗ-)✧" headerBg>
-  <AboutMarkdownSection>
-    <AboutMarkdownRenderer>
-      <Content />
-    </AboutMarkdownRenderer>
-  </AboutMarkdownSection>
-</MainLayout>
+<Layout pageTitle="루시드를 소개합니다! (｡•̀ᴗ-)✧" headerBg>
+  <Section>
+    <Responsive>
+      <Lazy>
+        <AboutMarkdownRenderer>
+          <Content />
+        </AboutMarkdownRenderer>
+      </Lazy>
+    </Responsive>
+  </Section>
+</Layout>
