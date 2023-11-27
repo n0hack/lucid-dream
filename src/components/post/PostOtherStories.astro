@@ -2,20 +2,23 @@
 import { twMerge } from 'tailwind-merge';
 import { IconArrowRight } from '@tabler/icons-react';
 import type { Story } from '@custom-types/post';
+import { getCategoryNameFromSlug } from '@utils/post';
 
 type Props = {
-  category: string;
   currentStory: Story;
   otherStories: Story[];
 };
 
-const { category, currentStory, otherStories } = Astro.props;
+const { currentStory, otherStories } = Astro.props;
 ---
 
 <div class="mt-12 rounded-md bg-gray-100 p-6 lg:mt-20">
   <p class="flex gap-1 text-gray-600">
-    <a class="truncate font-semibold text-black lg:hover:text-black/90" href={`/story/${category}/page/1`}>
-      '스토리 - {category}'
+    <a
+      class="truncate font-semibold text-black lg:hover:text-black/90"
+      href={`/story/${currentStory.slug.split('/')[0]}/page/1`}
+    >
+      '스토리 - {getCategoryNameFromSlug(currentStory.slug)}'
     </a>의 다른 글
   </p>
   <hr class="my-6 border-gray-200" />
