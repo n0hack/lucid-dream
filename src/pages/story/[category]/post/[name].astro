@@ -19,31 +19,22 @@ export const getStaticPaths = (async () => {
   const storyCollection = (await getCollection('story')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return storyCollection.flatMap((story) => {
-    // slug는 "javascript/1"과 같은 형태이며, 각각 [category, name]으로 분리하여 알맞게 사용
+    // "javascript/1"과 같은 형태의 slug를 각각 [category, name]으로 분리하여 알맞게 사용
     const [category, name] = story.slug.split('/');
 
-    // 동일한 카테고리의 게시물을 필터링 후, 현재 게시물의 앞뒤 2개씩 추출 (최대 5개)
+    // 동일한 카테고리의 게시물을 필터링 후, 현재 게시물의 앞뒤로 2개씩 추출 (최대 5개)
     const sameCategoryStories = storyCollection.filter((story) => story.slug.startsWith(category));
     const storyIndex = sameCategoryStories.findIndex((otherStory) => otherStory.slug === story.slug);
     const otherStories = sameCategoryStories.slice(storyIndex - 2 < 0 ? 0 : storyIndex - 2).slice(0, 5);
 
-    // 스토리 객체 가공 (data 필드에 카테고리 추가)
-    const newStory = {
-      ...story,
-      data: {
-        ...story.data,
-        category,
-      },
-    };
-
     return {
       params: { category, name },
-      props: { story: newStory, otherStories },
+      props: { category, story, otherStories },
     };
   });
 }) satisfies GetStaticPaths;
 
-const { story, otherStories } = Astro.props;
+const { category, story, otherStories } = Astro.props;
 const { Content, headings } = await story.render();
 ---
 
@@ -55,7 +46,7 @@ const { Content, headings } = await story.render();
     image={story.data.thumbnail.src}
     tags={story.data.tags}
   />
-  <PostThumbnail {...story.data} />
+  <PostThumbnail {...story.data} category={category} />
   <Section className="mb-20 mt-12 lg:mb-28 lg:mt-20">
     <Responsive className="relative">
       <PostMarkdownRenderer>
@@ -64,7 +55,7 @@ const { Content, headings } = await story.render();
       <PostToC headings={headings} />
       <PostTags tags={story.data.tags} />
       <PostAuthor />
-      <PostOtherStories currentStory={story} otherStories={otherStories} />
+      <PostOtherStories category={category} currentStory={story} otherStories={otherStories} />
       <PostComment />
     </Responsive>
   </Section>

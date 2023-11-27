@@ -1,4 +1,6 @@
 ---
+import { SEO } from '@constants';
+
 type Props = {
   title: string;
   description: string;
@@ -15,7 +17,7 @@ const { title, description, tags, image } = Astro.props;
 <meta property="og:image" content={image} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:site_name" content="루시드 드림 𖤐" />
+<meta property="og:site_name" content={SEO.SITE_NAME} />
 <meta property="og:locale" content="ko_KR" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -30,4 +32,4 @@ const { title, description, tags, image } = Astro.props;
 <!-- Default Metadata -->
 <meta name="description" content={description} />
 <meta name="keywords" content={tags.join(', ')} />
-<meta name="author" content="Lucid Jeon" />
+<meta name="author" content={SEO.AUTHOR} />

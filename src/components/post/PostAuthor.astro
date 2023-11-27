@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-import { IconMail, IconBrandNotion, IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
+import { IconMail, IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
 import profileImage from '@assets/lucid.png';
 import PostExternalLink from './PostExternalLink.astro';
+import { IconBrandDiscord } from '@tabler/icons-react';
 ---
 
 <div
@@ -29,11 +30,11 @@ import PostExternalLink from './PostExternalLink.astro';
       <PostExternalLink href="https://www.linkedin.com/in/%EC%A7%80%ED%9B%88-%EC%A0%84-1a6a00196/">
         <IconBrandLinkedin className="text-white" />
       </PostExternalLink>
+      <PostExternalLink href="#">
+        <IconBrandDiscord className="text-white" />
+      </PostExternalLink>
       <PostExternalLink href="mailto:jihun@lucid-dream.net">
         <IconMail className="text-white" />
-      </PostExternalLink>
-      <PostExternalLink href="#">
-        <IconBrandNotion className="text-white" />
       </PostExternalLink>
     </ul>
   </div>

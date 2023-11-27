@@ -10,7 +10,7 @@ const { tags } = Astro.props;
   {
     tags.map((tag) => (
       <li>
-        <a class="block rounded-sm bg-black px-4 py-2 text-sm text-white lg:hover:bg-black/90" href={`/tag/${tag}`}>
+        <a class="block rounded-[4px] bg-black px-4 py-2 text-sm text-white lg:hover:bg-black/90" href={`/tag/${tag}`}>
           {tag}
         </a>
       </li>

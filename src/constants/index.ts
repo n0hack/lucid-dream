@@ -33,6 +33,8 @@ export const CATEGORY_NAME = (category: string) => CATEGORY[category as keyof ty
 /** SEO */
 export const SEO = {
   SITE_NAME: '루시드 드림 𖤐',
+  SITE_URL: 'https://lucid-dream.net',
+  AUTHOR: 'Lucid Jeon',
   IMAGE: MAIN_IMAGE_SRC('1280'),
   KEYWORDS: ['루시드 드림', 'lucid dream', '화려히 반짝일 나의 스토리'],
 };
