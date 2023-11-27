@@ -22,3 +22,17 @@ export type Story = {
     date: Date;
   };
 };
+
+export type ProjectLink = {
+  name: string;
+  href: string;
+};
+
+export type Project = {
+  thumbnail: AstroImage;
+  title: string;
+  descriptions: string[];
+  tags: string[];
+  date: Date;
+  links: ProjectLink[];
+};

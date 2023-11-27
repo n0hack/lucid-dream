@@ -10,7 +10,7 @@ export const getStoryLinkFromSlug = (slug: string) => {
 
 /**
  * `Story` 문서의 `slug`를 통해 카테고리 이름을 가져오는 함수
- * - 카테고리를 저장하고 있는 객체는 `src/constants`에서 관리
+ * - 카테고리 목록은 `constants/post.ts`에서 관리
  * - "javascript/1" → "자바스크립트"
  */
 export const getCategoryNameFromSlug = (slug: string) => {
