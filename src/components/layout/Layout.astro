@@ -59,3 +59,15 @@ const { pathname } = Astro.url;
     <Footer />
   </body>
 </html>
+
+<script>
+  // 글 복사에 대한 출처 자동 추가
+  if (navigator.clipboard) {
+    window.addEventListener('copy', async () => {
+      const copiedText = await navigator.clipboard.readText();
+      const copyright = `출처: ${window.location.href} [루시드 드림 𖤐]`;
+
+      navigator.clipboard.writeText(`${copiedText}\n\n${copyright}`);
+    });
+  }
+</script>

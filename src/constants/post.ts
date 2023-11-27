@@ -7,4 +7,5 @@ export const CATEGORY = Object.freeze({
   'web-basic': 'Web Basic',
   javascript: '자바스크립트',
   'problem-solving': '문제풀이',
+  project: '프로젝트',
 });

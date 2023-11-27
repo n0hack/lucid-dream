@@ -17,16 +17,14 @@ type HomeProjectSliderProps = {
 const HomeProjectSlider = ({ projects }: HomeProjectSliderProps) => {
   return (
     <Slider>
-      {projects.map(({ id, data }) => (
-        <a key={id} href="#">
-          <Card
-            thumbnail={data.thumbnail}
-            title={data.title}
-            description={data.descriptions[0]}
-            date={data.date}
-            category={data.tags[0]}
-          />
-        </a>
+      {projects.map(({ data }) => (
+        <Card
+          thumbnail={data.thumbnail}
+          title={data.title}
+          description={data.descriptions[0]}
+          date={data.date}
+          category={data.tags[0]}
+        />
       ))}
     </Slider>
   );

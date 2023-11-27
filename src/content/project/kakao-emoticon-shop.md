@@ -11,5 +11,5 @@ tags: ['Web', 'HTML', 'CSS', 'JavaScript']
 date: 2022-01-03
 links:
   github: 'https://github.com/n0hack/kakao-emoticon-shop'
-  story: '#gd'
+  story: '/story/project/post/1'
 ---

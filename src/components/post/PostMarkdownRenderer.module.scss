@@ -20,7 +20,7 @@
 }
 
 .renderer h2 {
-  @apply mt-12 text-xl lg:mt-16 lg:text-2xl;
+  @apply mt-12 text-2xl lg:mt-16;
 }
 
 .renderer h3 {
@@ -29,7 +29,7 @@
 
 // Paragraph
 .renderer p {
-  @apply my-4 text-base lg:my-6;
+  @apply my-6 text-base;
 
   & > code {
     @apply rounded-md bg-primary-50 px-[6px] py-1 text-sm text-primary;
@@ -38,7 +38,7 @@
 
 // List
 .renderer ul {
-  @apply my-4 pl-6 lg:my-6;
+  @apply my-6 pl-6;
 
   li {
     @apply list-disc text-base;
@@ -60,11 +60,11 @@
 
 // Image
 .renderer img {
-  @apply mx-auto my-4 rounded-md lg:my-6;
+  @apply mx-auto my-6 rounded-md;
 }
 
 .renderer blockquote {
-  @apply my-4 border-l-4 border-primary bg-gray-50 px-6 py-4 lg:my-6 lg:px-8;
+  @apply my-6 border-l-4 border-primary bg-gray-50 px-6 py-4 lg:px-8;
 
   p {
     @apply my-0;
@@ -73,5 +73,5 @@
 
 // Code Block
 .renderer div[class='expressive-code'] {
-  @apply my-4 lg:my-6;
+  @apply my-6;
 }
