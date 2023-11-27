@@ -12,7 +12,7 @@ const projectSchema = defineCollection({
       links: z.object({
         site: z.string().optional(),
         github: z.string().optional(),
-        story: z.string(),
+        story: z.string().optional(),
       }),
     }),
 });

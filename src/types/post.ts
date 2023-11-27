@@ -34,5 +34,5 @@ export type Project = {
   descriptions: string[];
   tags: string[];
   date: Date;
-  links: ProjectLink[];
+  links: Record<string, string>;
 };

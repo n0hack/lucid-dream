@@ -24,7 +24,7 @@ const { thumbnail, title, descriptions, tags, links } = Astro.props;
       <div
         class="absolute bottom-6 flex w-full translate-y-6 flex-col gap-4 px-6 opacity-0 lg:transition-all lg:duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
       >
-        {links.map((link) => <ProjectCardDesktopLink name={link.name} href={link.href} />)}
+        {Object.entries(links).map(([name, href]) => <ProjectCardDesktopLink name={name} href={href} />)}
       </div>
     </div>
   </div>
@@ -42,6 +42,6 @@ const { thumbnail, title, descriptions, tags, links } = Astro.props;
   </div>
 
   <div class="mt-6 flex gap-3 px-2 lg:hidden">
-    {links.map((link) => <ProjectCardMobileLink name={link.name} href={link.href} />)}
+    {Object.entries(links).map(([name, href]) => <ProjectCardMobileLink name={name} href={href} />)}
   </div>
 </div>

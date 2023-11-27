@@ -27,7 +27,7 @@ const { page } = Astro.props;
               title={data.title}
               descriptions={data.descriptions}
               tags={data.tags}
-              links={Object.entries(data.links).map(([name, href]) => ({ name, href }))}
+              links={data.links}
             />
           ))
         }

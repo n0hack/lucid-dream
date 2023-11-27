@@ -10,7 +10,5 @@ descriptions:
 tags: ['Web', 'ML', 'AI']
 date: 2021-07-21
 links:
-  site: '#'
   github: 'https://github.com/SCAUT-GG'
-  story: '#'
 ---
