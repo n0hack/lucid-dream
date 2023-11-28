@@ -15,10 +15,10 @@ const { pathname } = Astro.url;
 <!doctype html>
 <html lang="ko">
   <head>
+    <!-- Meta Datas -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-
     <slot name="meta-data" />
 
     <!-- Icons -->
@@ -42,14 +42,13 @@ const { pathname } = Astro.url;
 
     <title>{pageTitle}</title>
 
-    <slot name="preload-data" />
-
     <!-- Preload Datas -->
-    <!-- <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Bold.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Bold.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-SemiBold.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Medium.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin="" href="/fonts/pretendard/Pretendard-Regular.woff2" />
-    <link rel="preload" as="font" type="font/ttf" crossorigin="" href="/fonts/firacode/FiraCode-Regular.ttf" /> -->
+    <link rel="preload" as="font" type="font/ttf" crossorigin="" href="/fonts/firacode/FiraCode-Regular.ttf" />
+    <slot name="preload-data" />
   </head>
   <body>
     <Header hasBg={headerBg} pathname={pathname} client:load />
