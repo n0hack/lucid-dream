@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { BREAKPOINT } from '@constants/style';
+import { DESKTOP_BREAKPOINT } from '@constants/style';
 import Search from './Search';
 
 type SearchBoxDesktopProps = {
@@ -46,7 +46,7 @@ const SearchBoxDesktop = ({ isOpen, value, onChange, onKeyDown, onClear }: Searc
         isOpen={isOpen}
         value={value}
         onChange={onChange}
-        onKeyDown={(e) => window.innerWidth >= BREAKPOINT && onKeyDown(e)}
+        onKeyDown={(e) => window.innerWidth >= DESKTOP_BREAKPOINT && onKeyDown(e)}
         onClear={onClear}
       />
     </div>

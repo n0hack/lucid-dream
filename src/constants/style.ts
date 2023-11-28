@@ -1,5 +1,8 @@
-/** 반응형 분기점 (innerWidth) */
-export const BREAKPOINT = 1024;
+/** 태블릿 반응형 분기점 (innerWidth) */
+export const TABLE_BREAKPOINT = 768;
+
+/** 데스크톱 반응형 분기점 (innerWidth) */
+export const DESKTOP_BREAKPOINT = 1024;
 
 /** Header 색상이 변환되는 지점 (scrollY) */
 export const HEADER_TRANSITION_POINT = 64;

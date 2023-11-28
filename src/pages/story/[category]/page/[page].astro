@@ -49,7 +49,7 @@ const { pathname } = Astro.url;
         {categories.map((category) => <StoryCategory slot="item" pathname={pathname} {...category} client:load />)}
         <StoryCategoryExpansionButton slot="button" categories={categories} pathname={pathname} client:load />
       </StoryCategories>
-      <Lazy className="mt-8 grid gap-8 lg:mt-16 lg:grid-cols-3">
+      <Lazy className="mt-8 grid gap-8 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
         {
           page.data.map(({ slug, data }) => (
             <a href={getStoryLinkFromSlug(slug)}>

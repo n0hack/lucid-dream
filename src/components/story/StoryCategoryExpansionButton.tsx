@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IconButton } from '@components/common';
-import { BREAKPOINT } from '@constants/style';
+import { DESKTOP_BREAKPOINT } from '@constants/style';
 import { IconAdjustmentsHorizontal, IconX } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
 import StoryCategory from './StoryCategory';
@@ -29,7 +29,7 @@ const StoryCategoryExpansionButton = ({ pathname, categories }: StoryCategoryExp
 
   useEffect(() => {
     const ro = new ResizeObserver((entries) => {
-      if (entries[0].contentRect.width >= BREAKPOINT) {
+      if (entries[0].contentRect.width >= DESKTOP_BREAKPOINT) {
         handleCloseMenu();
       }
     });

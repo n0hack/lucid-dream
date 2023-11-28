@@ -4,7 +4,7 @@ import ReactSlick from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { twMerge } from 'tailwind-merge';
-import { BREAKPOINT } from '@constants/style';
+import { DESKTOP_BREAKPOINT, TABLE_BREAKPOINT } from '@constants/style';
 import NextSlideButton from './NextSlideButton';
 import PrevSlideButton from './PrevSlideButton';
 import './Slider.css';
@@ -18,9 +18,17 @@ const Slider = ({ className, children }: PropsWithChildren<SliderProps>) => {
     slidesToShow: 3,
     responsive: [
       {
-        breakpoint: BREAKPOINT,
+        // <= 768
+        breakpoint: TABLE_BREAKPOINT,
         settings: {
           slidesToShow: 1,
+        },
+      },
+      {
+        // <= 1024
+        breakpoint: DESKTOP_BREAKPOINT,
+        settings: {
+          slidesToShow: 2,
         },
       },
     ],

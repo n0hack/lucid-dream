@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { MainImage, Dim, IconButton } from '@components/common';
-import { BREAKPOINT } from '@constants/style';
+import { DESKTOP_BREAKPOINT } from '@constants/style';
 import { IconChevronLeft } from '@tabler/icons-react';
 import Search from './Search';
 
@@ -35,7 +35,7 @@ const SearchBoxMobile = ({ isOpen, value, onChange, onKeyDown, onClear, onClose 
           isOpen={isOpen}
           value={value}
           onChange={onChange}
-          onKeyDown={(e) => window.innerWidth < BREAKPOINT && onKeyDown(e)}
+          onKeyDown={(e) => window.innerWidth < DESKTOP_BREAKPOINT && onKeyDown(e)}
           onClear={onClear}
         />
       </div>

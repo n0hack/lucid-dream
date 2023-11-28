@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { OutsideClick, IconButton } from '@components/common';
-import { BREAKPOINT, CLASSNAME_PREVENT_SCROLL } from '@constants/style';
+import { DESKTOP_BREAKPOINT, CLASSNAME_PREVENT_SCROLL } from '@constants/style';
 import { IconSearch } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
 import SearchBoxDesktop from './SearchBoxDesktop';
@@ -13,7 +13,7 @@ const SearchButton = () => {
 
   const handleSearchBoxOpen = () => {
     // Mobile에 대한 스크롤 동작 여부 처리
-    if (window.innerWidth < BREAKPOINT) {
+    if (window.innerWidth < DESKTOP_BREAKPOINT) {
       preventScroll();
     }
     setIsSearchBoxOpen(true);
@@ -33,7 +33,7 @@ const SearchButton = () => {
       // Mobile에서의 검색창은 스크롤 동작을 막기 때문에, Resize Event에 대해 처리
       const { width } = entries[0].contentRect;
 
-      if (width < BREAKPOINT) {
+      if (width < DESKTOP_BREAKPOINT) {
         if (document.body.classList.contains(CLASSNAME_PREVENT_SCROLL)) return;
         preventScroll();
       } else {
