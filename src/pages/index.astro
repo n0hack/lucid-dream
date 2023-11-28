@@ -35,4 +35,14 @@ const stories = storyCollection
   <!-- Head -->
   <PageSEO slot="meta-data" />
   <link slot="preload-data" rel="preload" href="/images/main@3140.webp" as="image" />
+  {
+    projects
+      .slice(0, 3)
+      .map(({ data }) => <link slot="preload-data" rel="preload" href={data.thumbnail.src} as="iamge" />)
+  }
+  {
+    stories
+      .slice(0, 3)
+      .map(({ data }) => <link slot="preload-data" rel="preload" href={data.thumbnail.src} as="iamge" />)
+  }
 </Layout>
