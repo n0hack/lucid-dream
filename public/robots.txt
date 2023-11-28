@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lucid-dream.net/sitemap-index.xml
