@@ -4,6 +4,7 @@ import { HomeMainImage, HomeProjectSlider, HomeSectionTitle, HomeStorySlider } f
 import { Layout } from '@components/layout';
 import { PROJECT_SLIDE_MAX_COUNT, STORY_SLIDE_MAX_COUNT } from '@constants';
 import { Lazy, Responsive, Section } from '@components/common';
+import { PageSEO } from '@components/helper';
 
 const projectCollection = await getCollection('project');
 const projects = projectCollection
@@ -32,5 +33,6 @@ const stories = storyCollection
   </Section>
 
   <!-- Head -->
+  <PageSEO slot="meta-data" />
   <link slot="preload-data" rel="preload" href="/images/main@3140.webp" as="image" />
 </Layout>

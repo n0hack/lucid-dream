@@ -1,0 +1,36 @@
+---
+import { AUTHOR, IMAGE, KEYWORDS, SITE_DESCRIPTION, SITE_NAME } from '@constants/seo';
+
+type Props = {
+  title?: string;
+  description?: string;
+  keywords?: string[];
+};
+
+const { title, description, keywords = [] } = Astro.props;
+---
+
+<meta name="description" content={description ?? SITE_DESCRIPTION} />
+<meta name="keywords" content={KEYWORDS.concat(keywords).join(',')} />
+<meta name="author" content={AUTHOR} />
+
+<!-- BEGIN OPENGRAPH -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:title" content={title ?? SITE_NAME} />
+<meta property="og:description" content={description ?? SITE_DESCRIPTION} />
+<meta property="og:image" content={IMAGE} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:article:author" content={AUTHOR} />
+<!-- END OPENGRAPH -->
+
+<!-- BEGIN TWITTER_CARD -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={Astro.url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description ?? SITE_DESCRIPTION} />
+<meta name="twitter:image" content={IMAGE} />
+<!-- END TWITTER_CARD -->

@@ -1,1 +1,1 @@
-export { default as Seo } from './Seo.astro';
+export { default as PageSEO } from './PageSEO.astro';
