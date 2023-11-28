@@ -17,7 +17,7 @@ const Navigation = ({ hasBg, fillBg, pathname }: NavigationProps) => {
               className={twMerge(
                 'block py-1 text-sm font-semibold',
                 hasBg || fillBg ? 'hover:text-primary' : 'hover:text-gray-200',
-                pathname.includes(path) && 'text-primary',
+                pathname.split('/')[1] === path.split('/')[1] && 'text-primary',
               )}
               href={path}
               data-astro-prefetch="viewport"
