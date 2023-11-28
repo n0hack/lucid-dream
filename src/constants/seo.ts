@@ -6,7 +6,9 @@ export const SITE_URL = 'https://lucid-dream.net';
 
 export const AUTHOR = 'Lucid Jeon';
 
-export const IMAGE = `${SITE_URL}/images/og-main.webp`;
+export const OG_IMAGE = `${SITE_URL}/images/og-main.webp`;
+
+export const ABOUT_OG_IMAGE = `${SITE_URL}/images/og-about.webp`;
 
 export const KEYWORDS = [
   '루시드 드림',

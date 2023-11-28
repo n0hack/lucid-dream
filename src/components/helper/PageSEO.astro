@@ -1,13 +1,14 @@
 ---
-import { AUTHOR, IMAGE, KEYWORDS, SITE_DESCRIPTION, SITE_NAME } from '@constants/seo';
+import { AUTHOR, OG_IMAGE, KEYWORDS, SITE_DESCRIPTION, SITE_NAME } from '@constants/seo';
 
 type Props = {
   title?: string;
   description?: string;
   keywords?: string[];
+  image?: string;
 };
 
-const { title, description, keywords = [] } = Astro.props;
+const { title, description, keywords = [], image } = Astro.props;
 ---
 
 <meta name="description" content={description ?? SITE_DESCRIPTION} />
@@ -21,7 +22,7 @@ const { title, description, keywords = [] } = Astro.props;
 <meta property="og:site_name" content={SITE_NAME} />
 <meta property="og:title" content={title ?? SITE_NAME} />
 <meta property="og:description" content={description ?? SITE_DESCRIPTION} />
-<meta property="og:image" content={IMAGE} />
+<meta property="og:image" content={image ?? OG_IMAGE} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:article:author" content={AUTHOR} />
@@ -32,5 +33,5 @@ const { title, description, keywords = [] } = Astro.props;
 <meta name="twitter:url" content={Astro.url} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description ?? SITE_DESCRIPTION} />
-<meta name="twitter:image" content={IMAGE} />
+<meta name="twitter:image" content={image ?? OG_IMAGE} />
 <!-- END TWITTER_CARD -->
