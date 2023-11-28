@@ -17,7 +17,7 @@ const expressiveCodeOptions = {
 
 /** @type {import("@astrojs/sitemap").SitemapOptions} */
 const sitemapOptions = {
-  filter: (page) => !page.includes('https://lucid-dream.net/search'),
+  filter: (page) => !page.includes('https://lucid-dream.net/search') && !page.includes('/page/'),
 };
 
 // https://astro.build/config
