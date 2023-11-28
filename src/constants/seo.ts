@@ -6,7 +6,7 @@ export const SITE_URL = 'https://lucid-dream.net';
 
 export const AUTHOR = 'Lucid Jeon';
 
-export const IMAGE = `${SITE_URL}/images/main@1280.png`;
+export const IMAGE = `${SITE_URL}/images/main@1280.webp`;
 
 export const KEYWORDS = [
   '루시드 드림',
