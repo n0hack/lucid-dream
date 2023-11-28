@@ -1,44 +1,44 @@
 @font-face {
   font-family: 'Pretendard';
   font-weight: 400;
-  font-display: swap;
+  font-display: block;
   src:
     local('Pretendard Regular'),
-    url('./pretendard/Pretendard-Regular.woff2') format('woff2');
+    url('/fonts/pretendard/Pretendard-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Pretendard';
   font-weight: 500;
-  font-display: swap;
+  font-display: block;
   src:
     local('Pretendard Medium'),
-    url('./pretendard/Pretendard-Medium.woff2') format('woff2');
+    url('/fonts/pretendard/Pretendard-Medium.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Pretendard';
   font-weight: 600;
-  font-display: swap;
+  font-display: block;
   src:
     local('Pretendard SemiBold'),
-    url('./pretendard/Pretendard-SemiBold.woff2') format('woff2');
+    url('/fonts/pretendard/Pretendard-SemiBold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Pretendard';
   font-weight: 700;
-  font-display: swap;
+  font-display: block;
   src:
     local('Pretendard Bold'),
-    url('./pretendard/Pretendard-Bold.woff2') format('woff2');
+    url('/fonts/pretendard/Pretendard-Bold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Fira Code';
   font-weight: 400;
-  font-display: swap;
+  font-display: block;
   src:
     local('FiraCode Regular'),
-    url('./firacode/FiraCode-Regular.ttf') format('truetype');
+    url('/fonts/firacode/FiraCode-Regular.ttf') format('truetype');
 }
