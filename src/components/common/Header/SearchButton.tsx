@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { OutsideClick, IconButton } from '@components/common';
-import { BREAKPOINT, CLASSNAME_PREVENT_SCROLL } from '@constants';
+import { BREAKPOINT, CLASSNAME_PREVENT_SCROLL } from '@constants/style';
 import { IconSearch } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
 import SearchBoxDesktop from './SearchBoxDesktop';

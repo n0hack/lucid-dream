@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { MainImage, Dim, IconButton } from '@components/common';
-import { BREAKPOINT } from '@constants';
+import { BREAKPOINT } from '@constants/style';
 import { IconChevronLeft } from '@tabler/icons-react';
 import Search from './Search';
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Card } from '@components/common';
-import { SEARCH_RESULT_MAX_COUNT } from '@constants';
+import { SEARCH_RESULT_MAX_COUNT } from '@constants/style';
 import type { AstroImage } from '@custom-types/post';
 
 type FuseItem = {

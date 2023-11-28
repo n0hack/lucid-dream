@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { Responsive } from '@components/common';
-import { HEADER_TRANSITION_POINT } from '@constants';
+import { HEADER_TRANSITION_POINT } from '@constants/style';
 import Logo from './Logo';
 import MenuButton from './MenuButton';
 import Navigation from './Navigation';

@@ -4,7 +4,7 @@ import ReactSlick from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { twMerge } from 'tailwind-merge';
-import { BREAKPOINT } from '@constants';
+import { BREAKPOINT } from '@constants/style';
 import NextSlideButton from './NextSlideButton';
 import PrevSlideButton from './PrevSlideButton';
 import './Slider.css';

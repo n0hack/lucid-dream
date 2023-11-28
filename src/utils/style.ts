@@ -1,4 +1,4 @@
-import { CLASSNAME_PREVENT_SCROLL } from '@constants';
+import { CLASSNAME_PREVENT_SCROLL } from '@constants/style';
 
 /** 스크롤 동작을 막는 함수 */
 export const preventScroll = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IconButton } from '@components/common';
-import { BREAKPOINT } from '@constants';
+import { BREAKPOINT } from '@constants/style';
 import { IconAdjustmentsHorizontal, IconX } from '@tabler/icons-react';
 import { preventScroll, restoreScroll } from '@utils/style';
 import StoryCategory from './StoryCategory';

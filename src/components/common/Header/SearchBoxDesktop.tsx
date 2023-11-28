@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { BREAKPOINT } from '@constants';
+import { BREAKPOINT } from '@constants/style';
 import Search from './Search';
 
 type SearchBoxDesktopProps = {
