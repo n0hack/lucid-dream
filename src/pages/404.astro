@@ -8,13 +8,7 @@ import { Layout } from '@components/layout';
     <Responsive className="flex flex-1 items-center justify-center py-12 lg:py-20">
       <div class="flex w-full flex-col gap-4 lg:flex-row lg:justify-center lg:gap-12">
         <div class="flex justify-center">
-          <img
-            class="h-32 w-32 opacity-100 lg:h-44 lg:w-44"
-            src="/images/blitz.webp"
-            alt="블리츠크랭크"
-            decoding="async"
-            loading="lazy"
-          />
+          <img class="h-32 w-32 opacity-100 lg:h-44 lg:w-44" src="/images/blitz.webp" alt="블리츠크랭크" />
         </div>
         <div class="flex flex-col">
           <p class="text-center text-2xl font-semibold text-black lg:text-left">
@@ -34,4 +28,7 @@ import { Layout } from '@components/layout';
       </div>
     </Responsive>
   </Section>
+
+  <!-- Head -->
+  <link slot="preload-data" rel="preload" href="/images/blitz.webp" as="image" />
 </Layout>
