@@ -11,7 +11,7 @@ const { headings } = Astro.props;
 
 <div class="absolute left-full top-0 ml-8 hidden h-full toc:block">
   <div class="sticky top-24">
-    <ul class="flex h-fit max-h-[600px] w-[280px] flex-col gap-2 overflow-y-auto border-l-4 border-primary py-6 pl-6">
+    <ul class="flex h-fit max-h-[720px] w-[280px] flex-col gap-2 overflow-y-auto border-l-4 border-primary py-6 pl-6">
       {
         headings.map((heading) => {
           if (heading.depth !== 1 && heading.depth !== 2) return null;
