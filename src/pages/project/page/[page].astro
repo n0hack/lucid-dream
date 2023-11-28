@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import { Lazy, Pagination, Responsive, Section } from '@components/common';
 import { ProjectCard, ProjectPageHeader } from '@components/project';
 import { Layout } from '@components/layout';
+import { PageSEO } from '@components/helper';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const projectCollection = await getCollection('project');
@@ -43,4 +44,12 @@ const { page } = Astro.props;
       />
     </Responsive>
   </Section>
+
+  <!-- HEAD -->
+  <PageSEO
+    slot="meta-data"
+    title="열심히 만들어 온 프로젝트 (｡•̀ᴗ-)✧"
+    description="풍부한 상상과 호기심으로 만들어 온 다양한 프로젝트를 소개합니다 💻"
+    keywords={['프로젝트', 'Project']}
+  />
 </Layout>

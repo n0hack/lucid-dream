@@ -6,6 +6,7 @@ import { StoryCategories, StoryCategoryExpansionButton, StoryCategory, StoryPage
 import { Layout } from '@components/layout';
 import { CATEGORY } from '@constants/post';
 import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
+import { PageSEO } from '@components/helper';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const storyCollection = await getCollection('story');
@@ -74,6 +75,15 @@ const { pathname } = Astro.url;
       />
     </Responsive>
   </Section>
+
+  <!-- HEAD -->
+  <PageSEO
+    slot="meta-data"
+    title="화려히 반짝일 나의 스토리 (｡•̀ᴗ-)✧"
+    description="학습하고, 경험한 것 외에 일상 속의 작은 이벤트도 기록합니다 📝"
+    keywords={['스토리', 'Story']}
+  />
+  {page.data.map(({ data }) => <link slot="preload-data" rel="preload" href={data.thumbnail.src} as="image" />)}
 </Layout>
 
 <script>

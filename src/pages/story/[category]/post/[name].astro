@@ -13,6 +13,7 @@ import {
 } from '@components/post';
 import { Layout } from '@components/layout';
 import { getCategoryNameFromSlug } from '@utils/post';
+import { PostSEO } from '@components/helper';
 
 export const getStaticPaths = (async () => {
   // 스토리 컬렉션을 불러온 후, 날짜 내림차순으로 정렬
@@ -57,4 +58,13 @@ const { Content, headings } = await story.render();
       <PostComment />
     </Responsive>
   </Section>
+
+  <!-- HEAD -->
+  <PostSEO
+    slot="meta-data"
+    title={story.data.title}
+    description={story.data.description}
+    tags={story.data.tags}
+    image={story.data.thumbnail.src}
+  />
 </Layout>

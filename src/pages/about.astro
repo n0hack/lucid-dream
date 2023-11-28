@@ -1,6 +1,7 @@
 ---
 import { AboutMarkdownRenderer } from '@components/about';
 import { Lazy, Responsive, Section } from '@components/common';
+import { PageSEO } from '@components/helper';
 import { Layout } from '@components/layout';
 
 const mdx = await Astro.glob('../content/about/about.mdx');
@@ -17,4 +18,7 @@ const { Content } = mdx[0];
       </Lazy>
     </Responsive>
   </Section>
+
+  <!-- HEAD -->
+  <PageSEO slot="meta-data" title="루시드를 소개합니다! (｡•̀ᴗ-)✧" keywords={['소개', 'About']} />
 </Layout>

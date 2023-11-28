@@ -7,6 +7,8 @@ import { Lazy, Responsive, Section } from '@components/common';
 import { SearchResult, SearchResultEmpty, SearchResultHeader } from '@components/search';
 import { Layout } from '@components/layout';
 import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
+import { PageSEO } from '@components/helper';
+import { SITE_URL } from '@constants/seo';
 
 const query = Astro.url.searchParams.get('q') ?? '';
 
@@ -60,4 +62,14 @@ export const prerender = false;
       }
     </Responsive>
   </Section>
+
+  <!-- HEAD -->
+  <PageSEO
+    slot="meta-data"
+    title="검색 결과 (｡•̀ᴗ-)✧"
+    description="검색을 통해 알맞은 스토리를 찾아보세요 ✨"
+    keywords={['검색', 'Search']}
+  />
+  <link rel="canonical" href={`${SITE_URL}/search`} />
+  <link rel="canonical" href="/search" />
 </Layout>
