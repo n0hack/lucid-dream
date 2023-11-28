@@ -83,7 +83,6 @@ const { pathname } = Astro.url;
     description="학습하고, 경험한 것 외에 일상 속의 작은 이벤트도 기록합니다 📝"
     keywords={['스토리', 'Story']}
   />
-  {page.data.map(({ data }) => <link slot="preload-data" rel="preload" href={data.thumbnail.src} as="image" />)}
 </Layout>
 
 <script>

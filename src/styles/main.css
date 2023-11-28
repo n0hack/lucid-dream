@@ -1,4 +1,4 @@
-@import './fonts.css';
+@import url('/fonts/fonts.css');
 
 * {
   font-family: 'Pretendard', sans-serif;

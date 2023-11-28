@@ -4,7 +4,7 @@
   font-display: swap;
   src:
     local('Pretendard Regular'),
-    url('/fonts/pretendard/Pretendard-Regular.woff2') format('woff2');
+    url('./pretendard/Pretendard-Regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -13,7 +13,7 @@
   font-display: swap;
   src:
     local('Pretendard Medium'),
-    url('/fonts/pretendard/Pretendard-Medium.woff2') format('woff2');
+    url('./pretendard/Pretendard-Medium.woff2') format('woff2');
 }
 
 @font-face {
@@ -22,7 +22,7 @@
   font-display: swap;
   src:
     local('Pretendard SemiBold'),
-    url('/fonts/pretendard/Pretendard-SemiBold.woff2') format('woff2');
+    url('./pretendard/Pretendard-SemiBold.woff2') format('woff2');
 }
 
 @font-face {
@@ -31,7 +31,7 @@
   font-display: swap;
   src:
     local('Pretendard Bold'),
-    url('/fonts/pretendard/Pretendard-Bold.woff2') format('woff2');
+    url('./pretendard/Pretendard-Bold.woff2') format('woff2');
 }
 
 @font-face {
@@ -40,5 +40,5 @@
   font-display: swap;
   src:
     local('FiraCode Regular'),
-    url('/fonts/firacode/FiraCode-Regular.ttf') format('truetype');
+    url('./firacode/FiraCode-Regular.ttf') format('truetype');
 }
