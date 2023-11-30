@@ -159,6 +159,9 @@
 
 // 외부 콘텐츠 (Iframe)
 .renderer iframe {
+  width: 100%;
+  max-width: 37.5rem;
+  aspect-ratio: 16 / 9;
   margin: 1.25rem auto;
 
   @media (min-width: 1024px) {
