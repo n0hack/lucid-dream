@@ -12,12 +12,7 @@ const HomeProjectSlider = ({ projects }: HomeProjectSliderProps) => {
   return (
     <Slider>
       {projects.map(({ id, data }) => (
-        <a
-          key={id}
-          href={data.links['site'] ?? data.links['github'] ?? data.links['story'] ?? '#'}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a key={id} href={data.links['site'] ?? data.links['github'] ?? undefined}>
           <Card
             thumbnail={data.thumbnail}
             title={data.title}

@@ -7,12 +7,7 @@ const { href } = Astro.props;
 ---
 
 <li>
-  <a
-    class="grid h-11 w-11 place-items-center rounded-md bg-black lg:hover:bg-black/90"
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+  <a class="grid h-11 w-11 place-items-center rounded-md bg-black lg:hover:bg-black/90" href={href}>
     <slot />
   </a>
 </li>

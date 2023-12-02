@@ -20,12 +20,7 @@ const getLinkName = (name: string) => {
 
 {
   href === '#' || href === '' ? null : (
-    <a
-      class="flex items-center justify-between gap-2 rounded-md bg-white py-4 pl-5 pr-4 font-medium"
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a class="flex items-center justify-between gap-2 rounded-md bg-white py-4 pl-5 pr-4 font-medium" href={href}>
       <span>{getLinkName(name)}</span>
       <IconChevronRight className="h-4 w-4" />
     </a>
