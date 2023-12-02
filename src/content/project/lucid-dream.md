@@ -11,5 +11,5 @@ tags: ['Blog', 'Web', 'Astro']
 date: 2023-11-30
 links:
   github: 'https://github.com/n0hack/lucid-dream'
-  story: '#gd'
+  story: '/story/project/post/2'
 ---
