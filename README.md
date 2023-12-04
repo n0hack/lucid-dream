@@ -1,47 +1,48 @@
-# Astro Starter Kit: Minimal
+# Lucid Dream
+
+블로그 개발에 많이 사용하는 `Gatsby` 대신, 이번에 새롭게 알게 된 `Astro`라는 웹 프레임워크로 만든 개인 블로그입니다. 프론트엔드 개발을 시작하며 학습하는 과정에서 알게 된 기술 블로그들을 보며, '나도 직접 만들어 보자'는 생각을 품게 되어 시작했고, 기획과 디자인을 포함해 약 3주의 기간 동안 진행한 프로젝트입니다.
+
+<br />
+
+<p align="center">
+  <img src="./docs/images/main.png" />
+  <br />
+    🌟 <em>Lucid Dream, 화려히 반짝일 나의 스토리 안에서</em> 🌟
+</p>
+
+<br />
+
+- [블로그 주소](https://www.lucid-dream.net)
+- [Astro로 만들어 본 나만의 블로그 (프로젝트 후기)](https://www.lucid-dream.net/story/project/post/lucid-dream)
+
+<br />
+
+## 📦 의존성 설치 & 실행
 
 ```sh
-npm create astro@latest -- --template minimal
+$ pnpm install
+$ pnpm dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+> 패키지 관리에 `pnpm`을 사용했으나, `npm`이나 `yarn`을 사용해도 문제 없이 실행 가능합니다.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+<br />
 
-## 🚀 Project Structure
+## 🚀 사용한 기술
 
-Inside of your Astro project, you'll see the following folders and files:
+- Astro
+- React
+- TypeScript
+- Tailwind CSS
+- Scss Module
+- Fuse.js
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+> `Astro`를 기본 베이스로 하면서, 복잡한 상태 관리가 필요한 곳에만 `React`를 사용했습니다.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+<br />
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Copyrights
 
-Any static assets, like images, can be placed in the `public/` directory.
+(｡•̀ᴗ-)✧ Developed by [Lucid (Jihun Jeon)](mailto:jihun@lucid-dream.net)
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+블로그 개발 시 자유롭게 참고하거나, 수정해서 사용하셔도 좋습니다!
