@@ -19,7 +19,7 @@ const expressiveCodeOptions = {
 const sitemapOptions = {
   filter: (page) =>
     !page.includes('https://lucid-dream.net/search') &&
-    !(page.includes('/page/') && Number('/page/21'.match(/\d+$/g)[0]) > 1),
+    !(page.includes('/page/') && Number(page.match(/\d+$/g)[0]) > 1),
 };
 
 // https://astro.build/config
