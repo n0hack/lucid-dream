@@ -1,6 +1,6 @@
-export const SITE_NAME = '루시드 드림 𖤐';
+export const SITE_NAME = '루시드 드림';
 
-export const SITE_DESCRIPTION = '다양한 상상을 현실로 만드는 멀티 크리에이터를 꿈꾸고 있습니다 ❤️';
+export const SITE_DESCRIPTION = '다양한 상상을 현실로 만드는 멀티 크리에이터를 꿈꾸고 있습니다!';
 
 export const SITE_URL = 'https://lucid-dream.net';
 

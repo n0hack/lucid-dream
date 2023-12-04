@@ -6,6 +6,7 @@ import { SearchResult, SearchResultHeader } from '@components/search';
 import { Layout } from '@components/layout';
 import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
 import { PageSEO } from '@components/helper';
+import { SITE_NAME } from '@constants/seo';
 
 export const getStaticPaths = (async () => {
   // 스토리 컬렉션에서 태그 목록 추출
@@ -35,9 +36,11 @@ export const getStaticPaths = (async () => {
 
 const { stories } = Astro.props;
 const { tag } = Astro.params;
+
+const pageTitle = `'${tag}' 태그 검색 결과 - ${SITE_NAME}`;
 ---
 
-<Layout pageTitle={`'${tag}' 태그 검색 결과 (｡•̀ᴗ-)✧`} headerBg>
+<Layout pageTitle={pageTitle} headerBg>
   <Section>
     <Responsive>
       <SearchResultHeader query={tag} suffixText="태그 스토리" />
@@ -50,7 +53,7 @@ const { tag } = Astro.params;
   <!-- HEAD -->
   <PageSEO
     slot="meta-data"
-    title={`'${tag}' 태그 검색 결과 (｡•̀ᴗ-)✧`}
+    title={pageTitle}
     description="태그 검색을 통해 알맞은 스토리를 찾아보세요 ✨"
     keywords={['태그', 'Tag', '태그 검색']}
   />

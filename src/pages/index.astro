@@ -5,6 +5,7 @@ import { Layout } from '@components/layout';
 import { PROJECT_SLIDE_MAX_COUNT, STORY_SLIDE_MAX_COUNT } from '@constants/style';
 import { Lazy, Responsive, Section } from '@components/common';
 import { PageSEO } from '@components/helper';
+import { SITE_NAME } from '@constants/seo';
 
 const projectCollection = await getCollection('project');
 const projects = projectCollection
@@ -15,9 +16,11 @@ const storyCollection = await getCollection('story');
 const stories = storyCollection
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, STORY_SLIDE_MAX_COUNT);
+
+const pageTitle = `${SITE_NAME}`;
 ---
 
-<Layout pageTitle="루시드 드림 𖤐">
+<Layout pageTitle={pageTitle}>
   <HomeMainImage />
   <Section className="mb-12 mt-16 lg:mb-20 lg:mt-24">
     <Responsive className="px-0 lg:px-0">

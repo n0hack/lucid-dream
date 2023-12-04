@@ -7,6 +7,7 @@ import { Layout } from '@components/layout';
 import { CATEGORY } from '@constants/post';
 import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
 import { PageSEO } from '@components/helper';
+import { SITE_NAME, SITE_URL } from '@constants/seo';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const storyCollection = await getCollection('story');
@@ -39,9 +40,11 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page, categories } = Astro.props;
 const { pathname } = Astro.url;
+
+const pageTitle = `(｡•̀ᴗ-)✧ 화려히 반짝일 나의 스토리 - ${SITE_NAME}`;
 ---
 
-<Layout pageTitle="화려히 반짝일 나의 스토리 (｡•̀ᴗ-)✧" headerBg>
+<Layout pageTitle={pageTitle} headerBg>
   <Section>
     <Responsive>
       <StoryPageHeader />
@@ -79,8 +82,8 @@ const { pathname } = Astro.url;
   <!-- HEAD -->
   <PageSEO
     slot="meta-data"
-    title="화려히 반짝일 나의 스토리 (｡•̀ᴗ-)✧"
-    description="학습하고, 경험한 것 외에 일상 속의 작은 이벤트도 기록합니다 📝"
+    title={pageTitle}
+    description="학습하고, 경험한 것 외에 일상 속의 작은 이벤트도 기록합니다!"
     keywords={['스토리', 'Story']}
   />
 </Layout>

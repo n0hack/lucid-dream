@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/1-thumb.webp'
+thumbnail: './images/learn-web-browser-rendering-process-thumb.webp'
 title: '웹 브라우저의 렌더링 과정 알아보기'
 description: '렌더링 과정을 아는 것이 중요한 이유에 대해 소개합니다.'
 tags: ['프로그래머스', '알고리즘']

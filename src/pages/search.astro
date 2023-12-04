@@ -8,7 +8,7 @@ import { SearchResult, SearchResultEmpty, SearchResultHeader } from '@components
 import { Layout } from '@components/layout';
 import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
 import { PageSEO } from '@components/helper';
-import { SITE_URL } from '@constants/seo';
+import { SITE_NAME, SITE_URL } from '@constants/seo';
 
 const query = Astro.url.searchParams.get('q') ?? '';
 
@@ -42,7 +42,8 @@ const fuse = new Fuse(mappedList, {
 
 const result = fuse.search(sanitizedQuery);
 
-const pageTitle = sanitizedQuery === '' ? '검색 키워드를 입력해 주세요 💦' : `'${sanitizedQuery}' 검색 결과 (｡•̀ᴗ-)✧`;
+const pageTitle =
+  sanitizedQuery === '' ? '검색 키워드를 입력해 주세요 ^오^' : `'${sanitizedQuery}' 검색 결과 - ${SITE_NAME}`;
 
 export const prerender = false;
 ---

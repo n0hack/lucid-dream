@@ -1,6 +1,6 @@
 ---
-thumbnail: './images/1-thumb.webp'
-title: '카카오 이모티콘샵 클론 프로젝트'
+thumbnail: './images/kakao-emoticon-shop-thumb.webp'
+title: '카카오 이모티콘샵 클론'
 description: 'HTML, CSS, JS만 가지고 만들어 본 프론트엔드 첫 프로젝트!'
 tags: ['프로그래머스', '알고리즘']
 date: 2022-01-03

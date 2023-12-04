@@ -1,9 +1,11 @@
 ---
 import { Responsive, Section } from '@components/common';
 import { Layout } from '@components/layout';
+
+const pageTitle = '페이지를 잘못 찾아오셨어요 ^오^';
 ---
 
-<Layout pageTitle="페이지를 잘못 찾아오셨어요 💦" headerBg>
+<Layout pageTitle={pageTitle} headerBg>
   <Section className="flex flex-1 flex-col">
     <Responsive className="flex flex-1 items-center justify-center py-12 lg:py-20">
       <div class="flex w-full flex-col gap-4 lg:flex-row lg:justify-center lg:gap-12">

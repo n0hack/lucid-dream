@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/2-thumb.webp'
+thumbnail: './images/good-position-of-script-tag-thumb.webp'
 title: 'script 태그는 어느 곳에 위치하는 것이 좋을까?'
 description: 'async와 defer 키워드를 이용한 script 태그 선언에 대해 소개합니다.'
 tags: ['프로그래머스', '알고리즘']

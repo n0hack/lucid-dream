@@ -14,6 +14,7 @@ import {
 import { Layout } from '@components/layout';
 import { getCategoryNameFromSlug } from '@utils/post';
 import { PostSEO } from '@components/helper';
+import { SITE_NAME } from '@constants/seo';
 
 export const getStaticPaths = (async () => {
   // 스토리 컬렉션을 불러온 후, 날짜 내림차순으로 정렬
@@ -37,9 +38,11 @@ export const getStaticPaths = (async () => {
 
 const { story, otherStories } = Astro.props;
 const { Content, headings } = await story.render();
+
+const pageTitle = `${story.data.title} - ${SITE_NAME}`;
 ---
 
-<Layout pageTitle={story.data.title}>
+<Layout pageTitle={pageTitle}>
   <PostThumbnail
     thumbnail={story.data.thumbnail}
     title={story.data.title}
@@ -62,7 +65,7 @@ const { Content, headings } = await story.render();
   <!-- HEAD -->
   <PostSEO
     slot="meta-data"
-    title={story.data.title}
+    title={pageTitle}
     description={story.data.description}
     tags={story.data.tags}
     image={story.data.thumbnail.src}

@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/1-thumb.webp'
+thumbnail: './images/infinite-scroll-using-intersection-observer-thumb.webp'
 title: 'Intersection Observer API로 무한 스크롤 구현하기'
 description: 'Intersection Observer Web API로 무한 스크롤 구현하기'
 tags: ['프로그래머스', '알고리즘']

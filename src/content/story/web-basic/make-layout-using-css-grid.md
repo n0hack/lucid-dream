@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/3-thumb.webp'
+thumbnail: './images/make-layout-using-css-grid-thumb.webp'
 title: 'Flex 대신 Grid를 사용해 레이아웃 만들기'
 description: 'Grid Display를 사용해 레이아웃을 만들어 봐요!'
 tags: ['프로그래머스', '알고리즘']
