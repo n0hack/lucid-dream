@@ -49,7 +49,7 @@ const StoryCategoryExpansionButton = ({ pathname, categories }: StoryCategoryExp
         <IconAdjustmentsHorizontal className="h-6 w-6 text-black" />
       </button>
       {isOpen && (
-        <div className="fixed inset-0 z-categoryBox flex h-screen w-full flex-col overflow-y-auto bg-white">
+        <div className="fixed inset-0 z-categoryBox flex h-[100dvh] w-full flex-col overflow-y-auto bg-white">
           <div className="mt-6 flex items-center justify-between pl-6 pr-[18px]">
             <h2 className="text-2xl font-semibold text-black">Categories</h2>
             <IconButton onClick={handleCloseMenu} aria-label="카테고리창 닫기">

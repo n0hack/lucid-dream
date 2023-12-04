@@ -22,7 +22,7 @@ const SearchBoxMobile = ({ isOpen, value, onChange, onKeyDown, onClear, onClose 
   }, [isOpen]);
 
   return (
-    <div className="fixed inset-0 h-screen text-black lg:hidden">
+    <div className="fixed inset-0 h-[100dvh] text-black lg:hidden">
       <MainImage className="absolute inset-0" />
       <Dim />
       <div className="absolute inset-0 flex h-16 w-full bg-white py-2 pr-4">

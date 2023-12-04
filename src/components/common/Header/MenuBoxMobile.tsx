@@ -9,7 +9,7 @@ type MenuBoxMobileProps = {
 
 const MenuBoxMobile = ({ onMenuClose }: MenuBoxMobileProps) => {
   return (
-    <div className="fixed inset-0 h-screen text-white lg:hidden">
+    <div className="fixed inset-0 h-[100dvh] text-white lg:hidden">
       <MainImage className="absolute inset-0" />
       <Dim />
       <nav className="absolute left-8 top-8">
