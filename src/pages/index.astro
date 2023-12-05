@@ -5,7 +5,7 @@ import { Layout } from '@components/layout';
 import { PROJECT_SLIDE_MAX_COUNT, STORY_SLIDE_MAX_COUNT } from '@constants/style';
 import { Lazy, Responsive, Section } from '@components/common';
 import { PageSEO } from '@components/helper';
-import { SITE_NAME } from '@constants/seo';
+import { SITE_NAME, SITE_URL } from '@constants/seo';
 
 const projectCollection = await getCollection('project');
 const projects = projectCollection
@@ -37,4 +37,5 @@ const pageTitle = `${SITE_NAME}`;
 
   <!-- Head -->
   <PageSEO slot="meta-data" />
+  <link slot="meta-data" rel="canonical" href={`https://${SITE_URL}`} />
 </Layout>
