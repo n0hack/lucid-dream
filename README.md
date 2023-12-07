@@ -41,7 +41,7 @@ $ pnpm dev
 
 <br />
 
-## Copyrights
+## 📌 Copyrights
 
 (｡•̀ᴗ-)✧ Developed by [Lucid (Jihun Jeon)](mailto:jihun@lucid-dream.net)
 
