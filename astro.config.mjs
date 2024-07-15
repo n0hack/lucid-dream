@@ -1,5 +1,6 @@
 import expressiveCode from 'astro-expressive-code';
 import { defineConfig, passthroughImageService } from 'astro/config';
+import rehypeFigure from 'rehype-figure';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
@@ -20,7 +21,6 @@ const sitemapOptions = {
   filter: (page) => !page.includes('https://lucid-dream.net/search'),
 };
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [react(), tailwindcss(), expressiveCode(expressiveCodeOptions), mdx(), sitemap(sitemapOptions)],
   output: 'hybrid',
@@ -28,5 +28,8 @@ export default defineConfig({
   adapter: vercel(),
   image: {
     service: passthroughImageService(),
+  },
+  markdown: {
+    rehypePlugins: [[rehypeFigure, {}]],
   },
 });
