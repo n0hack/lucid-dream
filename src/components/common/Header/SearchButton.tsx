@@ -8,7 +8,7 @@ import SearchBoxMobile from './SearchBoxMobile';
 import { useSearch } from './hooks/useSearch';
 
 const SearchButton = () => {
-  const [isSearchBoxOpen, setIsSearchBoxOpen] = useState(false);
+  const [isSearchBoxOpened, setIsSearchBoxOpened] = useState(false);
   const searchProps = useSearch();
 
   const handleSearchBoxOpen = () => {
@@ -16,19 +16,19 @@ const SearchButton = () => {
     if (window.innerWidth < DESKTOP_BREAKPOINT) {
       preventScroll();
     }
-    setIsSearchBoxOpen(true);
+    setIsSearchBoxOpened(true);
   };
 
   const handleSearchBoxClose = () => {
-    if (!isSearchBoxOpen) return;
+    if (!isSearchBoxOpened) return;
 
     restoreScroll();
-    setIsSearchBoxOpen(false);
+    setIsSearchBoxOpened(false);
   };
 
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
-      if (!isSearchBoxOpen) return;
+      if (!isSearchBoxOpened) return;
 
       // Mobile에서의 검색창은 스크롤 동작을 막기 때문에, Resize Event에 대해 처리
       const { width } = entries[0].contentRect;
@@ -46,22 +46,22 @@ const SearchButton = () => {
     return () => {
       observer.disconnect();
     };
-  }, [isSearchBoxOpen]);
+  }, [isSearchBoxOpened]);
 
   return (
     <React.Fragment>
       <IconButton
-        className={isSearchBoxOpen ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'}
+        className={isSearchBoxOpened ? 'pointer-events-none opacity-0' : 'pointer-events-auto opacity-100'}
         onClick={handleSearchBoxOpen}
         aria-label="검색창 열기"
       >
         <IconSearch className="h-6 w-6" />
       </IconButton>
       <OutsideClick onOutsideClick={handleSearchBoxClose}>
-        {isSearchBoxOpen && (
-          <SearchBoxMobile isOpen={isSearchBoxOpen} onClose={handleSearchBoxClose} {...searchProps} />
+        {isSearchBoxOpened && (
+          <SearchBoxMobile isOpen={isSearchBoxOpened} onClose={handleSearchBoxClose} {...searchProps} />
         )}
-        <SearchBoxDesktop isOpen={isSearchBoxOpen} {...searchProps} />
+        <SearchBoxDesktop isOpen={isSearchBoxOpened} {...searchProps} />
       </OutsideClick>
     </React.Fragment>
   );

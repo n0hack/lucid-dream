@@ -1,4 +1,10 @@
-const navInfo = [
+type NavInfo = {
+  name: string;
+  path: string;
+  animation: `animate-[showMenuItem_${number}s_${'forwards' | 'forwards_'}${'' | number}${'' | 's'}]`;
+};
+
+const navInfo: NavInfo[] = [
   {
     name: '소개',
     path: '/about',

@@ -22,7 +22,7 @@ const SearchBoxDesktop = ({ isOpen, value, onChange, onKeyDown, onClear }: Searc
       if (timer.current) clearTimeout(timer.current);
       setHasBorder(true);
     } else {
-      timer.current = setTimeout(() => {
+      timer.current = window.setTimeout(() => {
         setHasBorder(false);
       }, 250);
     }
