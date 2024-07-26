@@ -1,35 +1,34 @@
 ---
+import { Lazy, Responsive, Section } from '@components/common';
+import { Seo } from '@components/helper';
+import { Layout } from '@components/layout';
+import { TagSearchPageHeader, TagSearchResult } from '@components/tag';
+import { SITE_NAME } from '@constants/seo';
+import { getCategoryNameFromSlug, getStoryLinkFromSlug, getUniqueTags } from '@utils/post';
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { Lazy, Responsive, Section } from '@components/common';
-import { SearchResult, SearchResultHeader } from '@components/search';
-import { Layout } from '@components/layout';
-import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
-import { PageSEO } from '@components/helper';
-import { SITE_NAME } from '@constants/seo';
 
 export const getStaticPaths = (async () => {
-  // 스토리 컬렉션에서 태그 목록 추출
+  // 스토리 컬렉션으로부터 태그 목록 추출 (중복 제거)
   const storyCollection = await getCollection('story');
-  const tags = [...new Set(storyCollection.map((story) => story.data.tags).flat())];
+  const uniqueTags = getUniqueTags(storyCollection);
 
-  return tags.flatMap((tag) => {
+  return uniqueTags.flatMap((tag) => {
+    const stories = storyCollection
+      .filter((story) => story.data.tags.includes(tag))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+      .map((story) => ({
+        ...story.data,
+        href: getStoryLinkFromSlug(story.slug),
+        category: {
+          key: story.slug.split('/')[0],
+          value: getCategoryNameFromSlug(story.slug),
+        },
+      }));
+
     return {
       params: { tag },
-      props: {
-        stories: storyCollection
-          .filter((story) => story.data.tags.includes(tag))
-          .map((story) => ({
-            item: {
-              ...story.data,
-              href: getStoryLinkFromSlug(story.slug),
-              category: {
-                key: story.slug.split('/')[0],
-                value: getCategoryNameFromSlug(story.slug),
-              },
-            },
-          })),
-      },
+      props: { stories },
     };
   });
 }) satisfies GetStaticPaths;
@@ -37,24 +36,17 @@ export const getStaticPaths = (async () => {
 const { stories } = Astro.props;
 const { tag } = Astro.params;
 
-const pageTitle = `'${tag}' 태그 검색 결과 - ${SITE_NAME}`;
+const pageTitle = `${tag} 태그 검색 결과 - ${SITE_NAME}`;
 ---
 
-<Layout pageTitle={pageTitle} headerBg>
+<Layout pageTitle={pageTitle} hasHeaderBackgrond>
   <Section>
     <Responsive>
-      <SearchResultHeader query={tag} suffixText="태그 스토리" />
+      <TagSearchPageHeader tag={tag} />
       <Lazy className="mt-12 lg:mt-20">
-        <SearchResult datas={stories} client:load />
+        <TagSearchResult stories={stories} client:load />
       </Lazy>
     </Responsive>
   </Section>
-
-  <!-- HEAD -->
-  <PageSEO
-    slot="meta-data"
-    title={pageTitle}
-    description="태그 검색을 통해 알맞은 스토리를 찾아보세요 ✨"
-    keywords={['태그', 'Tag', '태그 검색']}
-  />
+  <Seo slot="meta" title={pageTitle} />
 </Layout>

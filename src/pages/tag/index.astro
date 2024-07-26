@@ -1,0 +1,28 @@
+---
+import { Lazy, Responsive, Section } from '@components/common';
+import { Seo } from '@components/helper';
+import { Layout } from '@components/layout';
+import { TagList, TagPageHeader } from '@components/tag';
+import { SITE_NAME } from '@constants/seo';
+import { getUniqueTags } from '@utils/post';
+import { getCollection } from 'astro:content';
+
+// TODO: 태그 검색 기능 구현
+// 스토리 컬렉션으로부터 태그 목록 추출 (중복 제거)
+const storyCollection = await getCollection('story');
+const uniqueTags = getUniqueTags(storyCollection).sort((a, b) => a.localeCompare(b));
+
+const pageTitle = `태그 - ${SITE_NAME}`;
+---
+
+<Layout pageTitle={pageTitle} hasHeaderBackgrond>
+  <Section>
+    <Responsive>
+      <TagPageHeader />
+      <Lazy className="mt-12 lg:mt-20">
+        <TagList tags={uniqueTags} />
+      </Lazy>
+    </Responsive>
+  </Section>
+  <Seo slot="meta" title={pageTitle} />
+</Layout>
