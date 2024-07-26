@@ -1,45 +1,33 @@
 ---
-import { twMerge } from 'tailwind-merge';
-import { Header, Footer } from '@components/common';
+import { Footer, Header } from '@components/common';
 import '@styles/main.css';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   pageTitle: string;
-  headerBg?: boolean;
+  hasHeaderBackgrond?: boolean;
 };
 
-const { pageTitle, headerBg = false } = Astro.props;
+const { pageTitle, hasHeaderBackgrond = false } = Astro.props;
 const { pathname } = Astro.url;
 ---
 
 <!doctype html>
 <html lang="ko">
   <head>
-    <!-- Google Tag Manager -->
-    <script is:inline>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-P23HK9G8');
-    </script>
-    <!-- End Google Tag Manager -->
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <!-- GLOBAL METADATA ˶•⩊•˶ -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="generator" content={Astro.generator} />
-    <slot name="meta-data" />
 
-    <!-- Naver Search Advisor -->
-    <meta name="naver-site-verification" content="b22658839269e91f0d0bda9812ca5566da92908c" />
-
+    <!-- PAGE INFO ˶•⩊•˶ -->
     <title>{pageTitle}</title>
 
+    <slot name="meta" />
+
+    <!-- FAVICON ˶•⩊•˶ -->
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
+    <!-- APPLE TOUCH ICON ˶•⩊•˶ -->
     <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png" />
@@ -49,48 +37,29 @@ const { pathname } = Astro.url;
     <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-icon-192x192.png" />
+    <!-- ANDROID ICONS ˶•⩊•˶ -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
-    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
-    <link rel="manifest" href="/icons/manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-icon-192x192.png" />
+    <!-- MICROSOFT TILES ˶•⩊•˶ -->
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png" />
+
+    <!-- MANIFEST ˶•⩊•˶ -->
+    <link rel="manifest" href="/icons/manifest.json" />
     <meta name="theme-color" content="#ffffff" />
-
-    <slot name="preload-data" />
-
-    <!-- SITEMAP -->
-    <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-P23HK9G8"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"></iframe></noscript
+    <Header hasBackground={hasHeaderBackgrond} pathname={pathname} client:load />
+    <main
+      class={twMerge(
+        'min-h-[calc(100%-160px)] lg:min-h-[calc(100%-200px)] flex flex-col',
+        hasHeaderBackgrond && 'pt-16',
+      )}
     >
-    <!-- End Google Tag Manager (noscript) -->
-
-    <Header hasBg={headerBg} pathname={pathname} client:load />
-    <main class={twMerge('min-h-[calc(100%-160px)] lg:min-h-[calc(100%-200px)] flex flex-col', headerBg && 'pt-16')}>
       <slot />
     </main>
     <Footer />
   </body>
 </html>
-
-<script>
-  // 글 복사에 대한 출처 자동 추가
-  if (navigator.clipboard) {
-    window.addEventListener('copy', async () => {
-      const copiedText = await navigator.clipboard.readText();
-      const copyright = `출처: ${window.location.href} [루시드 드림 𖤐]`;
-
-      navigator.clipboard.writeText(`${copiedText}\n\n${copyright}`);
-    });
-  }
-</script>

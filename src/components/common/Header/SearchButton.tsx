@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { OutsideClick, IconButton } from '@components/common';
 import { DESKTOP_BREAKPOINT, CLASSNAME_PREVENT_SCROLL } from '@constants/style';
 import { IconSearch } from '@tabler/icons-react';
-import { preventScroll, restoreScroll } from '@utils/style';
+import { preventScroll, allowScroll } from '@utils/style';
 import SearchBoxDesktop from './SearchBoxDesktop';
 import SearchBoxMobile from './SearchBoxMobile';
 import { useSearch } from './hooks/useSearch';
@@ -22,7 +22,7 @@ const SearchButton = () => {
   const handleSearchBoxClose = () => {
     if (!isSearchBoxOpened) return;
 
-    restoreScroll();
+    allowScroll();
     setIsSearchBoxOpened(false);
   };
 
@@ -38,7 +38,7 @@ const SearchButton = () => {
         preventScroll();
       } else {
         if (!document.body.classList.contains(CLASSNAME_PREVENT_SCROLL)) return;
-        restoreScroll();
+        allowScroll();
       }
     });
     observer.observe(document.body);

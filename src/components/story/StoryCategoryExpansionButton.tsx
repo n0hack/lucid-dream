@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IconButton } from '@components/common';
 import { DESKTOP_BREAKPOINT } from '@constants/style';
 import { IconAdjustmentsHorizontal, IconX } from '@tabler/icons-react';
-import { preventScroll, restoreScroll } from '@utils/style';
+import { preventScroll, allowScroll } from '@utils/style';
 import StoryCategory from './StoryCategory';
 
 type StoryCategoryExpansionButtonProps = {
@@ -24,7 +24,7 @@ const StoryCategoryExpansionButton = ({ pathname, categories }: StoryCategoryExp
 
   const handleCloseMenu = () => {
     setIsOpen(false);
-    restoreScroll();
+    allowScroll();
   };
 
   useEffect(() => {

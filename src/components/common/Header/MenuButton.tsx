@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IconButton } from '@components/common';
 import { DESKTOP_BREAKPOINT } from '@constants/style';
 import { IconMenu2 } from '@tabler/icons-react';
-import { preventScroll, restoreScroll } from '@utils/style';
+import { preventScroll, allowScroll } from '@utils/style';
 import MenuBoxMobile from './MenuBoxMobile';
 
 const MenuButton = () => {
@@ -17,7 +17,7 @@ const MenuButton = () => {
   };
 
   const handleMenuClose = () => {
-    restoreScroll();
+    allowScroll();
     setIsMenuOpened(false);
   };
 

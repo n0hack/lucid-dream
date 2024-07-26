@@ -12,7 +12,7 @@ type CardProps = {
 
 const Card = ({ thumbnail, title, description, date, category }: CardProps) => {
   return (
-    <div className="group w-full overflow-hidden rounded-2xl pb-6 shadow-xl">
+    <div className="group w-full overflow-hidden rounded-2xl border border-gray-200 pb-6 shadow-xl">
       <div className="relative h-[200px] w-full overflow-hidden border-b border-b-gray-200">
         <img
           className="h-full w-full object-cover lg:transition-transform lg:duration-300 lg:group-hover:scale-105"
@@ -23,8 +23,8 @@ const Card = ({ thumbnail, title, description, date, category }: CardProps) => {
         />
       </div>
       <div className="mt-6 flex h-[110px] w-full flex-col gap-2 px-6">
-        <h1 className="line-clamp-2 max-h-[54px] text-lg font-bold text-black">{title}</h1>
-        <p className="line-clamp-2 max-h-[48px] overflow-hidden text-gray-600">{description}</p>
+        <h3 className="line-clamp-2 max-h-[54px] text-lg font-bold text-black">{title}</h3>
+        <p className="line-clamp-2 max-h-[48px] text-gray-600">{description}</p>
       </div>
       <div className="mt-6 px-6">
         <p className="flex text-sm text-gray-400">

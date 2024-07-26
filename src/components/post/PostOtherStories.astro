@@ -1,8 +1,8 @@
 ---
-import { twMerge } from 'tailwind-merge';
-import { IconArrowRight } from '@tabler/icons-react';
 import type { Story } from '@custom-types/post';
+import { IconArrowRight } from '@tabler/icons-react';
 import { getCategoryNameFromSlug } from '@utils/post';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   currentStory: Story;
@@ -17,6 +17,8 @@ const { currentStory, otherStories } = Astro.props;
     <a
       class="truncate font-semibold text-black lg:hover:text-black/90"
       href={`/story/${currentStory.slug.split('/')[0]}/page/1`}
+      title={`${getCategoryNameFromSlug(currentStory.slug)} 카테고리로 이동`}
+      aria-label={`${getCategoryNameFromSlug(currentStory.slug)} 카테고리로 이동`}
     >
       '스토리 - {getCategoryNameFromSlug(currentStory.slug)}'
     </a>의 다른 글
@@ -29,6 +31,8 @@ const { currentStory, otherStories } = Astro.props;
           <a
             class="group flex items-center justify-between gap-4"
             href={`/story/${otherStory.slug.replace('/', '/post/')}`}
+            title={`${otherStory.data.title} 스토리 보러가기`}
+            aria-label={`${otherStory.data.title} 스토리 보러가기`}
           >
             <span
               class={twMerge(

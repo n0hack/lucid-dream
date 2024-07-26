@@ -6,7 +6,6 @@ export { default as Dim } from './Dim';
 export { default as Footer } from './Footer.astro';
 export { default as IconButton } from './IconButton';
 export { default as Lazy } from './Lazy.astro';
-export { default as MainImage } from './MainImage';
 export { default as Responsive } from './Responsive';
 export { default as OutsideClick } from './OutsideClick';
 export { default as Section } from './Section.astro';

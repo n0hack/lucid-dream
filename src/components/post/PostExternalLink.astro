@@ -1,13 +1,19 @@
 ---
 type Props = {
   href: string;
+  title: string;
 };
 
-const { href } = Astro.props;
+const { href, title } = Astro.props;
 ---
 
 <li>
-  <a class="grid h-11 w-11 place-items-center rounded-md bg-black lg:hover:bg-black/90" href={href}>
+  <a
+    class="grid h-11 w-11 place-items-center rounded-md bg-black lg:hover:bg-black/90"
+    href={href}
+    title={title}
+    aria-label={title}
+  >
     <slot />
   </a>
 </li>

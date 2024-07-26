@@ -7,8 +7,8 @@ type NextSlideButtonProps = {
 
 const NextSlideButton = ({ onClick }: NextSlideButtonProps) => {
   return (
-    <IconButton className="absolute -top-1 right-[14px] lg:right-[30px]" onClick={onClick} aria-label="이전 슬라이드">
-      <IconChevronRight className="h-6 w-6 lg:h-8 lg:w-8" />
+    <IconButton className="absolute -top-1 right-[22px] lg:right-[30px]" onClick={onClick} aria-label="이전 슬라이드">
+      <IconChevronRight className="h-7 w-7 lg:h-8 lg:w-8" />
     </IconButton>
   );
 };

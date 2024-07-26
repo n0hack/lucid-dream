@@ -10,7 +10,12 @@ const HomeStorySlider = ({ stories }: HomeStorySliderProps) => {
   return (
     <Slider>
       {stories.map(({ id, slug, data }) => (
-        <a key={id} href={`/story/${slug.replace('/', '/post/')}`}>
+        <a
+          key={id}
+          href={`/story/${slug.replace('/', '/post/')}`}
+          title={`${data.title} 스토리 보러가기`}
+          aria-label={`${data.title} 스토리 보러가기`}
+        >
           <Card
             thumbnail={data.thumbnail}
             title={data.title}

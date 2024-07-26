@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
 import type { Project } from '@custom-types/post';
+import { Image } from 'astro:assets';
 import ProjectCardDesktopLink from './ProjectCardDesktopLink.astro';
 import ProjectCardMobileLink from './ProjectCardMobileLink.astro';
 
@@ -9,7 +9,7 @@ type Props = Omit<Project, 'date'>;
 const { thumbnail, title, descriptions, tags, links } = Astro.props;
 ---
 
-<div class="flex flex-col lg:flex-row lg:items-center lg:gap-12">
+<article class="flex flex-col lg:flex-row lg:items-center lg:gap-12">
   <div
     class="group relative h-[260px] shrink-0 overflow-hidden rounded-2xl lg:h-[240px] lg:w-[320px] lg:cursor-pointer"
   >
@@ -22,26 +22,38 @@ const { thumbnail, title, descriptions, tags, links } = Astro.props;
       class="absolute inset-0 hidden lg:block lg:duration-300 lg:group-hover:bg-dim-050 lg:group-hover:transition-colors"
     >
       <div
-        class="absolute bottom-6 flex w-full translate-y-6 flex-col gap-4 px-6 opacity-0 lg:transition-all lg:duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
+        class="absolute bottom-6 flex w-full translate-y-6 flex-col gap-3 px-6 opacity-0 lg:transition-all lg:duration-300 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
       >
-        {Object.entries(links).map(([name, href]) => <ProjectCardDesktopLink name={name} href={href} />)}
+        {
+          Object.entries(links).map(([siteType, href]) => (
+            <ProjectCardDesktopLink title={title} siteType={siteType} href={href} />
+          ))
+        }
       </div>
     </div>
   </div>
 
-  <div>
+  <div class="w-full overflow-hidden">
     <div class="mt-6 flex w-full flex-col gap-3 lg:mt-0 lg:gap-4">
-      <h1 class="truncate px-2 text-2xl font-bold text-black lg:px-0">{title}</h1>
-      <div class="flex flex-col gap-1 px-2 text-gray-600 lg:h-[104px] lg:overflow-hidden lg:px-0">
-        {descriptions.map((description) => <p>{description}</p>)}
-      </div>
+      <h3 class="truncate px-2 text-xl font-bold text-black lg:px-0 lg:text-2xl">{title}</h3>
+      <ul class="flex flex-col gap-2 px-4 lg:h-[104px] lg:px-0">
+        {
+          descriptions.map((description) => (
+            <li class="ms-[14px] list-outside list-disc text-gray-600 lg:ms-0 lg:truncate">{description}</li>
+          ))
+        }
+      </ul>
     </div>
-    <ul class="mt-4 hidden gap-2 lg:flex">
-      {tags.map((tag) => <li class="rounded-md bg-black px-4 py-2 text-sm text-white">#{tag}</li>)}
+    <ul class="mt-4 hidden gap-2 lg:flex lg:overflow-x-auto">
+      {tags.map((tag) => <li class="shrink-0 rounded-md bg-black px-4 py-2 text-sm text-white">{tag}</li>)}
     </ul>
   </div>
 
   <div class="mt-6 flex gap-3 px-2 lg:hidden">
-    {Object.entries(links).map(([name, href]) => <ProjectCardMobileLink name={name} href={href} />)}
+    {
+      Object.entries(links).map(([siteType, href]) => (
+        <ProjectCardMobileLink title={title} siteType={siteType} href={href} />
+      ))
+    }
   </div>
-</div>
+</article>

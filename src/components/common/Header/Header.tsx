@@ -41,7 +41,7 @@ const Header = ({ pathname, hasBackground = false }: HeaderProps) => {
           : 'bg-transparent text-white',
       )}
     >
-      <Responsive className="flex justify-between pr-[14px] lg:pr-[30px]">
+      <Responsive className="flex justify-between gap-1">
         <div className="flex h-full flex-1 items-center lg:gap-16">
           <Logo />
           <Navigation hasBackground={hasBackground} isBackgroundFilled={isBackgroundFilled} pathname={pathname} />

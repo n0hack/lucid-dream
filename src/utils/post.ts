@@ -1,3 +1,4 @@
+import type { InferEntrySchema } from 'astro:content';
 import { CATEGORY } from '@constants/post';
 
 /**
@@ -15,4 +16,11 @@ export const getStoryLinkFromSlug = (slug: string) => {
  */
 export const getCategoryNameFromSlug = (slug: string) => {
   return CATEGORY[slug.split('/')[0] as keyof typeof CATEGORY];
+};
+
+/**
+ * 스토리 컬렉션으로부터 모든 태그를 중복 없이 추출하는 함수
+ */
+export const getUniqueTags = (collection: { data: InferEntrySchema<'story'> }[]) => {
+  return [...new Set(collection.map((c) => c.data.tags).flat())];
 };
