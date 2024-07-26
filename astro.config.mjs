@@ -6,6 +6,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
+import { SITE_URL } from './src/constants/seo';
 
 /** @type {import('astro-expressive-code').AstroExpressiveCodeOptions}  */
 const expressiveCodeOptions = {
@@ -18,13 +19,13 @@ const expressiveCodeOptions = {
 
 /** @type {import("@astrojs/sitemap").SitemapOptions} */
 const sitemapOptions = {
-  filter: (page) => !page.includes('https://lucid-dream.net/search'),
+  filter: (page) => !page.includes(`${SITE_URL}/search`),
 };
 
 export default defineConfig({
   integrations: [react(), tailwindcss(), expressiveCode(expressiveCodeOptions), mdx(), sitemap(sitemapOptions)],
   output: 'hybrid',
-  site: 'https://lucid-dream.net',
+  site: SITE_URL,
   adapter: vercel(),
   image: {
     service: passthroughImageService(),
