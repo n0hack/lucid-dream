@@ -1,7 +1,7 @@
 ---
-thumbnail: './images/lucid-dream-thumb.webp'
+thumbnail: './images/lucid-dream-0.webp'
 title: 'Astro로 만들어 본 나만의 블로그'
-description: '예전부터 정말 갖고 싶었던 나만의 블로그를 드디어 만들었습니다.'
+description: '예전부터 갖고 싶었던 나만의 개발 블로그를 만들면서 얻은 경험을 공유합니다.'
 tags: ['프로젝트', '블로그', 'Astro', 'Gatsby']
 date: 2023-12-04
 ---
@@ -70,8 +70,8 @@ Astro에서 작성된 모든 것들은 기본적으로 정적 요소로 빌드�
 
 ```astro title="layout.astro"
 ---
-import Header from '@components/Header'; // 리액트로 만든 컴포넌트
 import Footer from '@components/Footer.astro'; // 아스트로로 만든 컴포넌트
+import Header from '@components/Header'; // 리액트로 만든 컴포넌트
 
 type Props = {
   headerBg?: boolean;
@@ -235,10 +235,10 @@ export default defineConfig({
 
 ```astro title="search.astro"
 ---
-import { getCollection } from 'astro:content';
-import purify from 'isomorphic-dompurify';
-import Fuse from 'fuse.js';
 import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
+import { getCollection } from 'astro:content';
+import Fuse from 'fuse.js';
+import purify from 'isomorphic-dompurify';
 
 const query = Astro.url.searchParams.get('q') ?? '';
 
@@ -303,8 +303,8 @@ Astro의 `Collection`을 이용해 마크다운 문서를 렌더링하는 경우
 
 ```astro title="PostToC.astro"
 ---
-import { twMerge } from 'tailwind-merge';
 import type { AstroHeading } from '@custom-types/post';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   headings: AstroHeading[];
@@ -462,7 +462,7 @@ export default MainImage;
 
 Astro의 경우에는 기여를 하게 되면, 프로젝트의 어떤 부분에 기여를 했는지 확인할 수 있는 `이미지 배지`를 함께 제공하기 때문에, 저처럼 무엇인가 수집하는 것을 좋아하는 분들은 이번 기회에 참여해 보시면 어떨까 합니다.
 
-![@n0hack Astro contributions](https://astro.badg.es/v2/contributor/n0hack.svg)_Astro 기여 배지_
+![Astro에서 제공되는 기여자 배지](https://astro.badg.es/v2/contributor/n0hack.svg)_Astro 기여 배지_
 
 아직은 VSCode의 자동 완성에서 새로 생성한 `.astro` 파일을 찾지 못해, 이럴 때마다 재시작하는 식으로 해결해야 하는 불편함이 있긴 합니다. 그럼에도 이를 차치하고서 개발하며 얻은 만족도가 높은 편이었고, 번역 외에도 기여할만한 요소가 생각보다 많이 보여, 번역을 하면서 기능도 차차 만들어보려 합니다.
 
