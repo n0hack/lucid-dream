@@ -1,8 +1,10 @@
 ---
-import { MainImage, Dim } from '@components/common';
+import imageFile from '@assets/main-image.webp';
+import { Dim } from '@components/common';
+import { Image } from 'astro:assets';
 ---
 
-<div class="relative h-[70dvh] min-h-[480px] w-full">
-  <MainImage alt="대표" />
-  <Dim className="bg-dim-020" />
-</div>
+<section class="relative h-[70dvh] min-h-[540px] w-full overflow-hidden">
+  <Image class="h-full w-full object-cover object-top" src={imageFile} alt="메인" />
+  <Dim className="bg-dim-010" />
+</section>

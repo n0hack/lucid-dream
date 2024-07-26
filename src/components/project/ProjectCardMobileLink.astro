@@ -2,18 +2,26 @@
 import type { ProjectLink } from '@custom-types/post';
 import { IconChevronRight } from '@tabler/icons-react';
 
-type Props = ProjectLink;
+type Props = ProjectLink & {
+  title: string;
+};
 
-const { name, href } = Astro.props;
+const { title, siteType, href } = Astro.props;
+
+const anchorTitle = `${title} ${
+  siteType === 'site' ? '사이드로 이동' : siteType === 'github' ? '깃허브로 이동' : '스토리 보러가기'
+}`;
 ---
 
 {
   href === '#' || href === '' ? null : (
     <a
-      class="inline-flex items-center gap-2 rounded-full bg-gray-100 py-3 pl-5 pr-4 text-sm font-medium text-gray-600"
+      class="inline-flex items-center gap-2 rounded-full bg-gray-100 py-3 pl-5 pr-4 text-sm font-medium text-gray-700"
       href={href}
+      title={anchorTitle}
+      aria-label={anchorTitle}
     >
-      <span>{name.toUpperCase()}</span>
+      <span>{siteType.toUpperCase()}</span>
       <IconChevronRight className="h-4 w-4" />
     </a>
   )

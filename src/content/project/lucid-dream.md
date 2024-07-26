@@ -4,10 +4,10 @@ title: '루시드 드림 (Lucid Dream)'
 descriptions:
   [
     'Astro 프레임워크로 만든 개인 블로그',
-    '개발 외에도 디자인, 게임, 여행을 비롯한 다양한 주제의 이야기 잔뜩 함유',
-    '회사 일이 바빴어서, 마음 먹고 만들기까지만 1년 걸렸음 🤣',
+    '개발을 메인으로, 다양한 주제의 이야기를 잔뜩 풀어볼 예정',
+    '회사 일이 바빴어서, 마음 먹고 만들기까지만 1년이라는 시간이 걸림 🫠',
   ]
-tags: ['Blog', 'Web', 'Astro']
+tags: ['Web', 'Astro', 'React', 'Tailwind', 'TS']
 date: 2023-11-30
 links:
   github: 'https://github.com/n0hack/lucid-dream'

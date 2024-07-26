@@ -1,16 +1,21 @@
+$text-color-base: rgb(64, 64, 64);
+$text-color-heading: rgb(38, 38, 38);
+$text-color-primary: rgb(139, 92, 246);
+$text-color-primary-hover: rgb(139, 92, 246, 0.9);
+
 .renderer {
-  color: rgb(64, 64, 64);
+  color: $text-color-base;
   word-break: break-all;
   text-align: justify;
 
-  & > :is(h1, h2, h3, p, ul, code):first-child {
+  & > :is(h1, h2, h3, p, ul, code, figure):first-child {
     margin-top: 0;
   }
 }
 
 // 제목 (Heading)
 .renderer :is(h1, h2, h3) {
-  color: rgb(38, 38, 38);
+  color: $text-color-heading;
   font-weight: 600;
 }
 
@@ -25,7 +30,7 @@
 
   @media (min-width: 1024px) {
     margin-top: 6rem;
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     line-height: 3rem;
 
     & + h2 {
@@ -41,7 +46,7 @@
 
   @media (min-width: 1024px) {
     margin-top: 4.5rem;
-    font-size: 1.75rem;
+    font-size: 1.875rem;
     line-height: 2.5rem;
   }
 }
@@ -72,6 +77,14 @@
     background: rgb(245, 243, 255);
     border-radius: 0.375rem;
   }
+
+  @media (min-width: 1024px) {
+    margin: 1.5rem auto;
+  }
+}
+
+.renderer figure {
+  margin: 1.25rem auto;
 
   @media (min-width: 1024px) {
     margin: 1.5rem auto;
@@ -150,12 +163,12 @@
 // 이미지 (Image)
 .renderer img {
   margin: 0 auto;
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   object-fit: cover;
 
-  & + em {
+  & + figcaption {
     display: block;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
     text-align: center;

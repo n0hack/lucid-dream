@@ -1,18 +1,18 @@
 ---
+import { Card, Lazy, Pagination, Responsive, Section } from '@components/common';
+import { Seo } from '@components/helper';
+import { Layout } from '@components/layout';
+import { StoryCategories, StoryCategory, StoryCategoryExpansionButton, StoryPageHeader } from '@components/story';
+import { CATEGORY } from '@constants/post';
+import { SITE_NAME } from '@constants/seo';
+import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { Card, Lazy, Pagination, Responsive, Section } from '@components/common';
-import { StoryCategories, StoryCategoryExpansionButton, StoryCategory, StoryPageHeader } from '@components/story';
-import { Layout } from '@components/layout';
-import { CATEGORY } from '@constants/post';
-import { getCategoryNameFromSlug, getStoryLinkFromSlug } from '@utils/post';
-import { PageSEO } from '@components/helper';
-import { SITE_NAME } from '@constants/seo';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const storyCollection = await getCollection('story');
 
-  return Object.entries(CATEGORY).flatMap(([key]) => {
+  return Object.keys(CATEGORY).flatMap((key) => {
     // 카테고리별 필터링 후, 날짜 내림차순으로 정렬
     const stories = (
       (key as keyof typeof CATEGORY) === 'all'
@@ -20,20 +20,22 @@ export const getStaticPaths = (async ({ paginate }) => {
         : storyCollection.filter((story) => story.slug.split('/')[0] === key)
     ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
+    // 카테고리 배열 생성
+    // ex. { name: '전체', count: 10, href: '/story/all/page/1' }
+    const categories = Object.entries(CATEGORY).map(([key, value]) => ({
+      name: value,
+      count:
+        (key as keyof typeof CATEGORY) === 'all'
+          ? storyCollection.length
+          : storyCollection.filter((story) => story.slug.split('/')[0] === key).length,
+      href: `/story/${key}/page/1`,
+    }));
+
     // 카테고리별 페이지네이션
     return paginate(stories, {
       pageSize: 9,
       params: { category: key },
-      props: {
-        categories: Object.entries(CATEGORY).map(([key, value]) => ({
-          name: value,
-          count:
-            (key as keyof typeof CATEGORY) === 'all'
-              ? storyCollection.length
-              : storyCollection.filter((story) => story.slug.split('/')[0] === key).length,
-          href: `/story/${key}/page/1`,
-        })),
-      },
+      props: { categories },
     });
   });
 }) satisfies GetStaticPaths;
@@ -41,10 +43,10 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page, categories } = Astro.props;
 const { pathname } = Astro.url;
 
-const pageTitle = `(｡•̀ᴗ-)✧ 화려히 반짝일 나의 스토리 - ${SITE_NAME}`;
+const pageTitle = `스토리 - ${SITE_NAME}`;
 ---
 
-<Layout pageTitle={pageTitle} headerBg>
+<Layout pageTitle={pageTitle} hasHeaderBackgrond>
   <Section>
     <Responsive>
       <StoryPageHeader />
@@ -52,10 +54,14 @@ const pageTitle = `(｡•̀ᴗ-)✧ 화려히 반짝일 나의 스토리 - ${SI
         {categories.map((category) => <StoryCategory slot="item" pathname={pathname} {...category} client:load />)}
         <StoryCategoryExpansionButton slot="button" categories={categories} pathname={pathname} client:load />
       </StoryCategories>
-      <Lazy className="mt-8 grid gap-8 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+      <Lazy className="mt-12 flex flex-col gap-8 md:grid md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
         {
           page.data.map(({ slug, data }) => (
-            <a href={getStoryLinkFromSlug(slug)}>
+            <a
+              href={getStoryLinkFromSlug(slug)}
+              title={`${data.title} 스토리 보러가기`}
+              aria-label={`${data.title} 스토리 보러가기`}
+            >
               <Card
                 thumbnail={data.thumbnail}
                 title={data.title}
@@ -78,14 +84,7 @@ const pageTitle = `(｡•̀ᴗ-)✧ 화려히 반짝일 나의 스토리 - ${SI
       />
     </Responsive>
   </Section>
-
-  <!-- HEAD -->
-  <PageSEO
-    slot="meta-data"
-    title={pageTitle}
-    description="학습하고, 경험한 것 외에 일상 속의 작은 이벤트도 기록합니다!"
-    keywords={['스토리', 'Story']}
-  />
+  <Seo slot="meta" title={pageTitle} />
 </Layout>
 
 <script>

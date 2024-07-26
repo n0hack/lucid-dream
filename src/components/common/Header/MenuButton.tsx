@@ -2,28 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { IconButton } from '@components/common';
 import { DESKTOP_BREAKPOINT } from '@constants/style';
 import { IconMenu2 } from '@tabler/icons-react';
-import { preventScroll, restoreScroll } from '@utils/style';
+import { preventScroll, allowScroll } from '@utils/style';
 import MenuBoxMobile from './MenuBoxMobile';
 
 const MenuButton = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
 
   const handleMenuOpen = () => {
     // Desktop 화면에서는 메뉴를 열지 않음
     if (window.innerWidth >= DESKTOP_BREAKPOINT) return;
 
     preventScroll();
-    setIsMenuOpen(true);
+    setIsMenuOpened(true);
   };
 
   const handleMenuClose = () => {
-    restoreScroll();
-    setIsMenuOpen(false);
+    allowScroll();
+    setIsMenuOpened(false);
   };
 
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
-      if (!isMenuOpen) return;
+      if (!isMenuOpened) return;
 
       // Desktop으로 전환될 시, 메뉴 닫음
       const { width } = entries[0].contentRect;
@@ -34,14 +34,14 @@ const MenuButton = () => {
     return () => {
       observer.disconnect();
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpened]);
 
   return (
     <React.Fragment>
-      <IconButton className="lg:hidden" onClick={handleMenuOpen} aria-label="네비게이션 메뉴창 열기">
+      <IconButton className="lg:hidden" onClick={handleMenuOpen} aria-label="네비게이션 메뉴 열기">
         <IconMenu2 className="h-6 w-6" />
       </IconButton>
-      {isMenuOpen && <MenuBoxMobile onMenuClose={handleMenuClose} />}
+      {isMenuOpened && <MenuBoxMobile onMenuClose={handleMenuClose} />}
     </React.Fragment>
   );
 };

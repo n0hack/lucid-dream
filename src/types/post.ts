@@ -24,7 +24,7 @@ export type Story = {
 };
 
 export type ProjectLink = {
-  name: string;
+  siteType: string;
   href: string;
 };
 

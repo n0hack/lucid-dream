@@ -1,11 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { Lazy, Responsive, Section } from '@components/common';
+import { Seo } from '@components/helper';
 import { HomeMainImage, HomeProjectSlider, HomeSectionTitle, HomeStorySlider } from '@components/home';
 import { Layout } from '@components/layout';
+import { SITE_NAME } from '@constants/seo';
 import { PROJECT_SLIDE_MAX_COUNT, STORY_SLIDE_MAX_COUNT } from '@constants/style';
-import { Lazy, Responsive, Section } from '@components/common';
-import { PageSEO } from '@components/helper';
-import { SITE_NAME, SITE_URL } from '@constants/seo';
+import { getCollection } from 'astro:content';
 
 const projectCollection = await getCollection('project');
 const projects = projectCollection
@@ -22,20 +22,13 @@ const pageTitle = `${SITE_NAME}`;
 
 <Layout pageTitle={pageTitle}>
   <HomeMainImage />
-  <Section className="mb-12 mt-16 lg:mb-20 lg:mt-24">
+  <Section className="mb-12 mt-0 lg:mb-20 lg:mt-0">
     <Responsive className="px-0 lg:px-0">
-      <Lazy id="lazy-project" className="relative h-[520px] px-2 lg:px-6">
-        <HomeSectionTitle title="프로젝트" />
-        <HomeProjectSlider projects={projects} client:only />
-      </Lazy>
       <Lazy id="lazy-story" className="relative mt-6 h-[520px] px-2 lg:mt-14 lg:px-6">
         <HomeSectionTitle title="최신 스토리" />
-        <HomeStorySlider stories={stories} client:only />
+        <HomeStorySlider stories={stories} client:only="react" />
       </Lazy>
     </Responsive>
   </Section>
-
-  <!-- Head -->
-  <PageSEO slot="meta-data" />
-  <link slot="meta-data" rel="canonical" href={`https://${SITE_URL}`} />
+  <Seo slot="meta" title={pageTitle} />
 </Layout>

@@ -1,0 +1,30 @@
+---
+import mainImageFile from '@assets/main-image.webp';
+import { SITE_DESCRIPTION, SITE_AUTHOR, DEFAULT_KEYWORDS } from '@constants/seo';
+
+type Props = {
+  title: string;
+  description?: string;
+  keywords?: string[];
+  imageSrc?: string;
+};
+
+const { title, description, keywords, imageSrc } = Astro.props;
+---
+
+<meta name="description" content={description ?? SITE_DESCRIPTION} />
+<meta name="keywords" content={keywords ? keywords.join(',') : DEFAULT_KEYWORDS.join(',')} />
+<meta name="author" content={SITE_AUTHOR} />
+
+<!-- OPENGRAPH ˶•⩊•˶ -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description ?? SITE_DESCRIPTION} />
+<meta property="og:image" content={imageSrc ?? mainImageFile.src} />
+<meta property="og:url" content={Astro.url} />
+
+<!-- TWITTER CARD ˶•⩊•˶ -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description ?? SITE_DESCRIPTION} />
+<meta name="twitter:image" content={imageSrc ?? mainImageFile.src} />
+<meta name="twitter:url" content={Astro.url} />

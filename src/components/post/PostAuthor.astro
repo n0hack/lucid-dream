@@ -1,9 +1,8 @@
 ---
-import { Image } from 'astro:assets';
-import { IconMail, IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
 import profileImage from '@assets/lucid.webp';
+import { IconBrandDiscord, IconBrandGithub, IconBrandLinkedin, IconMail } from '@tabler/icons-react';
+import { Image } from 'astro:assets';
 import PostExternalLink from './PostExternalLink.astro';
-import { IconBrandDiscord } from '@tabler/icons-react';
 ---
 
 <div
@@ -18,6 +17,7 @@ import { IconBrandDiscord } from '@tabler/icons-react';
       <a
         class="rounded-md bg-primary px-2 py-[2px] text-base text-white lg:hover:bg-primary/90"
         href="/about"
+        title="소개 페이지로 이동"
         aria-label="소개 페이지로 이동"
       >
         @Lucid
@@ -28,16 +28,19 @@ import { IconBrandDiscord } from '@tabler/icons-react';
       프로그래밍을 누구나 즐길 수 있도록 도와주는 멘토가 되고 싶은 바람을 갖고 있습니다.
     </p>
     <ul class="mt-6 flex gap-2">
-      <PostExternalLink href="https://github.com/n0hack">
+      <PostExternalLink href="https://github.com/n0hack" title="깃허브로 이동">
         <IconBrandGithub className="text-white" />
       </PostExternalLink>
-      <PostExternalLink href="https://www.linkedin.com/in/%EC%A7%80%ED%9B%88-%EC%A0%84-1a6a00196/">
+      <PostExternalLink
+        href="https://www.linkedin.com/in/%EC%A7%80%ED%9B%88-%EC%A0%84-1a6a00196/"
+        title="링크드인으로 이동"
+      >
         <IconBrandLinkedin className="text-white" />
       </PostExternalLink>
-      <PostExternalLink href="#">
+      <PostExternalLink href="#" title="디스코드로 이동">
         <IconBrandDiscord className="text-white" />
       </PostExternalLink>
-      <PostExternalLink href="mailto:jihun@lucid-dream.net">
+      <PostExternalLink href="mailto:nohack-@naver.com" title="메일 쓰기">
         <IconMail className="text-white" />
       </PostExternalLink>
     </ul>

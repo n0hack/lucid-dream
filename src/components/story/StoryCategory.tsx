@@ -13,7 +13,7 @@ const StoryCategory = ({ pathname, name, count, href }: StoryCategoryProps) => {
       <a
         href={href}
         className={twMerge(
-          'flex h-11 items-center rounded-md bg-gray-100 px-5 text-sm text-gray-600 lg:h-12 lg:text-base lg:hover:bg-primary lg:hover:text-white',
+          'flex h-11 items-center rounded-md bg-gray-100 px-5 text-gray-600 lg:h-12 lg:hover:bg-primary lg:hover:text-white',
           pathname.includes(href.split('/')[2]) && 'current-category bg-primary font-medium text-white',
         )}
       >

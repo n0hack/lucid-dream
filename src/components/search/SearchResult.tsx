@@ -46,7 +46,7 @@ const SearchResult = ({ datas }: SearchResultProps) => {
   }, [datas.length, page]);
 
   return (
-    <div ref={ref} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div ref={ref} className="flex flex-col gap-8 md:grid md:grid-cols-2 lg:grid-cols-3">
       {sliced.map(({ item: data }) => (
         <a key={data.href} href={data.href}>
           <Card

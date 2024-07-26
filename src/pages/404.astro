@@ -1,28 +1,32 @@
 ---
+import imageFile from '@assets/pluto.webp';
 import { Responsive, Section } from '@components/common';
+import { Seo } from '@components/helper';
 import { Layout } from '@components/layout';
+import { SITE_NAME } from '@constants/seo';
+import { Image } from 'astro:assets';
 
-const pageTitle = '페이지를 잘못 찾아오셨어요 ^오^';
+const pageTitle = `404 - ${SITE_NAME}`;
 ---
 
-<Layout pageTitle={pageTitle} headerBg>
+<Layout pageTitle={pageTitle} hasHeaderBackgrond>
   <Section className="flex flex-1 flex-col">
     <Responsive className="flex flex-1 items-center justify-center py-12 lg:py-20">
-      <div class="flex w-full flex-col gap-4 lg:flex-row lg:justify-center lg:gap-12">
-        <div class="flex justify-center">
-          <img class="h-32 w-32 opacity-100 lg:h-44 lg:w-44" src="/images/blitz.webp" alt="블리츠크랭크" />
-        </div>
-        <div class="flex flex-col">
+      <div class="flex w-full flex-col items-center gap-4 lg:gap-6">
+        <Image class="h-40 w-44 object-cover" src={imageFile} alt="비질란테" />
+        <div class="flex flex-col items-center">
           <p class="text-center text-2xl font-semibold text-black lg:text-left">
             앗! 이곳은 <span class="text-primary">없는 페이지</span>입니다.
           </p>
-          <div class="mt-4 flex flex-col items-center gap-1 lg:items-start">
+          <div class="mt-4 flex flex-col items-center gap-1">
             <p class="text-gray-400">방문하신 링크는 삭제되었거나 잘못된 주소입니다.</p>
-            <p class="text-gray-400">루시드 드림 메인으로 이동해 주세요.</p>
+            <p class="text-gray-400">메인 페이지로 이동해 주세요.</p>
           </div>
           <a
-            class="mt-6 block rounded-md bg-primary px-6 py-4 text-center font-medium text-white lg:self-start lg:transition-colors lg:hover:bg-primary/90"
+            class="mt-6 block w-full rounded-md bg-primary px-12 py-4 text-center font-medium text-white lg:transition-colors lg:hover:bg-primary/90"
             href="/"
+            title="메인 페이지로 이동"
+            aria-label="메인 페이지로 이동"
           >
             메인으로 이동하기
           </a>
@@ -30,7 +34,5 @@ const pageTitle = '페이지를 잘못 찾아오셨어요 ^오^';
       </div>
     </Responsive>
   </Section>
-
-  <!-- Head -->
-  <link slot="preload-data" rel="preload" href="/images/blitz.webp" as="image" />
+  <Seo slot="meta" title={pageTitle} />
 </Layout>
