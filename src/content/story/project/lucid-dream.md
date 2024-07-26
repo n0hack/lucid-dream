@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
-thumbnail: './images/lucid-dream/thumbnail.webp'
-=======
 thumbnail: './images/lucid-dream-0.webp'
->>>>>>> develop
 title: 'Astro로 만들어 본 나만의 블로그'
 description: '예전부터 갖고 싶었던 나만의 개발 블로그를 만들면서 얻은 경험을 공유합니다.'
 tags: ['프로젝트', '블로그', 'Astro', 'Gatsby']
