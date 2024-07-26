@@ -1,8 +1,8 @@
 ---
-thumbnail: './images/make-layout-using-css-grid-thumb.webp'
+thumbnail: './images/css-grid-layout-0.webp'
 title: 'Flex 대신 Grid를 사용해 레이아웃 만들기'
-description: 'Grid Display를 사용해 레이아웃을 만들어 봐요!'
-tags: ['프로그래머스', '알고리즘']
+description: '복잡한 레이아웃을 만들 때 Grid를 사용해 보는 건 어떨까요?'
+tags: ['CSS', 'Grid', 'Flex']
 date: 2021-10-21
 ---
 
@@ -10,7 +10,7 @@ date: 2021-10-21
 
 요즘은 레이아웃을 만들 때, 주로 flex 속성을 사용합니다. 하지만 flex를 사용하면서 종종 아쉬운 상황들이 몇 가지 발생하는데, 기본적으로 flex는 1차원에 대한 레이아웃 시스템이기 때문입니다. 특히 정렬과 관련해 의도한 대로 동작하지 않아 억지로 맞추는 경우(CSS Trick)를 들 수 있습니다. 이런 상황에서 우리는 `grid`를 고려해볼 수 있습니다. grid는 기본적으로 가로/세로 2차원에 대한 레이아웃 시스템이며, 복합적인 레이아웃 구조를 만들 때 flex보다 유용합니다.
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FLMJrz%2Fbtrim5xaXm7%2Fo5wbGxQltEmo37LjPOaL30%2Fimg.jpg)
+![](./images/css-grid-layout-1.webp)
 
 > Grid Box와 달리 Flex Box는 요소들을 1차원적으로 정렬하는 컨테이너입니다.
 
@@ -36,7 +36,7 @@ date: 2021-10-21
 
 각각 열과 행에 대해 영역을 만드는 속성이며, 원하는 만큼 다양한 단위를 사용해서 만들 수 있습니다. 저는 같은 값을 이용해서 영역을 여러 개 만들고자 했기 때문에, CSS에서 기본적으로 제공하고 있는 `repeat(반복 횟수, 단위)` 함수를 사용했습니다. 이렇게 하면 다음과 같이 영역이 구분됩니다.
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHaPYg%2FbtriiBcjGba%2F9GWEpPtudSI1SYrDVEI0MK%2Fimg.jpg)
+![](./images/css-grid-layout-2.webp)
 
 영역을 만들게 되면 화면에는 보이지 않지만 좌우에 격자가 생겨 영역을 구분할 수 있습니다. 이 격자를 `그리드 라인(Grid Line)`이라 부르는데, 이를 통해 각각의 아이템들이 자신을 어느 위치에 둘 지 정할 수 있습니다. 그리고 여기에 사용된 `fr(fraction)`은 유연한 크기를 갖는 단위이며, 남은 공간을 fr만큼 나눠 차지할 수 있습니다.
 
@@ -76,7 +76,7 @@ footer {
 
 이렇게 만든 그리드 레이아웃의 결과물을 웹 브라우저의 개발자 도구에서 보면 다음과 같습니다.
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb9ajjR%2FbtrirxeCDYT%2FkoB1R9ObeK1OgOkbaNfP8k%2Fimg.png)
+![](./images/css-grid-layout-3.webp)
 
 그리고 아이템 사이에 간격을 두고 싶으면 `gap` 속성을 사용할 수 있는데, 이는 `row-gap`과 `column-gap`이 하나로 합쳐진 속성입니다. 값을 하나만 적으면 행과 열에 모두 적용되는데, 만약 행과 열의 간격을 각각 다르게 적용하고 싶다면 `gap: row-gap column-gap`의 형태로 사용하면 됩니다.
 
@@ -139,7 +139,7 @@ footer {
 
 두 속성의 사용 방법은 크게 어렵지 않습니다. 그저 아이템이 그리드 라인의 몇 번부터 몇 번까지의 영역을 차지할 것인지만 슬래시로 구분하면 됩니다. 이렇게 속성을 부여하게 되면, 아이템들이 그리드 내에 다음과 같이 배치됩니다.
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FX6Lzb%2FbtrijrVixvj%2F8vIm3FVRVUlDKTG5GOj0LK%2Fimg.jpg)
+![](./images/css-grid-layout-4.webp)
 
 위 방법 말고도 얼마 만큼의 영역을 사용할 것인지 span을 통해 직접 명시할 수도 있습니다.
 
@@ -157,8 +157,8 @@ footer {
 
 `start / span n` 형태로 사용하면 start 라인부터 n개의 영역을 사용한다는 의미이고, start를 생략하고 `span n`만 쓴다면 맨 앞에서부터 n개의 영역을 사용한다 생각하면 됩니다.
 
-# References
+# 참고 자료
 
-- [CSS Grid 완벽 가이드](#)
-- [이번에야말로 CSS Grid를 익혀보자](#)
-- [[MDN] Grid - CSS: Cascading Style Sheets (MDN)](#)
+- [CSS Grid 완벽 가이드](https://heropy.blog/2019/08/17/css-grid/)
+- [이번에야말로 CSS Grid를 익혀보자](https://studiomeal.com/archives/533)
+- [Grid - CSS: Cascading Style Sheets](https://developer.mozilla.org/ko/docs/Web/CSS/grid)
