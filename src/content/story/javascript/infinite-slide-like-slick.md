@@ -238,7 +238,6 @@ const handlePrev = () => {
 };
 
 const handleNext = () => {
-  console.log(selected);
   selected += 1;
   setTransition('transform 0.3s linear');
   setTranslate({ index: selected });
