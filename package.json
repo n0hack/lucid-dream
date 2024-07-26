@@ -12,25 +12,14 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
-<<<<<<< HEAD
-    "@astrojs/mdx": "^2.0.0",
-    "@astrojs/react": "^3.0.7",
-=======
     "@astrojs/mdx": "^1.1.5",
     "@astrojs/react": "^3.6.0",
->>>>>>> develop
     "@astrojs/sitemap": "^3.0.3",
-    "@astrojs/tailwind": "^5.0.3",
-    "@astrojs/vercel": "^6.0.0",
+    "@astrojs/tailwind": "^5.0.2",
+    "@astrojs/vercel": "^5.2.0",
     "@tabler/icons-react": "^2.40.0",
-<<<<<<< HEAD
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "astro": "^4.0.1",
-=======
     "@types/react-dom": "^18.3.0",
     "astro": "^4.11.5",
->>>>>>> develop
     "astro-expressive-code": "^0.29.1",
     "dayjs": "^1.11.10",
     "fuse.js": "^7.0.0",
