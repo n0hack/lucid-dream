@@ -5,7 +5,7 @@
 <br />
 
 <p align="center">
-  <img src="./docs/images/main.png" />
+  <img src="./docs/main.png" />
   <br />
     🌟 <em>Lucid Dream, 화려히 반짝일 나의 스토리 안에서</em> 🌟
 </p>
@@ -43,6 +43,6 @@ $ pnpm dev
 
 ## 📌 Copyrights
 
-(｡•̀ᴗ-)✧ Developed by [Lucid (Jihun Jeon)](mailto:jihun@lucid-dream.net)
+(｡•̀ᴗ-)✧ Developed by [Lucid (Jihun Jeon)](mailto:nohack-@naver.com)
 
 블로그 개발 시 자유롭게 참고하거나, 수정해서 사용하셔도 좋습니다!
