@@ -1,5 +1,6 @@
 ---
 import { Footer, Header } from '@components/common';
+import { SITE_URL } from '@constants/seo';
 import '@styles/main.css';
 import { twMerge } from 'tailwind-merge';
 
@@ -20,13 +21,16 @@ const { pathname } = Astro.url;
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- CANONICAL URL ˶•⩊•˶ -->
+    <link rel="canonical" href={`${SITE_URL}${Astro.url.pathname}`} />
+
     <!-- PAGE INFO ˶•⩊•˶ -->
     <title>{pageTitle}</title>
 
     <slot name="meta" />
 
     <!-- FAVICON ˶•⩊•˶ -->
-    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
     <!-- APPLE TOUCH ICON ˶•⩊•˶ -->
     <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png" />
