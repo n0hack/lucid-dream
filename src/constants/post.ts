@@ -4,6 +4,7 @@
  */
 export const CATEGORY = Object.freeze({
   all: '전체',
+  life: '일상',
   web: 'Web',
   javascript: '자바스크립트',
   project: '프로젝트',
