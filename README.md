@@ -4,14 +4,6 @@
 
 <br />
 
-<p align="center">
-  <img src="./docs/main.png" />
-  <br />
-    🌟 <em>Lucid Dream, 화려히 반짝일 나의 스토리 안에서</em> 🌟
-</p>
-
-<br />
-
 - [블로그 주소](https://www.lucid-dream.net)
 - [Astro로 만들어 본 나만의 블로그 (프로젝트 후기)](https://www.lucid-dream.net/story/project/post/lucid-dream)
 
