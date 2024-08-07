@@ -33,4 +33,5 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [[rehypeFigure, {}]],
   },
+  trailingSlash: 'never',
 });
