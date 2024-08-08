@@ -93,6 +93,6 @@ HTML 문서를 작성하면서 자바스크립트 파일을 포함시켜야 할 
 
 # 결론 🎉
 
-![](./images/good-position-script-tag/0.webp)
+![](./images/good-position-script-tag/thumb.webp)
 
 <center>defer가 좋다..! 😆</center>

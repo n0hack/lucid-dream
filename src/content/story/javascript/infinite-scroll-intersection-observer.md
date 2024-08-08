@@ -317,7 +317,7 @@ observeLastItem(io, items);
 
 이렇게 길지 않은 코드로 간단하게 스켈레톤 UI를 적용한 무한 스크롤을 구현해 봤습니다.
 
-![스켈레톤을 더해 만든 무한 스크롤 UI](./images/infinite-scroll-intersection-observer/0.webp)
+![스켈레톤을 더해 만든 무한 스크롤 UI](./images/infinite-scroll-intersection-observer/thumb.webp)
 
 # 참고 자료
 
