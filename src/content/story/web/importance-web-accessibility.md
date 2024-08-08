@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/importance-web-accessibility-0.webp'
+thumbnail: './images/importance-web-accessibility/thumb.webp'
 title: '웹 접근성과 표준의 중요성'
 description: '웹 접근성과 표준을 지키는 것이 중요한 이유에 대해 소개합니다.'
 tags: ['웹', '접근성']
@@ -103,7 +103,7 @@ WAI-ARIA(줄여서 ARIA)는 스크린 리더와 같은 보조 기기가 읽을 �
 
 aria-label은 모든 HTML 요소에 사용할 수 있으며 요소를 설명합니다.
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbH0uKU%2FbtriuUaKCr8%2F5CYw6DH3nKVEZ3dnXk953k%2Fimg.jpg)
+![](./images/importance-web-accessibility/1.webp)
 
 일반인이 햄버거 모양의 버튼을 볼 때, 이 버튼이 네비게이션 메뉴의 역할을 한다는 것을 쉽게 알 수 있습니다. 하지만 스크린 리더를 이용하는 분들은 별도의 추가 정보가 없다면 절대로 알 수 없습니다. 여기서 `aria-label` 속성을 사용한다면, 해당 버튼이 네비게이션 역할을 한다는 것을 보조 기기에게 알려줄 수 있습니다. 바로 이렇게 말이죠.
 

@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/browser-rendering-process-0.webp'
+thumbnail: './images/browser-rendering-process/thumb.webp'
 title: '웹 브라우저의 렌더링 과정 알아보기'
 description: '렌더링 과정을 아는 것이 중요한 이유에 대해 소개합니다.'
 tags: ['웹', '렌더링', 'DOM']
@@ -14,7 +14,7 @@ date: 2021-10-05
 
 아래는 웹 브라우저의 렌더링 과정에서 발생하는 상황을 간략하게 표현한 그림입니다.
 
-![웹 브라우저의 렌더링 과정](./images/browser-rendering-process-1.webp)
+![웹 브라우저의 렌더링 과정](./images/browser-rendering-process/1.webp)
 
 ## TL;DR
 
@@ -27,13 +27,13 @@ date: 2021-10-05
 
 # Critical Rendering Path (CRP)
 
-![](./images/browser-rendering-process-2.webp)
+![](./images/browser-rendering-process/2.webp)
 
 우리가 작성한 내용을 화면의 픽셀로 나타내는 렌더링 과정을` 주요 렌더링 경로(Critical Rendering Path, 줄여서 CRP)`라 부릅니다. 본문을 통해 렌더링 프로세스에서 발생하는 과정들을 하나씩 알아보도록 합시다.
 
 ## 1. 서버에 리소스 요청
 
-![](./images/browser-rendering-process-3.webp)
+![](./images/browser-rendering-process/3.webp)
 
 웹 브라우저는 렌더링에 필요한 리소스를 서버에 요청합니다. 리소스에는 HTML, CSS, JS 파일은 기본이고 이미지나 폰트, 그리고 서버에서 동적으로 생성한 데이터까지 포함됩니다. 사용자는 주소창에 URL을 입력함으로써 서버에 요청을 보내게 되고, 결과로 HTML 문서를 응답 받습니다.
 
@@ -47,19 +47,19 @@ date: 2021-10-05
 
 이렇게 만들어진 트리를 `DOM(Document Object Model)`이라 합니다.
 
-![문서의 구조를 담고 있는 DOM 트리](./images/browser-rendering-process-4.webp)
+![문서의 구조를 담고 있는 DOM 트리](./images/browser-rendering-process/4.webp)
 
 ## 3. CSSOM 트리 생성
 
 HTML을 파싱하는 도중 `<link>` 태그를 만나게 되면, 일시적으로 HTML 파싱을 중단합니다. 그리고 서버로부터 CSS를 받아 와 DOM을 생성할 때와 동일한 과정을 거치며, `CSSOM(CSS Object Model)`을 생성하기 시작합니다. 둘 간에 큰 차이는 없지만, CSSOM을 구성하는 노드들은 부모의 속성을 상속한다는 특징이 있습니다. 예를 들어 body 태그에 font-size 속성을 지정했다면, 하위 태그들의 노드에도 font-size 속성이 추가됩니다. 이런 특징이 CSS의 Cascading을 보여주는 대표적인 사례입니다.
 
-![스타일 구조를 담고 있는 CSSOM 트리](./images/browser-rendering-process-5.webp)
+![스타일 구조를 담고 있는 CSSOM 트리](./images/browser-rendering-process/5.webp)
 
 ## 4. 렌더 트리 생성
 
 렌더링 엔진에 의해 만들어진 DOM과 CSSOM은 렌더링을 위해 서로 결합되며, 결합된 최종 구조를 `렌더 트리(Render Tree)`라 부릅니다. 렌더 트리에는 실질적으로 렌더링되지 않는 요소(head 요소, display: none이 적용된 요소)들은 포함되지 않습니다. 이렇게 완성된 렌더 트리는 화면에 보여 줄 HTML 요소들의 레이아웃(위치, 크기 등)을 계산하는데 사용됩니다.
 
-![DOM과 CSSOM의 조합으로 만들어진 렌더 트리](./images/browser-rendering-process-6.webp)
+![DOM과 CSSOM의 조합으로 만들어진 렌더 트리](./images/browser-rendering-process/6.webp)
 
 ## 5. 레이아웃 (Layout)
 
@@ -79,7 +79,7 @@ HTML을 파싱하는 도중 `<link>` 태그를 만나게 되면, 일시적으로
 
 # 픽셀 파이프라인
 
-![](./images/browser-rendering-process-7.webp)
+![](./images/browser-rendering-process/7.webp)
 
 렌더링은 다음 상황에 재차 일어날 수 있습니다.
 
@@ -98,7 +98,7 @@ HTML을 파싱하는 도중 `<link>` 태그를 만나게 되면, 일시적으로
 DOM을 생성하는 중에 `<script>` 태그를 만나면, CSS 때와 동일하게 HTML 파싱을 일시적으로 중단합니다. 그리고 자바스크립트는 렌더링 엔진이 처리하는 것이 아니기에, 자바스크립트 엔진(크롬의 경우 V8 엔진)에게 제어권을 넘깁니다. 제어권을 받은 자바스크립트 엔진은 자바스크립트 코드를 파싱하여 `AST(추상적 구문 트리)`를 만들고, 컴퓨터가 이해할 수 있는 저수준 언어인 바이트코드로 변환합니다. 변환된 바이트코드는 인터프리터에 의해 실행됩니다.
 AST는 그냥 이렇게 생긴 자료구조이며, 인터프리터나 컴파일러가 사용합니다.
 
-![](./images/browser-rendering-process-8.webp)
+![](./images/browser-rendering-process/8.webp)
 
 > 본문의 주제는 렌더링 과정이기 때문에, 자바스크립트 엔진과 AST에 대해서는 자세하게 다루지 않습니다.
 

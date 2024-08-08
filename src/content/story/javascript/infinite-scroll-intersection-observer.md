@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/infinite-scroll-intersection-observer-0.webp'
+thumbnail: './images/infinite-scroll-intersection-observer/thumb.webp'
 title: 'Intersection Observer API로 무한 스크롤 구현하기'
 description: '요소를 추적하는 Intersection Observer Web API로 무한 스크롤을 구현하는 방법을 소개합니다. (feat. 에스파 윈터)'
 tags: ['자바스크립트', '무한 스크롤', '페이지네이션']
@@ -25,7 +25,7 @@ date: 2022-01-04
 
 페이지네이션의 장단점은 추후 페이지네이션을 구현해 보는 내용을 다룰 때 살펴보도록 하겠습니다!
 
-![걸그룹 에스파의 멤버 윈터](./images/infinite-scroll-intersection-observer-1.webp)
+![걸그룹 에스파의 멤버 윈터](./images/infinite-scroll-intersection-observer/1.webp)
 
 > 오늘은 개인적으로 좋아하는 걸그룹 에스파의 윈터로 예제를 준비했습니다.
 
@@ -35,7 +35,7 @@ date: 2022-01-04
 
 여기서는 Web API 중 하나인 `Intersection Observer`를 사용해 무한 스크롤을 구현해 볼 생각입니다. `Intersection Observer`는 기본적으로 관찰 중인 요소(Element)가 뷰포트(Viewport)와 교차하고 있는지를 감지하는 API인데, 좀 더 쉽게 설명하자면 관찰 중인 요소가 사용자가 보는 화면 영역 내에 들어왔는지를 알려주는 API입니다.
 
-![Intersection Observer의 동작 예시](./images/infinite-scroll-intersection-observer-2.webp)
+![Intersection Observer의 동작 예시](./images/infinite-scroll-intersection-observer/2.webp)
 
 사용 방법은 간단합니다. 먼저 `new IntersectionObserver(callback, options)`로 관찰자 객체를 생성한 후, 관찰 대상을 지정하여 관찰을 시작하면 됩니다. 관찰자 객체를 생성할 때 옵션은 필수가 아니지만, 다음 세 가지 옵션을 설정 가능합니다.
 
@@ -74,7 +74,7 @@ const callback = (entries, io) => {
 
 대답은 Yes입니다! `Intersection Observer`가 나오기 이전에는 `window` 객체에 스크롤 이벤트를 연결하여 특정 지점까지 스크롤되었을 때, 다음 콘텐츠를 불러오는 식으로 무한 스크롤을 구현했습니다. 하지만 스크롤을 진행하는 순간마다 이벤트가 호출되어 메인 스레드 성능에 좋지 않았고, `쓰로틀(Throttle)`과 같은 최적화 작업이 늘 동반되어야 했습니다.
 
-![스크롤 시 발생하는 이벤트에 따른 성능 이슈](./images/infinite-scroll-intersection-observer-3.webp)
+![스크롤 시 발생하는 이벤트에 따른 성능 이슈](./images/infinite-scroll-intersection-observer/3.webp)
 
 최적화를 하지 않았다면, 위 그림처럼 스크롤할 때마다 이벤트가 계속해서 발생했을 겁니다. 하지만 스크롤 이벤트와 달리 `Intersection Observer`는 메인 스레드와 별개로 비동기적으로 실행되기 때문에, 별도의 최적화가 없더라도 기본적으로 훨씬 빠른 퍼포먼스를 보여 줍니다.
 
@@ -88,7 +88,7 @@ const callback = (entries, io) => {
 
 반응형은 크게 고려하지 않고, 한 줄에 4개의 카드가 나타나도록 간단하게 디자인했습니다.
 
-![간단하게 배치하여 만든 카드 리스트](./images/infinite-scroll-intersection-observer-5.webp)
+![간단하게 배치하여 만든 카드 리스트](./images/infinite-scroll-intersection-observer/5.webp)
 
 ### HTML 코드
 
@@ -317,7 +317,7 @@ observeLastItem(io, items);
 
 이렇게 길지 않은 코드로 간단하게 스켈레톤 UI를 적용한 무한 스크롤을 구현해 봤습니다.
 
-![스켈레톤을 더해 만든 무한 스크롤 UI](./images/infinite-scroll-intersection-observer-0.webp)
+![스켈레톤을 더해 만든 무한 스크롤 UI](./images/infinite-scroll-intersection-observer/0.webp)
 
 # 참고 자료
 

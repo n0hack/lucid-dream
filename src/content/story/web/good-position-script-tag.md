@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/good-position-script-tag-0.webp'
+thumbnail: './images/good-position-script-tag/thumb.webp'
 title: 'script 태그는 어느 곳에 위치하는 것이 좋을까?'
 description: 'script 태그를 두기 좋은 위치와 async와 defer 속성을 소개합니다.'
 tags: ['웹', 'async', 'defer']
@@ -25,7 +25,7 @@ HTML 문서를 작성하면서 자바스크립트 파일을 포함시켜야 할 
 
 동작 과정을 그림으로 보면 다음과 같습니다.
 
-![](./images/good-position-script-tag-1.webp)
+![](./images/good-position-script-tag/1.webp)
 
 언뜻 보기에는 큰 문제가 없어 보이지만, 다음과 같은 단점이 있습니다.
 
@@ -49,7 +49,7 @@ HTML 문서를 작성하면서 자바스크립트 파일을 포함시켜야 할 
 
 이렇게 `body` 태그 맨 밑에 `script` 태그를 작성하게 되면, 다음과 같이 동작합니다.
 
-![](./images/good-position-script-tag-2.webp)
+![](./images/good-position-script-tag/2.webp)
 
 이 방법은 웹페이지를 전부 불러온 이후, 스크립트를 가져오기 때문에 사용자가 웹페이지를 보기까지 지연되는 시간이 없습니다. 하지만 자바스크립트를 마지막에 불러오기 때문에, 그 전에 웹페이지의 동적인 요소들이 올바르게 동작하지 않을 수 있습니다.
 
@@ -68,7 +68,7 @@ HTML 문서를 작성하면서 자바스크립트 파일을 포함시켜야 할 
 
 이 방법은 `script` 태그 안에 `async` 속성을 적어줌으로써, HTML 파싱 과정과 문서 내의 모든 자바스크립트 Fetching 과정이 비동기로 진행될 수 있게 합니다. 그리고 Fetching이 완료된 스크립트가 있으면, 그때서야 HTML 파싱을 잠시 중단하고 Fetching이 완료된 순서대로 Execution을 진행합니다.
 
-![](./images/good-position-script-tag-3.webp)
+![](./images/good-position-script-tag/3.webp)
 
 확실히 HTML 문서 파싱과 Fetching이 병렬로 진행되기 때문에, 속도가 빨라져 단점이 해결된 것처럼 보일 수 있습니다. 하지만 `async`는 Fetching이 완료된 순서대로 스크립트를 실행하기 때문에 스크립트간에 의존성 문제가 발생할 수 있습니다.
 
@@ -93,6 +93,6 @@ HTML 문서를 작성하면서 자바스크립트 파일을 포함시켜야 할 
 
 # 결론 🎉
 
-![](./images/good-position-script-tag-0.webp)
+![](./images/good-position-script-tag/0.webp)
 
 <center>defer가 좋다..! 😆</center>

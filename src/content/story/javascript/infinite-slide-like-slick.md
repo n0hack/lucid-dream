@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/infinite-slide-like-slick-0.webp'
+thumbnail: './images/infinite-slide-like-slick/thumb.webp'
 title: 'Slick 같은 무한 루프 슬라이드 만들기'
 description: '흔히 볼 수 있는 슬라이드 UI를 가볍게 구현하는 방법을 소개합니다.'
 tags: ['자바스크립트', 'Carousel', '캐러셀', '슬라이드']
@@ -19,7 +19,7 @@ date: 2022-01-09
 
 그리고 이번에는 제가 즐겨하는 게임인 리그 오브 레전드에 제리(Zeri)라는 신규 챔피언이 출시된다 하여, 이를 기념으로 주로 사용하는 챔피언들의 일러스트를 이용해 슬라이드를 디자인했습니다. 1월 21일 출시라는데 얼른 나왔으면 좋겠네요!
 
-![리그 오브 레전드 신규 챔피언 '제리'](./images/infinite-slide-like-slick-1.webp)
+![리그 오브 레전드 신규 챔피언 '제리'](./images/infinite-slide-like-slick/1.webp)
 
 # Carousel 구현하기
 
@@ -359,7 +359,7 @@ const autoplay = ({ duration }) => {
 
 인덱스를 신경 쓰는 부분이 복잡했지만, 그래도 이렇게 무한 루프 슬라이드를 만들었습니다.
 
-![리그 오브 레전드 챔피언들로 완성한 무한 루프 슬라이드](./images/infinite-slide-like-slick-3.webp)
+![리그 오브 레전드 챔피언들로 완성한 무한 루프 슬라이드](./images/infinite-slide-like-slick/3.webp)
 
 어떤가요 Slick이랑 비슷한 느낌인가요? 하지만 아직 부족한 부분들이 남아 있습니다. 저는 두 가지 정도가 해결해야 하는 과제로 떠오르는데요. 첫 번째로는 창의 크기를 변경할 때 자연스럽게 변경될 수 있도록 하는 것이 있고, 두 번째로는 좌우 스와이프를 이용한 슬라이드 전환이 있습니다. 저는 기본적인 구현이 초기 목표였기에 여기서 마무리하겠지만, 좀 더 완성도를 높이고 싶은 분들께는 이 두 가지도 마저 구현해 보시는 걸 추천드립니다!
 

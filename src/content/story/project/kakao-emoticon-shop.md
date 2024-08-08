@@ -1,20 +1,16 @@
 ---
-thumbnail: './images/kakao-emoticon-shop-0.webp'
+thumbnail: './images/kakao-emoticon-shop/thumb.webp'
 title: '카카오 이모티콘샵 클론'
 description: 'HTML, CSS, JS만 가지고 만들어 본 프론트엔드 첫 프로젝트!'
 tags: ['프론트엔드', '프로젝트', 'HTML', 'CSS', '자바스크립트']
 date: 2022-01-03
 ---
 
-> 프로젝트 사이트: https://n0hack.github.io/kakao-emoticon-shop
->
-> 프로젝트 저장소: https://github.com/n0hack/kakao-emoticon-shop
-
 # 프로젝트 개요
 
 리그 오브 레전드 데이터 분석가로의 길을 멈추고, 다시 개발 분야로 돌아와 자신감과 흥미를 되찾기 위해 진행한 첫 프론트엔드 클론 프로젝트입니다. 개인적으로 카카오(Kakao)에서 운영 중인 웹 서비스들의 구성이 마음에 들어 그중 하나인 [카카오 이모티콘샵](https://e.kakao.com/)을 주제로 선택하게 되었고, 프론트엔드를 구성하는 기본 요소인 `HTML`, `CSS`, `JavaScript` 세 가지만을 사용해 진행했습니다.
 
-![카카오 이모티콘샵 웹사이트](./images/kakao-emoticon-shop-1.webp)
+![카카오 이모티콘샵 웹사이트](./images/kakao-emoticon-shop/1.webp)
 
 > 콘텐츠 중심 서비스이기에 배너 이미지가 자주 변경될 수 있어 프로젝트 결과와 차이가 있을 수 있습니다.
 
@@ -42,43 +38,43 @@ date: 2022-01-03
 
 배너 이미지에 Slick 라이브러리를 적용하여, 일정 시간마다 자동 전환되도록 했습니다.
 
-![메인 페이지](./images/kakao-emoticon-shop-2.webp)
+![메인 페이지](./images/kakao-emoticon-shop/2.webp)
 
 ## 신규 이모티콘 페이지
 
 `Intersection Observer` API를 사용하여, 무한 스크롤에 따라 컨텐츠가 로드되도록 했습니다. 크롤링한 데이터가 없어, 다섯 줄 단위로 동일한 컨텐츠(이모티콘)를 반복했습니다.
 
-![신규 이모티콘 페이지](./images/kakao-emoticon-shop-3.webp)
+![신규 이모티콘 페이지](./images/kakao-emoticon-shop/3.webp)
 
 ## 인기 이모티콘 페이지
 
 `Intersection Observer` API를 사용하여, 무한 스크롤에 따라 컨텐츠가 로드되도록 했습니다. 크롤링한 데이터가 없어, 10개의 기본 이모티콘 이후로는 더미 데이터(Dummy Datas)를 출력했습니다.
 
-![인기 이모티콘 페이지](./images/kakao-emoticon-shop-4.webp)
+![인기 이모티콘 페이지](./images/kakao-emoticon-shop/4.webp)
 
 ## 스타일 페이지
 
-![스타일 페이지](./images/kakao-emoticon-shop-5.webp)
+![스타일 페이지](./images/kakao-emoticon-shop/5.webp)
 
 ## 마이페이지
 
-![마이페이지](./images/kakao-emoticon-shop-6.webp)
+![마이페이지](./images/kakao-emoticon-shop/6.webp)
 
 ## 자주묻는 질문 페이지
 
-![자주묻는 질문 페이지](./images/kakao-emoticon-shop-7.webp)
+![자주묻는 질문 페이지](./images/kakao-emoticon-shop/7.webp)
 
 ## 팝업 윈도우
 
 `window.open` 메소드를 이용해, 버튼을 눌러 팝업창을 열 수 있도록 구현했습니다.
 
-![팝업 윈도우](./images/kakao-emoticon-shop-8.webp)
+![팝업 윈도우](./images/kakao-emoticon-shop/8.webp)
 
 ## 모바일 사이즈 대응 작업
 
 데스크톱에서 브라우저 크기를 작게 하고 이용 시, 모바일(0-767px)에서 터치로 스크롤하는 것과 같은 효과를 구현했습니다. 데스크톱에서는 터치 대신 마우스 클릭 이벤트가 발생하기 때문에, 터치와 마우스 클릭 이벤트 두 가지에 대해 모두 처리했습니다.
 
-![반응형 디자인](./images/kakao-emoticon-shop-9.webp)
+![반응형 디자인](./images/kakao-emoticon-shop/9.webp)
 
 # 프로젝트 후기
 
@@ -100,7 +96,7 @@ date: 2022-01-03
 
 그리고 이번에는 슬라이드 UI에 Slick 라이브러리를 사용했지만, 프로젝트와 별개로 추후 구현해 볼 생각입니다.
 
-![드래그 스크롤을 구현한 코드 일부](./images/kakao-emoticon-shop-10.webp)
+![드래그 스크롤을 구현한 코드 일부](./images/kakao-emoticon-shop/10.webp)
 
 ## 개선 사항 & 아쉬운 점
 
@@ -108,13 +104,13 @@ date: 2022-01-03
 
 `BEM(Block Element Modifier)` 방법론이 익숙하지 않은 상태에서, 처음하는 프로젝트의 규모가 크다보니 작명과 블록 단위로 나누는 부분에서 혼란스러운 점이 많았습니다. BEM이라는 것이 아예 모르고 진행했을 때와 비교해서는 큰 개선이 있었지만, 다음에는 상대적으로 작은 웹사이트라도 만들어 보면서 기본기를 탄탄하게 다져야 할 필요를 느꼈습니다.
 
-![BEM을 적용해 본 HTML 마크업](./images/kakao-emoticon-shop-11.webp)
+![BEM을 적용해 본 HTML 마크업](./images/kakao-emoticon-shop/11.webp)
 
 ### 프로젝트 구조의 아쉬움
 
 최대한 예쁘고, 깔끔하게 정리해 봤지만 아무리 해도 만족되지 않았습니다. 개인과 팀마다 다른 거라 생각은 하지만, 다른 사이드 프로젝트도 해 보면서 좀 더 가다듬을 필요를 느꼈습니다. 물론 여기에 정답은 없기에 매몰될 거란 생각은 아닙니다!
 
-![프로젝트 구조](./images/kakao-emoticon-shop-12.webp)
+![프로젝트 구조](./images/kakao-emoticon-shop/12.webp)
 
 ### 깔끔하지 않은 코드 (기능 구현에만 치중한 문제)
 

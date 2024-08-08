@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/mouse-touch-scroll-0.webp'
+thumbnail: './images/mouse-touch-scroll/thumb.webp'
 title: '마우스로 터치 스크롤 구현하기'
 description: '웹 브라우저에서 앱의 터치 스크롤 이벤트 비슷하게 구현하는 방법을 소개합니다.'
 tags: ['자바스크립트', '터치 스크롤', '터치 이벤트']
@@ -10,7 +10,7 @@ date: 2022-01-04
 
 모바일에서는 좌우로 스크롤 가능한 요소를 터치 제스처를 통해 움직이면서 읽을 수 있습니다. 이를 데스크톱 환경에서도 마우스를 가지고 동일하게 동작할 수 있도록 만들 수 있는데, 웨이브나 넷플릭스 등의 OTT나 카카오 이모티콘샵과 같은 서비스의 웹사이트를 방문해 보면 이 기능이 어떤 것인지 확인할 수 있습니다.
 
-![OTT에서 쉽게 볼 수 있는 터치 스크롤 UI](./images/mouse-touch-scroll-1.webp)
+![OTT에서 쉽게 볼 수 있는 터치 스크롤 UI](./images/mouse-touch-scroll/1.webp)
 
 모바일에서는 터치를 이용한 스크롤이 기본적으로 가능하지만, 데스크톱에서는 터치 행위 자체가 불가능하기 때문에 `Mouse`, `Touch`, `Click` 이벤트에 대한 기능을 직접 구현해야 합니다. 처음에는 어디서부터 만들면 좋을지 많이 헤맸지만, 천천히 만들고 나서 보니 결과적으로 크게 어렵지는 않았기에 본문을 통해 소개하려 합니다.
 
@@ -117,7 +117,7 @@ body {
 
 ### 마크업 결과
 
-![별나비 캐릭터를 베이스로 디자인한 UI](./images/mouse-touch-scroll-2.webp)
+![별나비 캐릭터를 베이스로 디자인한 UI](./images/mouse-touch-scroll/2.webp)
 
 > 최근 재밌게 본 애니메이션 별나비의 주인공인 Star를 이번 예제의 메인 소재로 사용했습니다!
 
@@ -142,7 +142,7 @@ let listX = 0;
 
 리스트에 대한 참조 외에 `scrollWidth`와 `clientWidth`도 함께 구한 이유는 리스트를 css의 `translate` 속성을 이용해 좌우로 움직이기 위함입니다. `clientWidth`는 가려진 영역을 제외한 현재 화면에 보이는 요소에 대한 가로 사이즈이고, `scrollWidth`는 스크롤로 인해 가려진 영역의 콘텐츠들도 모두 포함한 총 가로 사이즈입니다. 그렇기 때문에 여기서 `scrollWidth - clientWidth`로 구한 값은 리스트를 가로로 이동시킬 수 있는 최대치라 볼 수 있습니다.
 
-![그림을 통해 이해 돕기](./images/mouse-touch-scroll-3.webp)
+![그림을 통해 이해 돕기](./images/mouse-touch-scroll/3.webp)
 
 ### 이벤트 핸들러 선언
 
@@ -206,7 +206,7 @@ const onScrollStart = (e) => {
 };
 ```
 
-![이벤트가 의도대로 동작하는지 확인하기](./images/mouse-touch-scroll-4.webp)
+![이벤트가 의도대로 동작하는지 확인하기](./images/mouse-touch-scroll/4.webp)
 
 ### 스크롤 진행 이벤트 구현
 
@@ -221,7 +221,7 @@ const onScrollMove = (e) => {
 
 `listX` 변수는 리스트 요소를 최초 스크롤 할 때는 필요 없지만, 두 번째로 움직일 때부터는 필요합니다. `listX` 변수에는 요소의 `translateX` 값이 저장되어 있으며, 스크롤 종료 이벤트 함수 안에서 할당합니다. 만약 이 값을 함께 계산하지 않는다면, 요소는 매 순간 최초 위치인 `tarnslateX: 0px`에서 시작될 것입니다.
 
-![여기까지 따라왔을 왔다면 얻을 수 있는 결과](./images/mouse-touch-scroll-5.webp)
+![여기까지 따라왔을 왔다면 얻을 수 있는 결과](./images/mouse-touch-scroll/5.webp)
 
 마우스를 떼더라도 스크롤 동작이 이어질 텐데, 이는 스크롤 종료 이벤트를 구현하면서 처리하면 됩니다.
 
@@ -276,7 +276,7 @@ const onClick = (e) => {
 
 ## 구현 결과
 
-![최종적으로 완성된 모습](./images/mouse-touch-scroll-6.webp)
+![최종적으로 완성된 모습](./images/mouse-touch-scroll/6.webp)
 
 이렇게 터치 스크롤 구현을 완료했습니다!
 

@@ -1,5 +1,5 @@
 ---
-thumbnail: './images/simple-pagination-0.webp'
+thumbnail: './images/simple-pagination/thumb.webp'
 title: '간단한 페이지네이션 구현하기'
 description: '자바스크립트로 손쉽게 페이지네이션을 구현하는 방법을 소개합니다.'
 tags: ['자바스크립트', '페이지네이션', '무한 스크롤']
@@ -26,7 +26,7 @@ date: 2022-01-07
 
 이제 간단하게 페이지네이션을 구현해 볼까요?
 
-![](./images/simple-pagination-1.webp)
+![](./images/simple-pagination/1.webp)
 
 # 페이지네이션 구현하기
 
@@ -34,7 +34,7 @@ date: 2022-01-07
 
 이번 예제는 어디서나 쉽게 접할 수 있는 간단한 게시판 형태로 디자인했습니다.
 
-![예제로 준비한 디자인](./images/simple-pagination-2.webp)
+![예제로 준비한 디자인](./images/simple-pagination/2.webp)
 
 > 제가 공유 드린 코드를 보면서 차례대로 진행했을 때 처음에는 화면이 비어 있어 당황하실 수 있는데, 표시할 콘텐츠를 모두 자바스크립트로 동적 생성해서 그렇습니다. 그러니 놀라지 마세요 😄
 
@@ -279,7 +279,7 @@ next.addEventListener('click', goNextPage);
 
 8~90줄 정도의 짧은 코드로 간단하게 페이지네이션을 구현해 봤습니다.
 
-![간단하게 완성한 페이지네이션](./images/simple-pagination-3.webp)
+![간단하게 완성한 페이지네이션](./images/simple-pagination/3.webp)
 
 예제에서는 미리 데이터의 개수를 정해두고 화면에 띄우는 식으로 구현했지만, 실제 서비스에서는 DB에 저장된 데이터를 받아오는 식으로 구현해야 합니다. DB를 사용할 때도 지금과 전체적인 구현 방식은 비슷하기 때문에, 일단 한 번 직접 구현해 보면서 감을 익혀보면 좋을 것 같습니다.
 
