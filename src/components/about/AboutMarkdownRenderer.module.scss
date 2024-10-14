@@ -205,3 +205,10 @@
     color: rgb(139, 92, 246, 0.9);
   }
 }
+
+// 이미지 (Image)
+figure {
+  &:first-of-type img {
+    border-radius: 1rem;
+  }
+}
