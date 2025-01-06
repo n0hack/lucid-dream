@@ -211,4 +211,8 @@ figure {
   &:first-of-type img {
     border-radius: 1rem;
   }
+
+  & + h3 {
+    margin-top: 1.5rem;
+  }
 }
